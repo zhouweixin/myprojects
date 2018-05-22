@@ -34,6 +34,11 @@ public class DepartmentService {
 	 * @return
 	 */
 	public Department save(Department department) {
+		
+		if(department == null || (department.getId() != null && departmentRepository.findOne(department.getId()) != null)){
+			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);			
+		}
+		
 		return departmentRepository.save(department);
 	}
 	
@@ -58,6 +63,10 @@ public class DepartmentService {
 	 * @param id
 	 */
 	public void delete(Integer id) {
+		
+		if(departmentRepository.findOne(id) == null) {
+			throw new SecurityExceptions(EnumExceptions.DELETE_FAILED_NOT_EXIST);
+		}
 		departmentRepository.delete(id);
 	}
 

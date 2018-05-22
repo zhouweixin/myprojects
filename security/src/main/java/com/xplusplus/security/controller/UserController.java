@@ -2,8 +2,8 @@ package com.xplusplus.security.controller;
 
 import com.xplusplus.security.domain.Result;
 import com.xplusplus.security.domain.User;
-import com.xplusplus.security.exception.EnumException;
-import com.xplusplus.security.exception.SecurityException;
+import com.xplusplus.security.exception.EnumExceptions;
+import com.xplusplus.security.exception.SecurityExceptions;
 import com.xplusplus.security.service.UserService;
 import com.xplusplus.security.utils.GlobalUtil;
 import com.xplusplus.security.utils.ResultUtil;
@@ -72,7 +72,7 @@ public class UserController {
     @RequestMapping(value = "/deleteById")
     public Result<Object> deleteById(@RequestParam(name = "id", defaultValue = "0") String id){
         if(userService.findOne(id) == null){
-            return ResultUtil.error(new SecurityException(EnumException.DELETE_FAILED_NOT_EXIST));
+            return ResultUtil.error(new SecurityExceptions(EnumExceptions.DELETE_FAILED_NOT_EXIST));
         }
 
         userService.delete(id);

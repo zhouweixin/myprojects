@@ -6,11 +6,11 @@ package com.xplusplus.security.exception;
  * @author zhouweixin
  *
  */
-public class SecurityException extends RuntimeException {
+public class SecurityExceptions extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	private Integer code;
 
-	public SecurityException(EnumException exceptionsEnum) {
+	public SecurityExceptions(EnumExceptions exceptionsEnum) {
 		super(exceptionsEnum.getMessage());
 
 		this.code = exceptionsEnum.getCode();

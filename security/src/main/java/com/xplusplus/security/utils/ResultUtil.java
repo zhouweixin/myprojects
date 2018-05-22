@@ -1,8 +1,8 @@
 package com.xplusplus.security.utils;
 
 import com.xplusplus.security.domain.Result;
-import com.xplusplus.security.exception.EnumException;
-import com.xplusplus.security.exception.SecurityException;
+import com.xplusplus.security.exception.EnumExceptions;
+import com.xplusplus.security.exception.SecurityExceptions;
 
 /**
  * 统一返回工具类
@@ -18,8 +18,8 @@ public class ResultUtil {
      */
     public static <T> Result<T> success(T data) {
         Result<T> result = new Result<T>();
-        result.setCode(EnumException.SUCCESS.getCode());
-        result.setMessage(EnumException.SUCCESS.getMessage());
+        result.setCode(EnumExceptions.SUCCESS.getCode());
+        result.setMessage(EnumExceptions.SUCCESS.getMessage());
         result.setData(data);
         return result;
     }
@@ -39,7 +39,7 @@ public class ResultUtil {
      * @param securityException
      * @return
      */
-    public static <T> Result<T> error(SecurityException securityException) {
+    public static <T> Result<T> error(SecurityExceptions securityException) {
         Result<T> result = new Result<T>();
         result.setCode(securityException.getCode());
         result.setMessage(securityException.getMessage());
@@ -56,20 +56,6 @@ public class ResultUtil {
         Result<T> result = new Result<T>();
         result.setCode(-2);
         result.setMessage(message);
-        return result;
-    }
-
-    /**
-     * 失败
-     *
-     * @param code
-     * @param msg
-     * @return
-     */
-    public static Result failure(Integer code, String msg) {
-        Result result = new Result();
-        result.setCode(code);
-        result.setMessage(msg);
         return result;
     }
 }

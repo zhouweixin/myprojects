@@ -3,8 +3,11 @@ package com.xplusplus.security.controller;
 import java.util.Collection;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +23,7 @@ import com.xplusplus.security.utils.ResultUtil;
  * @Modified By:
  */
 @RestController
-@RequestMapping(value = "department")
+@RequestMapping(value = "/department")
 public class DepartmentController {
 	@Autowired
 	private DepartmentService departmentService;
@@ -32,7 +35,12 @@ public class DepartmentController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add")
-	public Result<Department> add(Department department) {
+	public Result<Department> add(@Valid Department department, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
+		}
+		
 		return ResultUtil.success(departmentService.save(department));
 	}
 

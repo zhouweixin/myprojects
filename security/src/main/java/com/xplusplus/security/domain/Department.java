@@ -1,9 +1,11 @@
 package com.xplusplus.security.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * @Author: zhouweixin
@@ -28,6 +30,8 @@ public class Department {
     /**
      * 简称
      */
+    @NotNull(message = "部门简称不能为空")
+    @Column(nullable = false)
     private String shortName;
 
     /**

@@ -34,14 +34,16 @@ public class DepartmentService {
 	 * @return
 	 */
 	public Department save(Department department) {
-		
-		if(department == null || (department.getId() != null && departmentRepository.findOne(department.getId()) != null)){
-			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);			
+
+		// 验证是否存在
+		if (department == null
+				|| (department.getId() != null && departmentRepository.findOne(department.getId()) != null)) {
+			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);
 		}
-		
+
 		return departmentRepository.save(department);
 	}
-	
+
 	/**
 	 * 更新
 	 * 
@@ -49,11 +51,13 @@ public class DepartmentService {
 	 * @return
 	 */
 	public Department update(Department department) {
-		
-		if(department == null || department.getId() == null || departmentRepository.findOne(department.getId()) == null) {
+
+		// 验证是否存在
+		if (department == null || department.getId() == null
+				|| departmentRepository.findOne(department.getId()) == null) {
 			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
 		}
-		
+
 		return departmentRepository.save(department);
 	}
 
@@ -63,8 +67,9 @@ public class DepartmentService {
 	 * @param id
 	 */
 	public void delete(Integer id) {
-		
-		if(departmentRepository.findOne(id) == null) {
+
+		// 验证是否存在
+		if (departmentRepository.findOne(id) == null) {
 			throw new SecurityExceptions(EnumExceptions.DELETE_FAILED_NOT_EXIST);
 		}
 		departmentRepository.delete(id);

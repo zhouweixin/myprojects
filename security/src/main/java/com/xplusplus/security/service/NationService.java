@@ -34,6 +34,7 @@ public class NationService {
 	 */
 	public Nation save(Nation nation) {
 
+		// 验证是否存在
 		if (nation == null || (nation.getId() != null && nationRepository.findOne(nation.getId()) != null)) {
 			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);
 		}
@@ -49,6 +50,7 @@ public class NationService {
 	 */
 	public Nation update(Nation nation) {
 
+		// 验证是否存在
 		if (nation == null || nation.getId() == null || nationRepository.findOne(nation.getId()) == null) {
 			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
 		}
@@ -63,6 +65,7 @@ public class NationService {
 	 */
 	public void delete(Integer id) {
 
+		// 验证是否存在
 		if (nationRepository.findOne(id) == null) {
 			throw new SecurityExceptions(EnumExceptions.DELETE_FAILED_NOT_EXIST);
 		}

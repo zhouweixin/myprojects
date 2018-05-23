@@ -10,6 +10,9 @@ import javax.persistence.*;
  */
 @Entity
 public class HealthStatus {
+    /**
+     * 编码
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

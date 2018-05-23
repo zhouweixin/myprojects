@@ -13,6 +13,9 @@ import javax.persistence.Id;
  */
 @Entity
 public class Education {
+    /**
+     * 编码
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

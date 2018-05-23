@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * @Author: zhouweixin
  * @Description: 部门表
@@ -28,10 +30,11 @@ public class Department {
     private String name;
 
     /**
-     * 简称
+     * 简称: 长度为2
      */
     @NotNull(message = "部门简称不能为空")
-    @Column(nullable = false)
+    @NotBlank(message = "部门简称不能为空")
+    @Column(length = 2, nullable = false, unique = true)
     private String shortName;
 
     /**

@@ -3,6 +3,9 @@ package com.xplusplus.security.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.time.Period;
 import java.util.Date;
@@ -16,7 +19,7 @@ import java.util.Date;
 @Entity
 public class User {
 	/**
-	 * 编号:部门首字母+队号+5位数字
+	 * 编号:部门简称(2个字符)+5位数字
 	 */
 	@Id
 	private String id;
@@ -24,12 +27,15 @@ public class User {
 	/**
 	 * 姓名
 	 */
+	@NotNull(message = "名字不能为空")
+	@NotBlank(message = "名字不能为空")
+	@Column(nullable = false)
 	private String name;
 
 	/**
 	 * 性别:0男; 1女
 	 */
-	private Integer sex;
+	private Integer sex = 0;
 
 	/**
 	 * ic号
@@ -44,6 +50,8 @@ public class User {
 	/**
 	 * 联系方式
 	 */
+	@NotNull(message = "手机号码不能为空")
+	@NotBlank(message = "手机号码不能为空")
 	private String contact;
 
 	/**
@@ -68,7 +76,9 @@ public class User {
 	/**
 	 * 工作性质
 	 */
-	private String jobNature;
+	@ManyToOne(targetEntity = JobNature.class)
+	@JoinColumn(name = "job_nature_id", referencedColumnName = "id")
+	private JobNature jobNature;
 
 	/**
 	 * 实习周期
@@ -160,11 +170,11 @@ public class User {
 		this.role = role;
 	}
 
-	public String getJobNature() {
+	public JobNature getJobNature() {
 		return jobNature;
 	}
 
-	public void setJobNature(String jobNature) {
+	public void setJobNature(JobNature jobNature) {
 		this.jobNature = jobNature;
 	}
 

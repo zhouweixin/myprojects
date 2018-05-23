@@ -7,6 +7,7 @@ import com.xplusplus.security.repository.DepartmentRepository;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,6 +42,11 @@ public class DepartmentService {
 			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);
 		}
 
+		if (departmentRepository.findFirstByShortName(department.getShortName()) != null
+				|| Pattern.matches("^[A-Za-z]{2}$", department.getShortName()) == false) {
+			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_SHORT_NAME_NOT_LAWER);
+		}
+
 		return departmentRepository.save(department);
 	}
 
@@ -56,6 +62,11 @@ public class DepartmentService {
 		if (department == null || department.getId() == null
 				|| departmentRepository.findOne(department.getId()) == null) {
 			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
+		}
+		
+		if (departmentRepository.findFirstByShortName(department.getShortName()) != null
+				|| Pattern.matches("^[A-Za-z]{2}$", department.getShortName()) == false) {
+			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_SHORT_NAME_NOT_LAWER);
 		}
 
 		return departmentRepository.save(department);

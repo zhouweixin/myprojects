@@ -23,4 +23,12 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 	 * @return
 	 */
 	public Page<Department> findByNameLike(String name, Pageable pageable);
+	
+	/**
+	 * 通过部门简称查询
+	 * 
+	 * @param shortName
+	 * @return
+	 */
+	public Department findFirstByShortName(String shortName);
 }

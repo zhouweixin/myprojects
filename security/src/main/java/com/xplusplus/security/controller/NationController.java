@@ -8,7 +8,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xplusplus.security.domain.Nation;
@@ -51,7 +53,12 @@ public class NationController {
 	 * @return
 	 */
 	@RequestMapping(value = "/update")
-	public Result<Nation> update(Nation nation) {
+	public Result<Nation> update(@Valid Nation nation, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
+		}
+
 		return ResultUtil.success(nationService.update(nation));
 	}
 
@@ -74,7 +81,7 @@ public class NationController {
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteByIdBatch")
-	public Result<Object> deleteByIdBatch(Collection<Nation> nations) {
+	public Result<Object> deleteByIdBatch(@RequestBody Collection<Nation> nations) {
 		nationService.deleteInBatch(nations);
 		return ResultUtil.success();
 	}
@@ -111,7 +118,11 @@ public class NationController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getAllByPage")
-	public Result<Page<Nation>> getAllByPage(Integer page, Integer size, String sortFieldName, Integer asc) {
+	public Result<Page<Nation>> getAllByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+
 		return ResultUtil.success(nationService.findAllByPage(page, size, sortFieldName, asc));
 	}
 
@@ -126,8 +137,12 @@ public class NationController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getByNameLikeByPage")
-	public Result<Page<Nation>> getByNameLikeByPage(String name, Integer page, Integer size, String sortFieldName,
-			Integer asc) {
+	public Result<Page<Nation>> getByNameLikeByPage(@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+		
 		return ResultUtil.success(nationService.findByNameLikeByPage(name, page, size, sortFieldName, asc));
 	}
 }

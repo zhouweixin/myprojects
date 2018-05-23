@@ -8,7 +8,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xplusplus.security.domain.Department;
@@ -36,11 +38,11 @@ public class DepartmentController {
 	 */
 	@RequestMapping(value = "/add")
 	public Result<Department> add(@Valid Department department, BindingResult bindingResult) {
-		
-		if(bindingResult.hasErrors()) {
+
+		if (bindingResult.hasErrors()) {
 			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
 		}
-		
+
 		return ResultUtil.success(departmentService.save(department));
 	}
 
@@ -51,7 +53,12 @@ public class DepartmentController {
 	 * @return
 	 */
 	@RequestMapping(value = "/update")
-	public Result<Department> update(Department department) {
+	public Result<Department> update(@Valid Department department, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
+		}
+
 		return ResultUtil.success(departmentService.update(department));
 	}
 
@@ -74,7 +81,7 @@ public class DepartmentController {
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteByIdBatch")
-	public Result<Object> deleteByIdBatch(Collection<Department> departments) {
+	public Result<Object> deleteByIdBatch(@RequestBody Collection<Department> departments) {
 		departmentService.deleteInBatch(departments);
 		return ResultUtil.success();
 	}
@@ -111,10 +118,14 @@ public class DepartmentController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getAllByPage")
-	public Result<Page<Department>> getAllByPage(Integer page, Integer size, String sortFieldName, Integer asc) { 
-    	return ResultUtil.success(departmentService.findAllByPage(page, size, sortFieldName, asc));
-    }
-	
+	public Result<Page<Department>> getAllByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+
+		return ResultUtil.success(departmentService.findAllByPage(page, size, sortFieldName, asc));
+	}
+
 	/**
 	 * 通过名称模糊查询-分页
 	 * 
@@ -126,8 +137,12 @@ public class DepartmentController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getByNameLikeByPage")
-	public Result<Page<Department>> getByNameLikeByPage(String name, Integer page, Integer size, String sortFieldName,
-			Integer asc) {
+	public Result<Page<Department>> getByNameLikeByPage(@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+		
 		return ResultUtil.success(departmentService.findByNameLikeByPage(name, page, size, sortFieldName, asc));
 	}
 }

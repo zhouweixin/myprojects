@@ -6,8 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @Author: zhouweixin
- * @Description: 婚姻状况
+ * @Author: Huxudong
+ * @Description: 婚姻状况Entity
  * @Date: Created in 19:34 2018/5/7
  * @Modified By:
  */

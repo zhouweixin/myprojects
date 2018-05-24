@@ -43,4 +43,12 @@ public class MilitaryStatus {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "MilitaryStatusController{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
 }

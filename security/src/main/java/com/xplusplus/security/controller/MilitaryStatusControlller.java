@@ -23,7 +23,7 @@ import java.util.List;
  * @Modified By:
  */
 @RestController
-@RequestMapping(value = "militaryStatus")
+@RequestMapping(value = "/militaryStatus")
 public class MilitaryStatusControlller {
     @Autowired
     private MilitaryStatusService militaryStatusService;

@@ -1,13 +1,10 @@
 package com.xplusplus.security.repository;
 
 import com.xplusplus.security.domain.MaritalStatus;
-import com.xplusplus.security.domain.Nation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * @Author: Huxudong
@@ -17,11 +14,6 @@ import java.util.List;
  */
 @Repository
 public interface MaritalStatusRepository extends JpaRepository<MaritalStatus, Integer> {
-    /**
-     * 通过名称模糊查询
-     */
-    public List<MaritalStatus> findByNameLike(String name);
-
     /**
      * 通过名称模糊查询-分页
      */

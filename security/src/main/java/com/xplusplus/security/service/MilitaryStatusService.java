@@ -1,10 +1,8 @@
 package com.xplusplus.security.service;
 
 import com.xplusplus.security.domain.MilitaryStatus;
-import com.xplusplus.security.domain.MilitaryStatus;
 import com.xplusplus.security.exception.EnumExceptions;
 import com.xplusplus.security.exception.SecurityExceptions;
-import com.xplusplus.security.repository.MaritalStatusRepository;
 import com.xplusplus.security.repository.MilitaryStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

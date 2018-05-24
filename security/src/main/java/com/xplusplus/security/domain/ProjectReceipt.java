@@ -40,10 +40,12 @@ public class ProjectReceipt {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date time;
 
-	// 经办人姓名
+	// 经办人
 	@ManyToOne(targetEntity = User.class)
 	@JoinColumn(name = "operator_id", referencedColumnName = "id")
 	private User operator;
+
+	private String description;
 
 	public Long getId() {
 		return id;
@@ -85,10 +87,18 @@ public class ProjectReceipt {
 		this.operator = operator;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
 		return "ProjectReceipt [id=" + id + ", project=" + project + ", price=" + price + ", time=" + time
-				+ ", operator=" + operator + "]";
+				+ ", operator=" + operator + ", description=" + description + "]";
 	}
 
 }

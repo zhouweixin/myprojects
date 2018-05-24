@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Modified By:
  */
 @RestController
-@RequestMapping(value = "politicalStatus")
+@RequestMapping(value = "/politicalStatus")
 public class PoliticalStatusController {
     @Autowired
     private PoliticalStatusService politicalStatusService;

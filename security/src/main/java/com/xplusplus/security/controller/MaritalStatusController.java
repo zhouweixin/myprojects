@@ -1,7 +1,6 @@
 package com.xplusplus.security.controller;
 
 import com.xplusplus.security.domain.MaritalStatus;
-import com.xplusplus.security.domain.MaritalStatus;
 import com.xplusplus.security.domain.Result;
 import com.xplusplus.security.service.MaritalStatusService;
 import com.xplusplus.security.utils.ResultUtil;
@@ -24,7 +23,7 @@ import java.util.List;
  * @Modified By:
  */
 @RestController
-@RequestMapping(value = "maritalStatus")
+@RequestMapping(value = "/maritalStatus")
 public class MaritalStatusController {
     @Autowired
     private MaritalStatusService maritalStatusService;

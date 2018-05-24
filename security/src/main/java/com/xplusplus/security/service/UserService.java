@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import com.xplusplus.security.domain.Department;
 import com.xplusplus.security.domain.JobNature;
@@ -74,6 +75,9 @@ public class UserService {
 		if (user.getContact() == null || Pattern.matches("^1[0-9]{10}$", user.getContact()) == false) {
 			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_PHONE_NOT_LAWER);
 		}
+
+		// 设置默认密码
+		user.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
 
 		return userRepository.save(user);
 	}
@@ -290,5 +294,35 @@ public class UserService {
 		}
 
 		userRepository.updateJobNatureById(jobNature, id);
+	}
+
+	/**
+	 * 更新密码
+	 * 
+	 * @param id
+	 * @param oldPassword
+	 * @param newPassword
+	 */
+	@Transactional
+	public void updatePasswordById(String id, String oldPassword, String newPassword) {
+		
+		User user = userRepository.findOne(id);
+		if(user == null) {
+			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_USER_NOT_EXIST);
+		}
+		
+		if (oldPassword == null || newPassword == null || "".equals(oldPassword) || "".equals(newPassword)) {
+			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_PASSWORD_NULL);
+		}
+		
+		// md5加密
+		oldPassword = DigestUtils.md5DigestAsHex(oldPassword.getBytes());
+		newPassword = DigestUtils.md5DigestAsHex(newPassword.getBytes());
+		
+		if(!oldPassword.equals(user.getPassword())) {
+			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_PASSWORD_NOT_EQUALS);
+		}
+		
+		userRepository.updatePasswordById(newPassword, id);
 	}
 }

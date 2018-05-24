@@ -13,55 +13,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xplusplus.security.domain.Department;
-import com.xplusplus.security.domain.JobNature;
+import com.xplusplus.security.domain.Project;
+import com.xplusplus.security.domain.ProjectStatus;
 import com.xplusplus.security.domain.Result;
-import com.xplusplus.security.domain.User;
-import com.xplusplus.security.service.UserService;
+import com.xplusplus.security.service.ProjectService;
 import com.xplusplus.security.utils.ResultUtil;
 
 /**
  * @Author: zhouweixin
  * @Description:
- * @Date: Created in 20:37 2018/5/7
- * @Modified By:
+ * @Date: Created in 下午8:31:53 2018年5月24日
  */
 @RestController
-@RequestMapping(value = "/user")
-public class UserController {
+@RequestMapping(value = "/project")
+public class ProjectController {
 	@Autowired
-	private UserService userService;
+	private ProjectService projectService;
 
 	/**
 	 * 新增
 	 * 
-	 * @param user
+	 * @param project
 	 * @return
 	 */
 	@RequestMapping(value = "/add")
-	public Result<User> add(@Valid User user, BindingResult bindingResult) {
+	public Result<Project> add(@Valid Project project, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
 		}
 
-		return ResultUtil.success(userService.save(user));
+		return ResultUtil.success(projectService.save(project));
 	}
 
 	/**
 	 * 更新
 	 * 
-	 * @param user
+	 * @param project
 	 * @return
 	 */
 	@RequestMapping(value = "/update")
-	public Result<User> update(@Valid User user, BindingResult bindingResult) {
+	public Result<Project> update(@Valid Project project, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
 		}
 
-		return ResultUtil.success(userService.update(user));
+		return ResultUtil.success(projectService.update(project));
 	}
 
 	/**
@@ -71,20 +69,20 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteById")
-	public Result<Object> deleteById(String id) {
-		userService.delete(id);
+	public Result<Object> deleteById(Long id) {
+		projectService.delete(id);
 		return ResultUtil.success();
 	}
 
 	/**
 	 * 批量删除
 	 * 
-	 * @param users
+	 * @param projects
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteByIdBatch")
-	public Result<Object> deleteByIdBatch(@RequestBody Collection<User> users) {
-		userService.deleteInBatch(users);
+	public Result<Object> deleteByIdBatch(@RequestBody Collection<Project> projects) {
+		projectService.deleteInBatch(projects);
 		return ResultUtil.success();
 	}
 
@@ -95,8 +93,8 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getById")
-	public Result<User> getById(String id) {
-		return ResultUtil.success(userService.findOne(id));
+	public Result<Project> getById(Long id) {
+		return ResultUtil.success(projectService.findOne(id));
 	}
 
 	/**
@@ -105,8 +103,8 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getAll")
-	public Result<List<User>> getAll() {
-		return ResultUtil.success(userService.findAll());
+	public Result<List<Project>> getAll() {
+		return ResultUtil.success(projectService.findAll());
 
 	}
 
@@ -120,12 +118,12 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getAllByPage")
-	public Result<Page<User>> getAllByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
+	public Result<Page<Project>> getAllByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "10") Integer size,
 			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
-		return ResultUtil.success(userService.findAllByPage(page, size, sortFieldName, asc));
+		return ResultUtil.success(projectService.findAllByPage(page, size, sortFieldName, asc));
 	}
 
 	/**
@@ -139,17 +137,17 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getByNameLikeByPage")
-	public Result<Page<User>> getByNameLikeByPage(@RequestParam(value = "name", defaultValue = "") String name,
+	public Result<Page<Project>> getByNameLikeByPage(@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "10") Integer size,
 			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
-		return ResultUtil.success(userService.findByNameLikeByPage(name, page, size, sortFieldName, asc));
+		return ResultUtil.success(projectService.findByNameLikeByPage(name, page, size, sortFieldName, asc));
 	}
 
 	/**
-	 * 通过部门和名称模糊查询-分页
+	 * 通过客户单位模糊查询-分页
 	 * 
 	 * @param name
 	 * @param page
@@ -158,19 +156,20 @@ public class UserController {
 	 * @param asc
 	 * @return
 	 */
-	@RequestMapping(value = "/getByDepartmentAndNameLikeByPage")
-	public Result<Page<User>> getByDepartmentAndNameLikeByPage(Department department,
-			@RequestParam(value = "name", defaultValue = "") String name,
+	@RequestMapping(value = "/getByCustomerUnitLikeByPage")
+	public Result<Page<Project>> getByCustomerUnitLikeByPage(
+			@RequestParam(value = "customerUnit", defaultValue = "") String customerUnit,
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "10") Integer size,
 			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
-		return ResultUtil.success(userService.findByDepartmentAndNameLikeByPage(department, name, page, size, sortFieldName, asc));
+		return ResultUtil
+				.success(projectService.findByCustomerUnitLikeByPage(customerUnit, page, size, sortFieldName, asc));
 	}
 
 	/**
-	 * 通过工作性质查询-分页
+	 * 通过项目状态查询-分页
 	 * 
 	 * @param name
 	 * @param page
@@ -179,27 +178,14 @@ public class UserController {
 	 * @param asc
 	 * @return
 	 */
-	@RequestMapping(value = "/getByJobNatureByPage")
-	public Result<Page<User>> getByJobNatureByPage(JobNature jobNature,
+	@RequestMapping(value = "/getByProjectStatusByPage")
+	public Result<Page<Project>> getByProjectStatusByPage(ProjectStatus projectStatus,
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "10") Integer size,
 			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
-		return ResultUtil.success(userService.findByJobNatureByPage(jobNature, page, size, sortFieldName, asc));
+		return ResultUtil
+				.success(projectService.findByProjectStatusByPage(projectStatus, page, size, sortFieldName, asc));
 	}
-	
-	/**
-	 * 通过id更新工作性质
-	 * 
-	 * @param jobNature
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping(value = "/updateJobNatureById")
-	public Result<Object> updateJobNatureById(Integer jobNatureId, String id){
-		userService.updateJobNatureById(jobNatureId, id);
-		return ResultUtil.success();
-	}
-	
 }

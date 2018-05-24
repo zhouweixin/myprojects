@@ -1,7 +1,5 @@
 package com.xplusplus.security.repository;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,14 +13,6 @@ import com.xplusplus.security.domain.Nation;
  */
 @Repository
 public interface NationRepository extends JpaRepository<Nation, Integer> {
-	/**
-	 * 通过名称模糊查询
-	 * 
-	 * @param name
-	 * @return
-	 */
-	public List<Nation> findByNameLike(String name);
-	
 
 	/**
 	 * 通过名称模糊查询-分页

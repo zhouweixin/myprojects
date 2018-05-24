@@ -21,6 +21,13 @@ public enum EnumExceptions {
 	UPDATE_FAILED_JOB_NATURE_NOT_EXIST(10, "更新失败, 工作性质不存在"),
 	UPDATE_FAILED_DEPARTMENT_NOT_EXIST(11, "更新失败, 部门不存在"),
 	UPDATE_FAILED_PHONE_NOT_LAWER(12, "新增失败, 手机号码只能是11位数字"),
+	ADD_FAILED_USER_NOT_EXIST(13, "新增失败, 用户不存在"),
+	UPDATE_FAILED_USER_NOT_EXIST(14, "更新失败, 用户不存在"),
+	ADD_FAILED_USER_ARCHIVE_EXIST(15, "新增失败, 用户的档案已存在"),
+	ADD_FAILED_PROJECT_NOT_EXIST(16, "新增失败, 项目不存在"),
+	ADD_FAILED_OPERATOR_NOT_EXIST(17, "新增失败, 经办人不存在"),
+	UPDATE_FAILED_PASSWORD_NULL(18, "更新失败, 密码不可为空"),
+	UPDATE_FAILED_PASSWORD_NOT_EQUALS(19, "更新失败, 旧密码不相同"),
 
 	;
 

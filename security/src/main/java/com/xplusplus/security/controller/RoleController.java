@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Modified By:
  */
 @RestController
-@RequestMapping(value = "role")
+@RequestMapping(value = "/role")
 public class RoleController {
     @Autowired
     private RoleService roleService;

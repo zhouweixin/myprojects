@@ -14,260 +14,277 @@ import java.util.Date;
  */
 @Entity
 public class Archive {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    /**
-     * 民族
-     */
-    @ManyToOne(targetEntity = Nation.class)
-    @JoinColumn(name = "nation_id", referencedColumnName = "id")
-    private Nation nation;
+	/**
+	 * 用户
+	 */
+	@OneToOne(targetEntity = User.class)
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private User user;
 
-    /**
-     *婚姻状况
-     */
-    @ManyToOne(targetEntity = MaritalStatus.class)
-    @JoinColumn(name = "marital_status_id", referencedColumnName = "id")
-    private MaritalStatus maritalStatus;
+	/**
+	 * 民族
+	 */
+	@ManyToOne(targetEntity = Nation.class)
+	@JoinColumn(name = "nation_id", referencedColumnName = "id")
+	private Nation nation;
 
-    /**
-     * 兵役情况
-     */
-    @ManyToOne(targetEntity = MilitaryStatus.class)
-    @JoinColumn(name = "military_status_id", referencedColumnName = "id")
-    private MilitaryStatus militaryStatus;
+	/**
+	 * 婚姻状况
+	 */
+	@ManyToOne(targetEntity = MaritalStatus.class)
+	@JoinColumn(name = "marital_status_id", referencedColumnName = "id")
+	private MaritalStatus maritalStatus;
 
-    /**
-     * 政治面貌
-     */
-    @ManyToOne(targetEntity = PoliticalStatus.class)
-    @JoinColumn(name = "political_status_id", referencedColumnName = "id")
-    private PoliticalStatus politicalStatus;
+	/**
+	 * 兵役情况
+	 */
+	@ManyToOne(targetEntity = MilitaryStatus.class)
+	@JoinColumn(name = "military_status_id", referencedColumnName = "id")
+	private MilitaryStatus militaryStatus;
 
-    /**
-     * 学历
-     */
-    @ManyToOne(targetEntity = Education.class)
-    @JoinColumn(name = "education_id", referencedColumnName = "id")
-    private Education education;
+	/**
+	 * 政治面貌
+	 */
+	@ManyToOne(targetEntity = PoliticalStatus.class)
+	@JoinColumn(name = "political_status_id", referencedColumnName = "id")
+	private PoliticalStatus politicalStatus;
 
-    /**
-     * 专业
-     */
-    private String major;
+	/**
+	 * 学历
+	 */
+	@ManyToOne(targetEntity = Education.class)
+	@JoinColumn(name = "education_id", referencedColumnName = "id")
+	private Education education;
 
-    /**
-     * 参加工作日期
-     */
-    @Temporal(value = TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date firstWorkDate;
+	/**
+	 * 专业
+	 */
+	private String major;
 
-    /**
-     * 身高
-     */
-    @Column(precision = 2)
-    private Double height;
+	/**
+	 * 参加工作日期
+	 */
+	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date firstWorkDate;
 
-    /**
-     * 体重
-     */
-    @Column(precision = 2)
-    private Double weight;
+	/**
+	 * 身高
+	 */
+	@Column(precision = 2)
+	private Double height;
 
-    /**
-     * 健康状况
-     */
-    private String healthStatus;
+	/**
+	 * 体重
+	 */
+	@Column(precision = 2)
+	private Double weight;
 
-    /**
-     * 户籍所在地
-     */
-    private String  domicilePlace;
+	/**
+	 * 健康状况
+	 */
+	private String healthStatus;
 
-    /**
-     * 实际居住地
-     */
-    private String livePlace;
+	/**
+	 * 户籍所在地
+	 */
+	private String domicilePlace;
 
-    /**
-     * 有无保险:0无;1有
-     */
-    private Integer insurance;
+	/**
+	 * 实际居住地
+	 */
+	private String livePlace;
 
-    /**
-     * 家庭成员名称
-     */
-    private String familyMemberName;
+	/**
+	 * 有无保险:0无;1有
+	 */
+	private Integer insurance;
 
-    /**
-     * 家庭成员联系方式
-     */
-    private String familyMemberContact;
+	/**
+	 * 家庭成员名称
+	 */
+	private String familyMemberName;
 
-    /**
-     * 身份证扫描件
-     */
-    private byte[] identityCard;
+	/**
+	 * 家庭成员联系方式
+	 */
+	private String familyMemberContact;
 
-    public Long getId() {
-        return id;
-    }
+	/**
+	 * 身份证号
+	 */
+	private String identityNumber;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	/**
+	 * 身份证扫描件
+	 */
+	private byte[] identityCard;
 
-    public Nation getNation() {
-        return nation;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setNation(Nation nation) {
-        this.nation = nation;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public MaritalStatus getMaritalStatus() {
-        return maritalStatus;
-    }
+	public Nation getNation() {
+		return nation;
+	}
 
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
-    }
+	public void setNation(Nation nation) {
+		this.nation = nation;
+	}
 
-    public MilitaryStatus getMilitaryStatus() {
-        return militaryStatus;
-    }
+	public MaritalStatus getMaritalStatus() {
+		return maritalStatus;
+	}
 
-    public void setMilitaryStatus(MilitaryStatus militaryStatus) {
-        this.militaryStatus = militaryStatus;
-    }
+	public void setMaritalStatus(MaritalStatus maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
 
-    public PoliticalStatus getPoliticalStatus() {
-        return politicalStatus;
-    }
+	public MilitaryStatus getMilitaryStatus() {
+		return militaryStatus;
+	}
 
-    public void setPoliticalStatus(PoliticalStatus politicalStatus) {
-        this.politicalStatus = politicalStatus;
-    }
+	public void setMilitaryStatus(MilitaryStatus militaryStatus) {
+		this.militaryStatus = militaryStatus;
+	}
 
-    public Education getEducation() {
-        return education;
-    }
+	public PoliticalStatus getPoliticalStatus() {
+		return politicalStatus;
+	}
 
-    public void setEducation(Education education) {
-        this.education = education;
-    }
+	public void setPoliticalStatus(PoliticalStatus politicalStatus) {
+		this.politicalStatus = politicalStatus;
+	}
 
-    public String getMajor() {
-        return major;
-    }
+	public Education getEducation() {
+		return education;
+	}
 
-    public void setMajor(String major) {
-        this.major = major;
-    }
+	public void setEducation(Education education) {
+		this.education = education;
+	}
 
-    public Date getFirstWorkDate() {
-        return firstWorkDate;
-    }
+	public String getMajor() {
+		return major;
+	}
 
-    public void setFirstWorkDate(Date firstWorkDate) {
-        this.firstWorkDate = firstWorkDate;
-    }
+	public void setMajor(String major) {
+		this.major = major;
+	}
 
-    public Double getHeight() {
-        return height;
-    }
+	public Date getFirstWorkDate() {
+		return firstWorkDate;
+	}
 
-    public void setHeight(Double height) {
-        this.height = height;
-    }
+	public void setFirstWorkDate(Date firstWorkDate) {
+		this.firstWorkDate = firstWorkDate;
+	}
 
-    public Double getWeight() {
-        return weight;
-    }
+	public Double getHeight() {
+		return height;
+	}
 
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
+	public void setHeight(Double height) {
+		this.height = height;
+	}
 
-    public String getHealthStatus() {
-        return healthStatus;
-    }
+	public Double getWeight() {
+		return weight;
+	}
 
-    public void setHealthStatus(String healthStatus) {
-        this.healthStatus = healthStatus;
-    }
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
 
-    public String getDomicilePlace() {
-        return domicilePlace;
-    }
+	public String getHealthStatus() {
+		return healthStatus;
+	}
 
-    public void setDomicilePlace(String domicilePlace) {
-        this.domicilePlace = domicilePlace;
-    }
+	public void setHealthStatus(String healthStatus) {
+		this.healthStatus = healthStatus;
+	}
 
-    public String getLivePlace() {
-        return livePlace;
-    }
+	public String getDomicilePlace() {
+		return domicilePlace;
+	}
 
-    public void setLivePlace(String livePlace) {
-        this.livePlace = livePlace;
-    }
+	public void setDomicilePlace(String domicilePlace) {
+		this.domicilePlace = domicilePlace;
+	}
 
-    public Integer getInsurance() {
-        return insurance;
-    }
+	public String getLivePlace() {
+		return livePlace;
+	}
 
-    public void setInsurance(Integer insurance) {
-        this.insurance = insurance;
-    }
+	public void setLivePlace(String livePlace) {
+		this.livePlace = livePlace;
+	}
 
-    public String getFamilyMemberName() {
-        return familyMemberName;
-    }
+	public Integer getInsurance() {
+		return insurance;
+	}
 
-    public void setFamilyMemberName(String familyMemberName) {
-        this.familyMemberName = familyMemberName;
-    }
+	public void setInsurance(Integer insurance) {
+		this.insurance = insurance;
+	}
 
-    public String getFamilyMemberContact() {
-        return familyMemberContact;
-    }
+	public String getFamilyMemberName() {
+		return familyMemberName;
+	}
 
-    public void setFamilyMemberContact(String familyMemberContact) {
-        this.familyMemberContact = familyMemberContact;
-    }
+	public void setFamilyMemberName(String familyMemberName) {
+		this.familyMemberName = familyMemberName;
+	}
 
-    public byte[] getIdentityCard() {
-        return identityCard;
-    }
+	public String getFamilyMemberContact() {
+		return familyMemberContact;
+	}
 
-    public void setIdentityCard(byte[] identityCard) {
-        this.identityCard = identityCard;
-    }
+	public void setFamilyMemberContact(String familyMemberContact) {
+		this.familyMemberContact = familyMemberContact;
+	}
 
-    @Override
-    public String toString() {
-        return "Archive{" +
-                "id=" + id +
-                ", nation=" + nation +
-                ", maritalStatus=" + maritalStatus +
-                ", militaryStatus=" + militaryStatus +
-                ", politicalStatus=" + politicalStatus +
-                ", education=" + education +
-                ", major='" + major + '\'' +
-                ", firstWorkDate=" + firstWorkDate +
-                ", height=" + height +
-                ", weight=" + weight +
-                ", healthStatus='" + healthStatus + '\'' +
-                ", domicilePlace='" + domicilePlace + '\'' +
-                ", livePlace='" + livePlace + '\'' +
-                ", insurance=" + insurance +
-                ", familyMemberName='" + familyMemberName + '\'' +
-                ", familyMemberContact='" + familyMemberContact + '\'' +
-                ", identityCard=" + Arrays.toString(identityCard) +
-                '}';
-    }
+	public byte[] getIdentityCard() {
+		return identityCard;
+	}
+
+	public void setIdentityCard(byte[] identityCard) {
+		this.identityCard = identityCard;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getIdentityNumber() {
+		return identityNumber;
+	}
+
+	public void setIdentityNumber(String identityNumber) {
+		this.identityNumber = identityNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Archive [id=" + id + ", user=" + user + ", nation=" + nation + ", maritalStatus=" + maritalStatus
+				+ ", militaryStatus=" + militaryStatus + ", politicalStatus=" + politicalStatus + ", education="
+				+ education + ", major=" + major + ", firstWorkDate=" + firstWorkDate + ", height=" + height
+				+ ", weight=" + weight + ", healthStatus=" + healthStatus + ", domicilePlace=" + domicilePlace
+				+ ", livePlace=" + livePlace + ", insurance=" + insurance + ", familyMemberName=" + familyMemberName
+				+ ", familyMemberContact=" + familyMemberContact + ", identityNumber=" + identityNumber
+				+ ", identityCard=" + Arrays.toString(identityCard) + "]";
+	}
+
 }

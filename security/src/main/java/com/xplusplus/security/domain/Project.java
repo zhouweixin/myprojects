@@ -47,6 +47,10 @@ public class Project {
 	@Column(precision = 2)
 	private Double price;
 
+	// 已收金额
+	@Column(precision = 2)
+	private Double receiptPrice;
+
 	// 客户办公室电话
 	private String customerOfficePhone;
 
@@ -55,6 +59,11 @@ public class Project {
 
 	// 客户单位
 	private String customerUnit;
+
+	// 项目状态：0进行中；1已结束；
+	@ManyToOne(targetEntity = ProjectStatus.class)
+	@JoinColumn(name = "project_status_id", referencedColumnName = "id")
+	private ProjectStatus projectStatus;
 
 	// 项目负责人
 	@ManyToOne(targetEntity = User.class)
@@ -141,11 +150,28 @@ public class Project {
 		this.leader = leader;
 	}
 
+	public ProjectStatus getProjectStatus() {
+		return projectStatus;
+	}
+
+	public void setProjectStatus(ProjectStatus projectStatus) {
+		this.projectStatus = projectStatus;
+	}
+
+	public Double getReceiptPrice() {
+		return receiptPrice;
+	}
+
+	public void setReceiptPrice(Double receiptPrice) {
+		this.receiptPrice = receiptPrice;
+	}
+
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", name=" + name + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", period=" + period + ", price=" + price + ", customerOfficePhone=" + customerOfficePhone
-				+ ", customerFinancePhone=" + customerFinancePhone + ", customerUnit=" + customerUnit + ", leader="
-				+ leader + "]";
+				+ ", period=" + period + ", price=" + price + ", receiptPrice=" + receiptPrice
+				+ ", customerOfficePhone=" + customerOfficePhone + ", customerFinancePhone=" + customerFinancePhone
+				+ ", customerUnit=" + customerUnit + ", projectStatus=" + projectStatus + ", leader=" + leader + "]";
 	}
+
 }

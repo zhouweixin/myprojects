@@ -90,13 +90,6 @@ public class User {
 	 */
 	private Date employDate;
 
-	/**
-	 * 档案编号
-	 */
-	@OneToOne(targetEntity = Archive.class)
-	@JoinColumn(name = "archive_id", referencedColumnName = "id")
-	private Archive archive;
-
 	public String getId() {
 		return id;
 	}
@@ -194,19 +187,11 @@ public class User {
 		this.employDate = employDate;
 	}
 
-	public Archive getArchive() {
-		return archive;
-	}
-
-	public void setArchive(Archive archive) {
-		this.archive = archive;
-	}
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", sex=" + sex + ", ic=" + ic + ", wechat=" + wechat + ", contact="
 				+ contact + ", password=" + password + ", department=" + department + ", role=" + role + ", jobNature="
-				+ jobNature + ", period=" + period + ", employDate=" + employDate + ", archive=" + archive + "]";
+				+ jobNature + ", period=" + period + ", employDate=" + employDate + "]";
 	}
 
 }

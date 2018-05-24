@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * @Author: zhouweixin
- * @Description:
+ * @Description: 员工表
  * @Date: Created in 19:50 2018/5/7
  * @Modified By:
  */

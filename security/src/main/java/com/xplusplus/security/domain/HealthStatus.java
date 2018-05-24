@@ -3,7 +3,7 @@ package com.xplusplus.security.domain;
 import javax.persistence.*;
 
 /**
- * @Author: zhouweixin
+ * @Author: liweifeng
  * @Description: 健康状况
  * @Date: Created in 10:40 2018/5/22
  * @Modified By:

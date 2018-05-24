@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @Author: zhouweixin
+ * @Author: liweifeng
  * @Description: 学历
  * @Date: Created in 19:38 2018/5/7
  * @Modified By:

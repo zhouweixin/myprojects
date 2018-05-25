@@ -13,54 +13,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xplusplus.security.domain.Archive;
+import com.xplusplus.security.domain.JobNature;
 import com.xplusplus.security.domain.Result;
-import com.xplusplus.security.domain.User;
-import com.xplusplus.security.service.ArchiveService;
+import com.xplusplus.security.service.JobNatureService;
 import com.xplusplus.security.utils.ResultUtil;
 
 /**
  * @Author: zhouweixin
  * @Description:
- * @Date: Created in 12:40 2018/5/22
- * @Modified By:
+ * @Date: Created in 下午7:06:01 2018年5月24日
  */
 @RestController
-@RequestMapping(value = "/archive")
-public class ArchiveController {
+@RequestMapping(value = "/jobNature")
+public class JobNatureController {
 	@Autowired
-	private ArchiveService archiveService;
+	private JobNatureService jobNatureService;
 
 	/**
 	 * 新增
 	 * 
-	 * @param archive
+	 * @param jobNature
 	 * @return
 	 */
 	@RequestMapping(value = "/add")
-	public Result<Archive> add(@Valid Archive archive, BindingResult bindingResult) {
+	public Result<JobNature> add(@Valid JobNature jobNature, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
 		}
 
-		return ResultUtil.success(archiveService.save(archive));
+		return ResultUtil.success(jobNatureService.save(jobNature));
 	}
 
 	/**
 	 * 更新
 	 * 
-	 * @param archive
+	 * @param jobNature
 	 * @return
 	 */
 	@RequestMapping(value = "/update")
-	public Result<Archive> update(@Valid Archive archive, BindingResult bindingResult) {
+	public Result<JobNature> update(@Valid JobNature jobNature, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
 		}
 
-		return ResultUtil.success(archiveService.update(archive));
+		return ResultUtil.success(jobNatureService.update(jobNature));
 	}
 
 	/**
@@ -70,20 +68,20 @@ public class ArchiveController {
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteById")
-	public Result<Object> deleteById(Long id) {
-		archiveService.delete(id);
+	public Result<Object> deleteById(Integer id) {
+		jobNatureService.delete(id);
 		return ResultUtil.success();
 	}
 
 	/**
 	 * 批量删除
 	 * 
-	 * @param archives
+	 * @param jobNatures
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteByIdBatch")
-	public Result<Object> deleteByIdBatch(@RequestBody Collection<Archive> archives) {
-		archiveService.deleteInBatch(archives);
+	public Result<Object> deleteByIdBatch(@RequestBody Collection<JobNature> jobNatures) {
+		jobNatureService.deleteInBatch(jobNatures);
 		return ResultUtil.success();
 	}
 
@@ -94,8 +92,8 @@ public class ArchiveController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getById")
-	public Result<Archive> getById(Long id) {
-		return ResultUtil.success(archiveService.findOne(id));
+	public Result<JobNature> getById(Integer id) {
+		return ResultUtil.success(jobNatureService.findOne(id));
 	}
 
 	/**
@@ -104,8 +102,8 @@ public class ArchiveController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getAll")
-	public Result<List<Archive>> getAll() {
-		return ResultUtil.success(archiveService.findAll());
+	public Result<List<JobNature>> getAll() {
+		return ResultUtil.success(jobNatureService.findAll());
 
 	}
 
@@ -119,22 +117,31 @@ public class ArchiveController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getAllByPage")
-	public Result<Page<Archive>> getAllByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
+	public Result<Page<JobNature>> getAllByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "10") Integer size,
 			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
-		return ResultUtil.success(archiveService.findAllByPage(page, size, sortFieldName, asc));
+		return ResultUtil.success(jobNatureService.findAllByPage(page, size, sortFieldName, asc));
 	}
 
 	/**
-	 * 通过用户查询档案
+	 * 通过名称模糊查询-分页
 	 * 
-	 * @param user
+	 * @param name
+	 * @param page
+	 * @param size
+	 * @param sortFieldName
+	 * @param asc
 	 * @return
 	 */
-	@RequestMapping(value = "/getByUser")
-	public Result<Archive> getByUser(User user){
-		return ResultUtil.success(archiveService.findByUser(user));
+	@RequestMapping(value = "/getByNameLikeByPage")
+	public Result<Page<JobNature>> getByNameLikeByPage(@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+		
+		return ResultUtil.success(jobNatureService.findByNameLikeByPage(name, page, size, sortFieldName, asc));
 	}
 }

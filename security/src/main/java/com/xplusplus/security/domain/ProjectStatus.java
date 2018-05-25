@@ -6,19 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @Author: liweifeng
- * @Description: 合同状态: 待执行, 执行中, 解除, 正常结束
- * @Date: Created in 上午10:34:02 2018年5月23日
+ * @Author: zhouweixin
+ * @Description: 项目状态表
+ * @Date: Created in 下午7:51:27 2018年5月24日
  */
-
 @Entity
-public class ContractStatus {
+public class ProjectStatus {
 	// 主键
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	// 类型名称
+	// 名称
 	private String name;
 
 	public Integer getId() {
@@ -39,7 +38,6 @@ public class ContractStatus {
 
 	@Override
 	public String toString() {
-		return "ContractStatus [id=" + id + ", name=" + name + "]";
+		return "ProjectStatus [id=" + id + ", name=" + name + "]";
 	}
-
 }

@@ -13,54 +13,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xplusplus.security.domain.Archive;
+import com.xplusplus.security.domain.Project;
+import com.xplusplus.security.domain.ProjectReceipt;
 import com.xplusplus.security.domain.Result;
-import com.xplusplus.security.domain.User;
-import com.xplusplus.security.service.ArchiveService;
+import com.xplusplus.security.service.ProjectReceiptService;
 import com.xplusplus.security.utils.ResultUtil;
 
 /**
  * @Author: zhouweixin
  * @Description:
- * @Date: Created in 12:40 2018/5/22
- * @Modified By:
+ * @Date: Created in 下午8:55:00 2018年5月24日
  */
 @RestController
-@RequestMapping(value = "/archive")
-public class ArchiveController {
+@RequestMapping(value = "/projectReceipt")
+public class ProjectReceiptController {
 	@Autowired
-	private ArchiveService archiveService;
+	private ProjectReceiptService projectReceiptService;
 
 	/**
 	 * 新增
 	 * 
-	 * @param archive
+	 * @param projectReceipt
 	 * @return
 	 */
 	@RequestMapping(value = "/add")
-	public Result<Archive> add(@Valid Archive archive, BindingResult bindingResult) {
+	public Result<ProjectReceipt> add(@Valid ProjectReceipt projectReceipt, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
 		}
 
-		return ResultUtil.success(archiveService.save(archive));
-	}
-
-	/**
-	 * 更新
-	 * 
-	 * @param archive
-	 * @return
-	 */
-	@RequestMapping(value = "/update")
-	public Result<Archive> update(@Valid Archive archive, BindingResult bindingResult) {
-
-		if (bindingResult.hasErrors()) {
-			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
-		}
-
-		return ResultUtil.success(archiveService.update(archive));
+		return ResultUtil.success(projectReceiptService.save(projectReceipt));
 	}
 
 	/**
@@ -71,19 +54,19 @@ public class ArchiveController {
 	 */
 	@RequestMapping(value = "/deleteById")
 	public Result<Object> deleteById(Long id) {
-		archiveService.delete(id);
+		projectReceiptService.delete(id);
 		return ResultUtil.success();
 	}
 
 	/**
 	 * 批量删除
 	 * 
-	 * @param archives
+	 * @param projectReceipts
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteByIdBatch")
-	public Result<Object> deleteByIdBatch(@RequestBody Collection<Archive> archives) {
-		archiveService.deleteInBatch(archives);
+	public Result<Object> deleteByIdBatch(@RequestBody Collection<ProjectReceipt> projectReceipts) {
+		projectReceiptService.deleteInBatch(projectReceipts);
 		return ResultUtil.success();
 	}
 
@@ -94,8 +77,8 @@ public class ArchiveController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getById")
-	public Result<Archive> getById(Long id) {
-		return ResultUtil.success(archiveService.findOne(id));
+	public Result<ProjectReceipt> getById(Long id) {
+		return ResultUtil.success(projectReceiptService.findOne(id));
 	}
 
 	/**
@@ -104,8 +87,8 @@ public class ArchiveController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getAll")
-	public Result<List<Archive>> getAll() {
-		return ResultUtil.success(archiveService.findAll());
+	public Result<List<ProjectReceipt>> getAll() {
+		return ResultUtil.success(projectReceiptService.findAll());
 
 	}
 
@@ -119,22 +102,30 @@ public class ArchiveController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getAllByPage")
-	public Result<Page<Archive>> getAllByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
+	public Result<Page<ProjectReceipt>> getAllByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "10") Integer size,
 			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
-		return ResultUtil.success(archiveService.findAllByPage(page, size, sortFieldName, asc));
+		return ResultUtil.success(projectReceiptService.findAllByPage(page, size, sortFieldName, asc));
 	}
 
 	/**
-	 * 通过用户查询档案
+	 * 通过项目查询-分页
 	 * 
-	 * @param user
+	 * @param page
+	 * @param size
+	 * @param sortFieldName
+	 * @param asc
 	 * @return
 	 */
-	@RequestMapping(value = "/getByUser")
-	public Result<Archive> getByUser(User user){
-		return ResultUtil.success(archiveService.findByUser(user));
+	@RequestMapping(value = "/getByProjectByPage")
+	public Result<Page<ProjectReceipt>> getByProjectByPage(Project project,
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+
+		return ResultUtil.success(projectReceiptService.findByProjectByPage(project, page, size, sortFieldName, asc));
 	}
 }

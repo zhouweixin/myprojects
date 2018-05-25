@@ -23,7 +23,7 @@ import java.util.List;
  * @Modified By:
  */
 @RestController
-@RequestMapping(value = "healthStatus")
+@RequestMapping(value = "/healthStatus")
 public class HealthStatusController {
     @Autowired
     private HealthStatusService healthStatusService;

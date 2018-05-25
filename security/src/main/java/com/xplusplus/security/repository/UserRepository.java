@@ -64,4 +64,13 @@ public interface UserRepository extends JpaRepository<User, String> {
 	@Modifying
 	@Query(value = "update User u set u.jobNature=?1 where u.id=?2")
 	public void updateJobNatureById(JobNature jobNature, String id);
+	
+	/**
+	 * 更新密码
+	 * 
+	 * @param password
+	 */
+	@Modifying
+	@Query(value = "update User u set u.password=?1 where u.id=?2")
+	public void updatePasswordById(String password, String id);
 }

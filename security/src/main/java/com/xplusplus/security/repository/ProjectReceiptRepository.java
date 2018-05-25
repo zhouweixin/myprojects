@@ -5,21 +5,22 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.xplusplus.security.domain.JobNature;
+import com.xplusplus.security.domain.Project;
+import com.xplusplus.security.domain.ProjectReceipt;
 
 /**
  * @Author: zhouweixin
  * @Description:
- * @Date: Created in 下午8:40:45 2018年5月23日
+ * @Date: Created in 下午8:52:56 2018年5月24日
  */
 @Repository
-public interface JobNatureRepository extends JpaRepository<JobNature, Integer>{
+public interface ProjectReceiptRepository extends JpaRepository<ProjectReceipt, Long>{
 	/**
-	 * 通过名称模糊查询-分页
+	 * 通过项目查询-分页
 	 * 
-	 * @param name
+	 * @param project
 	 * @param pageable
 	 * @return
 	 */
-	public Page<JobNature> findByNameLike(String name, Pageable pageable);
+	public Page<ProjectReceipt> findByProject(Project project, Pageable pageable);
 }

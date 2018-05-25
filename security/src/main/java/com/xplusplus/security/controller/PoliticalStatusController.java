@@ -24,7 +24,7 @@ import java.util.List;
  * @Modified By:
  */
 @RestController
-@RequestMapping(value = "politicalStatus")
+@RequestMapping(value = "/politicalStatus")
 public class PoliticalStatusController {
     @Autowired
     private PoliticalStatusService politicalStatusService;

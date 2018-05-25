@@ -64,6 +64,9 @@ public class DepartmentService {
 			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
 		}
 		
+		// 删除
+		departmentRepository.delete(department.getId());
+		
 		if (departmentRepository.findFirstByShortName(department.getShortName()) != null
 				|| Pattern.matches("^[A-Za-z]{2}$", department.getShortName()) == false) {
 			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_SHORT_NAME_NOT_LAWER);

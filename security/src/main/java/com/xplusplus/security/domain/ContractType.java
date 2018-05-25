@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @Author: zhouweixin
+ * @Author: liweifeng
  * @Description: 合同类型:劳动合同, 劳务合同, 实习协议
  * @Date: Created in 上午10:25:24 2018年5月23日
  */

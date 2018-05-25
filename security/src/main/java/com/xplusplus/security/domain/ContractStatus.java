@@ -6,10 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @Author: zhouweixin
+ * @Author: liweifeng
  * @Description: 合同状态: 待执行, 执行中, 解除, 正常结束
  * @Date: Created in 上午10:34:02 2018年5月23日
  */
+
 @Entity
 public class ContractStatus {
 	// 主键
@@ -17,7 +18,7 @@ public class ContractStatus {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	// 名称
+	// 类型名称
 	private String name;
 
 	public Integer getId() {

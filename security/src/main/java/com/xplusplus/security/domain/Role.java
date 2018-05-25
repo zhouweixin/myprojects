@@ -1,13 +1,16 @@
 package com.xplusplus.security.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
- * @Author: zhouweixin
- * @Description: 角色
+ * @Author: Huxudong
+ * @Description: 角色Entity
  * @Date: Created in 20:19 2018/5/7
  * @Modified By:
  */
@@ -20,6 +23,8 @@ public class Role {
     /**
      * 名称
      */
+    @NotNull(message="角色名不能为空")
+    @NotBlank(message="角色名不能为空")
     private String name;
 
     /**

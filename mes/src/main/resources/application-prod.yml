@@ -1,0 +1,12 @@
+# 生产环境
+spring: 
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.100.180:3306/mesdb?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: 123456
+
+server:
+  port: 8080
+  context-path: /mes

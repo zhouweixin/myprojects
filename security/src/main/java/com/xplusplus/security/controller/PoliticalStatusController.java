@@ -1,7 +1,6 @@
 package com.xplusplus.security.controller;
 
 import com.xplusplus.security.domain.PoliticalStatus;
-import com.xplusplus.security.domain.PoliticalStatus;
 import com.xplusplus.security.domain.Result;
 import com.xplusplus.security.service.PoliticalStatusService;
 import com.xplusplus.security.utils.ResultUtil;

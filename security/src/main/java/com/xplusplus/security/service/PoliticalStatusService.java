@@ -1,7 +1,6 @@
 package com.xplusplus.security.service;
 
 import com.xplusplus.security.domain.PoliticalStatus;
-import com.xplusplus.security.domain.PoliticalStatus;
 import com.xplusplus.security.exception.EnumExceptions;
 import com.xplusplus.security.exception.SecurityExceptions;
 import com.xplusplus.security.repository.PoliticalStatusRepository;

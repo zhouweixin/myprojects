@@ -1,6 +1,5 @@
 package com.xplusplus.security.repository;
 
-import com.xplusplus.security.domain.Nation;
 import com.xplusplus.security.domain.PoliticalStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -87,7 +87,9 @@ public class Archive {
 	/**
 	 * 健康状况
 	 */
-	private String healthStatus;
+	@ManyToOne(targetEntity = HealthStatus.class)
+	@JoinColumn(name = "health_status_id", referencedColumnName = "id")
+	private HealthStatus healthStatus;
 
 	/**
 	 * 户籍所在地
@@ -132,6 +134,14 @@ public class Archive {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Nation getNation() {
@@ -206,11 +216,11 @@ public class Archive {
 		this.weight = weight;
 	}
 
-	public String getHealthStatus() {
+	public HealthStatus getHealthStatus() {
 		return healthStatus;
 	}
 
-	public void setHealthStatus(String healthStatus) {
+	public void setHealthStatus(HealthStatus healthStatus) {
 		this.healthStatus = healthStatus;
 	}
 
@@ -254,28 +264,20 @@ public class Archive {
 		this.familyMemberContact = familyMemberContact;
 	}
 
-	public byte[] getIdentityCard() {
-		return identityCard;
-	}
-
-	public void setIdentityCard(byte[] identityCard) {
-		this.identityCard = identityCard;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public String getIdentityNumber() {
 		return identityNumber;
 	}
 
 	public void setIdentityNumber(String identityNumber) {
 		this.identityNumber = identityNumber;
+	}
+
+	public byte[] getIdentityCard() {
+		return identityCard;
+	}
+
+	public void setIdentityCard(byte[] identityCard) {
+		this.identityCard = identityCard;
 	}
 
 	@Override

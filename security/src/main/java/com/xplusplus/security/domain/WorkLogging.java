@@ -84,8 +84,8 @@ public class WorkLogging {
 	private Boolean noCard;
 
 	// 工作记录状态
-	@ManyToOne(targetEntity = Project.class)
-	@JoinColumn(name = "project_id", referencedColumnName = "id")
+	@ManyToOne(targetEntity = WorkLoggingStatus.class)
+	@JoinColumn(name = "status_id", referencedColumnName = "id")
 	private WorkLoggingStatus status;
 
 	// 备注

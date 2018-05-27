@@ -58,9 +58,12 @@ public class UserContract {
 
 	// 合同内容
 	@Lob
+	@JoinColumn(columnDefinition = "MediumBlob")
 	private String content;
 
 	// 扫描件
+	@Lob
+	@JoinColumn(columnDefinition = "MediumBlob")
 	private byte[] scanningCopy;
 
 	public Long getId() {

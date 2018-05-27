@@ -122,6 +122,8 @@ public class Archive {
 	/**
 	 * 身份证扫描件
 	 */
+	@Lob
+	@Column(columnDefinition = "MediumBlob")
 	private byte[] identityCard;
 
 	public Long getId() {

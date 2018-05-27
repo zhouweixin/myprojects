@@ -1,7 +1,6 @@
 package com.hnu.mes.service;
 
 import com.hnu.mes.domain.*;
-import com.hnu.mes.domain.Process;
 import com.hnu.mes.exception.EnumException;
 import com.hnu.mes.exception.MesException;
 import com.hnu.mes.repository.*;
@@ -908,15 +907,20 @@ public class PickingApplyHeaderService {
 	 */
 	public List<User> getRestAuditorByCode(Long code, String curAuditorCode) {
 
-		List<User> users = new ArrayList<User>();
-
+		// 校验申请单
 		PickingApplyHeader pickingApplyHeader = pickingApplyHeaderRepository.findOne(code);
+		if(pickingApplyHeader == null) {
+			throw new MesException(EnumException.FIND_ERROE_PICKING_NOT_EXIST);
+		}
+		
+		ProcessManage processManage = pickingApplyHeader.getProcessManage();
+		if(processManage == null) {
+			throw new MesException(EnumException.PROCESS_TYPE_NOT_EXIST);
+		}
+		
 		Set<String> userCodes = new HashSet<String>();
 
-		Process process = pickingApplyHeader.getProcess();
-		ProcessManage processManage = pickingApplyHeader.getProcessManage();
-
-		if (process.getCode() == 0 && processManage != null) {
+		if (processManage != null) {
 			// 紧急
 			if (processManage.getLeader2() != null) {
 				userCodes.add(processManage.getLeader2().getCode());
@@ -933,9 +937,6 @@ public class PickingApplyHeaderService {
 			if (processManage.getLeader5() != null) {
 				userCodes.add(processManage.getLeader5().getCode());
 			}
-		} else {
-			// 正常时无剩余审批人
-			return users;
 		}
 
 		// 去重当前审核人

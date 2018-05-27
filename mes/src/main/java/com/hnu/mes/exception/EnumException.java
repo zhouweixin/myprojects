@@ -83,6 +83,8 @@ public enum EnumException {
 	AUDITOR_FAILED_END_AUDIT(72, "审核失败, 已结束"),
 	AUDIT_STATUS_NOT_LAWER(73, "审核失败, 审核状态不合法"),
 	NEXT_AUDITOR_NOT_EXIST(74, "审核失败, 下一个审核人不存在"),
+	FIND_ERROE_PICKING_NOT_EXIST(75, "查询失败, 申请单不存在"),
+	PROCESS_TYPE_NOT_EXIST(76, "查询失败, 申请单的流程不存在"),
 
 
     ;

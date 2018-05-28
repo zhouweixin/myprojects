@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -92,7 +95,16 @@ public class User {
 	/**
 	 * 入职日期
 	 */
+	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date employDate;
+
+	/**
+	 * 实习结束日期
+	 */
+	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date practiceEndDate;
 
 	public String getId() {
 		return id;
@@ -191,11 +203,20 @@ public class User {
 		this.employDate = employDate;
 	}
 
+	public Date getPracticeEndDate() {
+		return practiceEndDate;
+	}
+
+	public void setPracticeEndDate(Date practiceEndDate) {
+		this.practiceEndDate = practiceEndDate;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", sex=" + sex + ", ic=" + ic + ", wechat=" + wechat + ", contact="
 				+ contact + ", password=" + password + ", department=" + department + ", role=" + role + ", jobNature="
-				+ jobNature + ", period=" + period + ", employDate=" + employDate + "]";
+				+ jobNature + ", period=" + period + ", employDate=" + employDate + ", practiceEndDate="
+				+ practiceEndDate + "]";
 	}
 
 }

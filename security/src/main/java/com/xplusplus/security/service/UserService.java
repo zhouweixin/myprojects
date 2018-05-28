@@ -23,6 +23,7 @@ import com.xplusplus.security.exception.SecurityExceptions;
 import com.xplusplus.security.repository.DepartmentRepository;
 import com.xplusplus.security.repository.JobNatureRepository;
 import com.xplusplus.security.repository.UserRepository;
+import com.xplusplus.security.utils.GlobalUtil;
 
 /**
  * @Author: zhouweixin
@@ -79,6 +80,9 @@ public class UserService {
 		// 设置默认密码
 		user.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
 
+		// 实习周期
+		user.setPeriod(GlobalUtil.computePeriod(user.getEmployDate(), user.getPracticeEndDate()));
+
 		return userRepository.save(user);
 	}
 
@@ -104,6 +108,9 @@ public class UserService {
 		if (user.getContact() == null || Pattern.matches("^1[0-9]{10}$", user.getContact()) == false) {
 			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_PHONE_NOT_LAWER);
 		}
+
+		// 实习周期
+		user.setPeriod(GlobalUtil.computePeriod(user.getEmployDate(), user.getPracticeEndDate()));
 
 		return userRepository.save(user);
 	}
@@ -335,27 +342,27 @@ public class UserService {
 	public List<User> findByNameLike(String name) {
 		return userRepository.findByNameLike("%" + name + "%");
 	}
-	
+
 	/**
 	 * 通过部门查询
 	 * 
 	 * @param department
 	 * @return
 	 */
-	public List<User> findByDepartment(Department department){
+	public List<User> findByDepartment(Department department) {
 		return userRepository.findByDepartment(department);
 	}
-	
+
 	/**
 	 * 通过工作性质查询
 	 * 
 	 * @param jobNature
 	 * @return
 	 */
-	public List<User> findByJobNature(JobNature jobNature){
+	public List<User> findByJobNature(JobNature jobNature) {
 		return userRepository.findByJobNature(jobNature);
 	}
-	
+
 	/**
 	 * 通过部门,工作性质,名称模糊查询
 	 * 
@@ -364,25 +371,24 @@ public class UserService {
 	 * @param name
 	 * @return
 	 */
-	public List<User> findByDepartmentAndJobNatureAndNameLike(Integer departmentId, Integer jobNatureId, String name){
+	public List<User> findByDepartmentAndJobNatureAndNameLike(Integer departmentId, Integer jobNatureId, String name) {
 		Department department = new Department();
 		department.setId(departmentId);
 		JobNature jobNature = new JobNature();
 		jobNature.setId(jobNatureId);
-		
-		if(departmentId == -1 && jobNatureId == -1) {
+
+		if (departmentId == -1 && jobNatureId == -1) {
 			return userRepository.findByNameLike("%" + name + "%");
 		}
-		
-		if(departmentId != -1 && jobNatureId == -1) {
+
+		if (departmentId != -1 && jobNatureId == -1) {
 			return userRepository.findByDepartmentAndNameLike(department, "%" + name + "%");
 		}
-		
-		if(departmentId == -1 && jobNatureId != -1) {
+
+		if (departmentId == -1 && jobNatureId != -1) {
 			return userRepository.findByJobNatureAndNameLike(jobNature, "%" + name + "%");
 		}
-		
-		
+
 		return userRepository.findByDepartmentAndJobNatureAndNameLike(department, jobNature, "%" + name + "%");
 	}
 }

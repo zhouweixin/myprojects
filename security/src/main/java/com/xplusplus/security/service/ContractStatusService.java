@@ -44,7 +44,7 @@ public class ContractStatusService {
 
         //验证是否存在
         if(contractStatus == null || contractStatus.getId() == null
-                ||contractStatusRepository.findOne(contractStatus.getId()) != null)  {
+                ||contractStatusRepository.findOne(contractStatus.getId()) == null)  {
             throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
         }
         return contractStatusRepository.save(contractStatus);

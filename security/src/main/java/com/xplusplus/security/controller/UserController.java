@@ -107,7 +107,6 @@ public class UserController {
 	@RequestMapping(value = "/getAll")
 	public Result<List<User>> getAll() {
 		return ResultUtil.success(userService.findAll());
-
 	}
 
 	/**

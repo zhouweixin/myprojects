@@ -45,7 +45,7 @@ public class RoleService {
 
         //验证是否存在
         if(role == null || role.getId() == null
-                ||roleRepository.findOne(role.getId()) != null)  {
+                ||roleRepository.findOne(role.getId()) == null)  {
             throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
         }
         return roleRepository.save(role);

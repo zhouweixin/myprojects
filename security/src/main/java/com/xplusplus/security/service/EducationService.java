@@ -50,7 +50,7 @@ public class EducationService {
 
         //验证是否存在
         if(education == null || education.getId() == null
-                ||educationRepository.findOne(education.getId()) != null)  {
+                ||educationRepository.findOne(education.getId()) == null)  {
             throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
         }
         return educationRepository.save(education);

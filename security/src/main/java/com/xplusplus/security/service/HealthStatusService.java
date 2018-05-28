@@ -49,7 +49,7 @@ public class HealthStatusService {
 
         //验证是否存在
         if(healthStatus == null || healthStatus.getId() == null
-                ||healthStatusRepository.findOne(healthStatus.getId()) != null)  {
+                ||healthStatusRepository.findOne(healthStatus.getId()) == null)  {
             throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
         }
         return healthStatusRepository.save(healthStatus);

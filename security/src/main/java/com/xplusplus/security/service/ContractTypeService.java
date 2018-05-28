@@ -44,7 +44,7 @@ public class ContractTypeService {
 
         //验证是否存在
         if(contractType == null || contractType.getId() == null
-                ||contractTypeRepository.findOne(contractType.getId()) != null)  {
+                ||contractTypeRepository.findOne(contractType.getId()) == null)  {
             throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_NOT_EXIST);
         }
         return contractTypeRepository.save(contractType);

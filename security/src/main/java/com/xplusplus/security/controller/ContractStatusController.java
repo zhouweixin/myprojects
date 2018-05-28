@@ -68,8 +68,8 @@ public class ContractStatusController {
      * @return
      */
     @RequestMapping(value = "/deleteByIdBatch")
-    public Result<Object> deleteByIdBatch(@RequestBody Collection<ContractStatus> contractStatuss) {
-        contractStatusService.deleteInBatch(contractStatuss);
+    public Result<Object> deleteByIdBatch(@RequestBody Collection<ContractStatus> contractStatuses) {
+        contractStatusService.deleteInBatch(contractStatuses);
         return ResultUtil.success();
     }
 

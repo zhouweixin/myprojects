@@ -28,6 +28,7 @@ public enum EnumExceptions {
 	ADD_FAILED_OPERATOR_NOT_EXIST(17, "新增失败, 经办人不存在"),
 	UPDATE_FAILED_PASSWORD_NULL(18, "更新失败, 密码不可为空"),
 	UPDATE_FAILED_PASSWORD_NOT_EQUALS(19, "更新失败, 旧密码不相同"),
+	FIND_FAILED_DEPARTMENT_NOT_EXIST(20, "查询失败, 部门不存在"),
 
 	;
 

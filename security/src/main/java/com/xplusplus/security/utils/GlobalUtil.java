@@ -14,10 +14,6 @@ import java.util.Date;
  * @Modified By:
  */
 public class GlobalUtil {
-	/**
-	 * 用户工号长度
-	 */
-	public static final int USER_ID_LEN = 7;
 
 	/**
 	 * 计算周期

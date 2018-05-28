@@ -127,6 +127,17 @@ public class UserController {
 
 		return ResultUtil.success(userService.findAllByPage(page, size, sortFieldName, asc));
 	}
+	
+	/**
+	 * 通过名称模糊查询
+	 * 
+	 * @param name
+	 * @return
+	 */
+	@RequestMapping(value = "/getByNameLike")
+	public Result<List<User>> getByNameLike(@RequestParam(value = "name", defaultValue = "") String name){
+		return ResultUtil.success(userService.findByNameLike(name));
+	}
 
 	/**
 	 * 通过名称模糊查询-分页
@@ -146,6 +157,17 @@ public class UserController {
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
 		return ResultUtil.success(userService.findByNameLikeByPage(name, page, size, sortFieldName, asc));
+	}
+	
+	/**
+	 * 通过部门查询
+	 * 
+	 * @param department
+	 * @return
+	 */
+	@RequestMapping(value = "/getByDepartment")
+	public Result<List<User>> getByDepartment(Department department){
+		return ResultUtil.success(userService.findByDepartment(department));
 	}
 
 	/**

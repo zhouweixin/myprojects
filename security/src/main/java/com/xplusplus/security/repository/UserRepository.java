@@ -1,5 +1,7 @@
 package com.xplusplus.security.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,6 +29,14 @@ public interface UserRepository extends JpaRepository<User, String> {
 	 * @return
 	 */
 	public Page<User> findByNameLike(String name, Pageable pageable);
+	
+	/**
+	 * 通过名称模糊查询
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public List<User> findByNameLike(String name);
 	
 	/**
 	 * 通过部门简称模糊查询最大id
@@ -73,4 +83,12 @@ public interface UserRepository extends JpaRepository<User, String> {
 	@Modifying
 	@Query(value = "update User u set u.password=?1 where u.id=?2")
 	public void updatePasswordById(String password, String id);
+	
+	/**
+	 * 通过部门查询
+	 * 
+	 * @param department
+	 * @return
+	 */
+	public List<User> findByDepartment(Department department);
 }

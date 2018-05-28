@@ -305,24 +305,44 @@ public class UserService {
 	 */
 	@Transactional
 	public void updatePasswordById(String id, String oldPassword, String newPassword) {
-		
+
 		User user = userRepository.findOne(id);
-		if(user == null) {
+		if (user == null) {
 			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_USER_NOT_EXIST);
 		}
-		
+
 		if (oldPassword == null || newPassword == null || "".equals(oldPassword) || "".equals(newPassword)) {
 			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_PASSWORD_NULL);
 		}
-		
+
 		// md5加密
 		oldPassword = DigestUtils.md5DigestAsHex(oldPassword.getBytes());
 		newPassword = DigestUtils.md5DigestAsHex(newPassword.getBytes());
-		
-		if(!oldPassword.equals(user.getPassword())) {
+
+		if (!oldPassword.equals(user.getPassword())) {
 			throw new SecurityExceptions(EnumExceptions.UPDATE_FAILED_PASSWORD_NOT_EQUALS);
 		}
-		
+
 		userRepository.updatePasswordById(newPassword, id);
+	}
+
+	/**
+	 * 通过用户名模糊查询
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public List<User> findByNameLike(String name) {
+		return userRepository.findByNameLike("%" + name + "%");
+	}
+	
+	/**
+	 * 通过部门查询
+	 * 
+	 * @param department
+	 * @return
+	 */
+	public List<User> findByDepartment(Department department){
+		return userRepository.findByDepartment(department);
 	}
 }

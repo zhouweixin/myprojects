@@ -345,4 +345,44 @@ public class UserService {
 	public List<User> findByDepartment(Department department){
 		return userRepository.findByDepartment(department);
 	}
+	
+	/**
+	 * 通过工作性质查询
+	 * 
+	 * @param jobNature
+	 * @return
+	 */
+	public List<User> findByJobNature(JobNature jobNature){
+		return userRepository.findByJobNature(jobNature);
+	}
+	
+	/**
+	 * 通过部门,工作性质,名称模糊查询
+	 * 
+	 * @param departmentId
+	 * @param jobNatureId
+	 * @param name
+	 * @return
+	 */
+	public List<User> findByDepartmentAndJobNatureAndNameLike(Integer departmentId, Integer jobNatureId, String name){
+		Department department = new Department();
+		department.setId(departmentId);
+		JobNature jobNature = new JobNature();
+		jobNature.setId(jobNatureId);
+		
+		if(departmentId == -1 && jobNatureId == -1) {
+			return userRepository.findByNameLike("%" + name + "%");
+		}
+		
+		if(departmentId != -1 && jobNatureId == -1) {
+			return userRepository.findByDepartmentAndNameLike(department, "%" + name + "%");
+		}
+		
+		if(departmentId == -1 && jobNatureId != -1) {
+			return userRepository.findByJobNatureAndNameLike(jobNature, "%" + name + "%");
+		}
+		
+		
+		return userRepository.findByDepartmentAndJobNatureAndNameLike(department, jobNature, "%" + name + "%");
+	}
 }

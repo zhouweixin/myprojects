@@ -190,6 +190,17 @@ public class UserController {
 
 		return ResultUtil.success(userService.findByDepartmentAndNameLikeByPage(department, name, page, size, sortFieldName, asc));
 	}
+	
+	/**
+	 * 通过工作性质查询
+	 * 
+	 * @param jobNature
+	 * @return
+	 */
+	@RequestMapping(value = "/getByJobNature")
+	public Result<List<User>> getByJobNature(JobNature jobNature){
+		return ResultUtil.success(userService.findByJobNature(jobNature));
+	}
 
 	/**
 	 * 通过工作性质查询-分页

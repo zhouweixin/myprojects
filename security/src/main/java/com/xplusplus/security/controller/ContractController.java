@@ -1,12 +1,14 @@
 package com.xplusplus.security.controller;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import com.xplusplus.security.domain.Contract;
 import com.xplusplus.security.domain.ContractStatus;
 import com.xplusplus.security.domain.ContractType;
 import com.xplusplus.security.domain.Department;
+import com.xplusplus.security.domain.JobNature;
 import com.xplusplus.security.domain.Result;
 import com.xplusplus.security.domain.User;
 import com.xplusplus.security.service.ContractService;
@@ -128,7 +131,7 @@ public class ContractController {
 
 		return ResultUtil.success(contractService.findAllByPage(page, size, sortFieldName, asc));
 	}
-	
+
 	/**
 	 * 通过合同类型查询-分页
 	 * 
@@ -146,9 +149,10 @@ public class ContractController {
 			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
-		return ResultUtil.success(contractService.findByContractTypeByPage(contractType, page, size, sortFieldName, asc));
+		return ResultUtil
+				.success(contractService.findByContractTypeByPage(contractType, page, size, sortFieldName, asc));
 	}
-	
+
 	/**
 	 * 通过合同状态查询-分页
 	 * 
@@ -166,7 +170,8 @@ public class ContractController {
 			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
-		return ResultUtil.success(contractService.findByContractStatusByPage(contractStatus, page, size, sortFieldName, asc));
+		return ResultUtil
+				.success(contractService.findByContractStatusByPage(contractStatus, page, size, sortFieldName, asc));
 	}
 
 	/**
@@ -188,7 +193,7 @@ public class ContractController {
 
 		return ResultUtil.success(contractService.findByUserByPage(user, page, size, sortFieldName, asc));
 	}
-	
+
 	/**
 	 * 通过用户所在部门查询-分页
 	 * 
@@ -208,7 +213,7 @@ public class ContractController {
 
 		return ResultUtil.success(contractService.findByDepartmentByPage(department, page, size, sortFieldName, asc));
 	}
-	
+
 	/**
 	 * 通过用户名称模糊查询-分页
 	 * 
@@ -227,5 +232,96 @@ public class ContractController {
 			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
 		return ResultUtil.success(contractService.findByUserNameLikeByPage(userName, page, size, sortFieldName, asc));
+	}
+
+	/**
+	 * 通过工作性质查询-分页
+	 * 
+	 * @param userName
+	 * @param page
+	 * @param size
+	 * @param sortFieldName
+	 * @param asc
+	 * @return
+	 */
+	@RequestMapping(value = "/getByJobNatureByPage")
+	public Result<Page<Contract>> getByJobNatureByPage(JobNature jobNature,
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+
+		return ResultUtil.success(contractService.findByJobNatureByPage(jobNature, page, size, sortFieldName, asc));
+	}
+
+	/**
+	 * 通过结束的天数以内查询-分页
+	 * 
+	 * @param endDay
+	 * @param page
+	 * @param size
+	 * @param sortFieldName
+	 * @param asc
+	 * @return
+	 */
+	@RequestMapping(value = "/getByEndDayByPage")
+	public Result<Page<Contract>> getByEndDayByPage(@RequestParam(value = "endDay", defaultValue = "30") Integer endDay,
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+
+		return ResultUtil.success(contractService.findByEndDayByPage(endDay, page, size, sortFieldName, asc));
+	}
+
+	/**
+	 * 通过开始日期的区间查询-分页
+	 * 
+	 * @param date1
+	 * @param date2
+	 * @param page
+	 * @param size
+	 * @param sortFieldName
+	 * @param asc
+	 * @return
+	 */
+	@RequestMapping(value = "/getByStartDateBetweenByPage")
+	public Result<Page<Contract>> getByStartDateBetweenByPage(@RequestParam(defaultValue = "1970-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date1,
+			@RequestParam(defaultValue = "1970-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date2,
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+		return ResultUtil.success(contractService.findByStartDateBetween(date1, date2, page, size, sortFieldName, asc));
+	}
+	
+	/***
+	 * 通过各种参数检索-分页
+	 * 
+	 * @param departmentId
+	 * @param jobNatureId
+	 * @param contractTypeId
+	 * @param date1
+	 * @param date2
+	 * @param userName
+	 * @param page
+	 * @param size
+	 * @param sortFieldName
+	 * @param asc
+	 * @return
+	 */
+	@RequestMapping(value = "/getByParametersByPage")
+	public Result<Page<Contract>> getByParametersByPage(
+			@RequestParam(defaultValue = "-1") Integer departmentId,
+			@RequestParam(defaultValue = "-1") Integer jobNatureId,
+			@RequestParam(defaultValue = "-1") Integer contractTypeId,
+			@RequestParam(defaultValue = "1970-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date1,
+			@RequestParam(defaultValue = "1970-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date2,
+			@RequestParam(value = "userName", defaultValue = "") String userName,
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "10") Integer size,
+			@RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+			@RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+		return ResultUtil.success(contractService.getByParametersByPage(departmentId, jobNatureId, contractTypeId, date1, date2, userName, page, size, sortFieldName, asc));
 	}
 }

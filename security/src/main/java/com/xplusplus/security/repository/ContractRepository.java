@@ -1,5 +1,6 @@
 package com.xplusplus.security.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -47,12 +48,52 @@ public interface ContractRepository extends JpaRepository<Contract, Long>{
 	public Page<Contract> findByUser(User user, Pageable pageable);
 	
 	/**
-	 * 通过批量员工查询
+	 * 通过批量员工查询-分页
 	 * 
 	 * @param users
 	 * @param pageable
 	 * @return
 	 */
 	public Page<Contract> findByUserIn(List<User> users, Pageable pageable);
+	
+	/**
+	 * 通过合同类型, 批量员工查询-分页
+	 * 
+	 * @param contractType
+	 * @param users
+	 * @param pageable
+	 * @return
+	 */
+	public Page<Contract> findByContractTypeAndUserIn(ContractType contractType, List<User> users, Pageable pageable);
+	
+	/**
+	 * 通过合同类型, 批量员工, 开始日期区间查询-分页
+	 * 
+	 * @param contractType
+	 * @param users
+	 * @param date1
+	 * @param date2
+	 * @param pageable
+	 * @return
+	 */
+	public Page<Contract> findByContractTypeAndUserInAndStartDateBetween(ContractType contractType, List<User> users, Date date1, Date date2, Pageable pageable);
 
+	/**
+	 * 查询未结束的合同-分页
+	 * 
+	 * @param date
+	 * @param pageable
+	 * @return
+	 */
+	public Page<Contract> findByEndDateAfter(Date endDate, Pageable pageable);
+	
+	/**
+	 * 通过开始日期的区间查询-分页
+	 * 
+	 * @param date1
+	 * @param date2
+	 * @param pageable
+	 * @return
+	 */
+	public Page<Contract> findByStartDateBetween(Date date1, Date date2, Pageable pageable);
 }

@@ -23,7 +23,7 @@ public class AttendanceGroup {
 	private String name;
 
 	// 班次
-	@ManyToOne(targetEntity = Schedule.class)
+	@ManyToOne(targetEntity = Schedule.class)    //
 	@JoinColumn(name = "schedule_id", referencedColumnName = "id")
 	private Schedule schedule;
 

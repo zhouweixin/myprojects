@@ -132,14 +132,13 @@ public interface UserRepository extends JpaRepository<User, String> {
 	/**
 	 * 把用户从指定考勤组里清除
 	 * 
-	 * @param attendenceGroupId
+	 * @param attendanceGroup
 	 */
 	@Modifying
-	@Query(value = "update user set attendance_group_id=null where attendance_group_id=?1", nativeQuery = true)
-	public void nullAttendanceGroupByAttendanceGroup(Integer attendenceGroupId);
+	@Query(value = "update User u set u.attendanceGroup=null where u.attendanceGroup=?1")
+	public void nullAttendanceGroupByAttendanceGroup(AttendanceGroup attendanceGroup);
 	
-	/**
-	 * 给用户分配考勤组
+	/** 给用户分配考勤组
 	 * 
 	 * @param attendenceGroup
 	 * @param id

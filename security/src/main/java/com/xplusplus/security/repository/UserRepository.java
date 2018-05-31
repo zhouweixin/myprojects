@@ -135,8 +135,8 @@ public interface UserRepository extends JpaRepository<User, String> {
 	 * @param attendenceGroup
 	 */
 	@Modifying
-	@Query(value = "update User u set u.attendenceGroup=?1 where u.attendenceGroup=?2")
-	public void nullAttendanceGroupByAttendanceGroup(Object o, AttendanceGroup attendenceGroup);
+	@Query(value = "update User u set u.attendanceGroup=null where u.attendanceGroup=?1")
+	public void nullAttendanceGroupByAttendanceGroup(AttendanceGroup attendenceGroup);
 	
 	/**
 	 * 给用户分配考勤组
@@ -145,6 +145,6 @@ public interface UserRepository extends JpaRepository<User, String> {
 	 * @param id
 	 */
 	@Modifying
-	@Query(value = "update User u set u.attendenceGroup=?1 where u.id=?2")
+	@Query(value = "update User u set u.attendanceGroup=?1 where u.id=?2")
 	public void updateAttendanceGroupById(AttendanceGroup attendenceGroup, String id);
 }

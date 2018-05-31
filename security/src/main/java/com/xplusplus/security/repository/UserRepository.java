@@ -128,19 +128,19 @@ public interface UserRepository extends JpaRepository<User, String> {
 	 * @return
 	 */
 	public List<User> findByJobNatureAndNameLike(JobNature jobNature, String string);
-	
+
 	/**
 	 * 把用户从指定考勤组里清除
-	 * 
+	 *
 	 * @param attendenceGroup
 	 */
 	@Modifying
 	@Query(value = "update User u set u.attendenceGroup=null where u.attendenceGroup=?1")
 	public void nullAttendanceGroupByAttendanceGroup(AttendanceGroup attendenceGroup);
-	
+
 	/**
 	 * 给用户分配考勤组
-	 * 
+	 *
 	 * @param attendenceGroup
 	 * @param id
 	 */

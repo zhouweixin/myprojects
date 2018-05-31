@@ -30,7 +30,9 @@ public enum EnumExceptions {
 	UPDATE_FAILED_PASSWORD_NOT_EQUALS(19, "更新失败, 旧密码不相同"),
 	FIND_FAILED_DEPARTMENT_NOT_EXIST(20, "查询失败, 部门不存在"),
 	DELETE_FAILED_USED(21, "删除失败,对象被使用"),
-	ADD_FAILED_SCHEDULE_NOT_EXIST(13, "新增失败,班次不存在"),
+	ADD_FAILED_SCHEDULE_NOT_EXIST(22, "新增失败,班次不存在"),
+	ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST(23, "新增失败,考勤组不存在"),
+	c(24,"新增失败,没有设定外出考勤")
 
 	;
 

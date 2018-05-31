@@ -1,6 +1,5 @@
 package com.xplusplus.security.repository;
 
-import com.xplusplus.security.domain.AttendanceGroup;
 import com.xplusplus.security.domain.Schedule;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

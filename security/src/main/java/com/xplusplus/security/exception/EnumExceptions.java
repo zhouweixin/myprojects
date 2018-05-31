@@ -32,7 +32,8 @@ public enum EnumExceptions {
 	DELETE_FAILED_USED(21, "删除失败, 对象被使用"),
 	ADD_FAILED_SCHEDULE_NOT_EXIST(22, "新增失败, 班次不存在"),
 	ADD_FAILED_NULL_EXIST(23, "新增失败, 全不可为空"),
-	ADD_FAILED_EXIST(23, "新增失败, 已存在"),
+	ADD_FAILED_EXIST(24, "新增失败, 已存在"),
+	ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST(25, "新增失败,考勤组不存在"),
 
 	;
 

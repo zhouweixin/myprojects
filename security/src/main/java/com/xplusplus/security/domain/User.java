@@ -106,6 +106,13 @@ public class User {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date practiceEndDate;
 
+	/**
+	 * 考勤组
+	 */
+	@ManyToOne(targetEntity = AttendanceGroup.class)
+	@JoinColumn(name = "attendance_group_id", referencedColumnName = "id")
+	private AttendanceGroup attendanceGroup;
+
 	public String getId() {
 		return id;
 	}
@@ -211,12 +218,20 @@ public class User {
 		this.practiceEndDate = practiceEndDate;
 	}
 
+	public AttendanceGroup getAttendanceGroup() {
+		return attendanceGroup;
+	}
+
+	public void setAttendanceGroup(AttendanceGroup attendanceGroup) {
+		this.attendanceGroup = attendanceGroup;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", sex=" + sex + ", ic=" + ic + ", wechat=" + wechat + ", contact="
 				+ contact + ", password=" + password + ", department=" + department + ", role=" + role + ", jobNature="
 				+ jobNature + ", period=" + period + ", employDate=" + employDate + ", practiceEndDate="
-				+ practiceEndDate + "]";
+				+ practiceEndDate + ", attendanceGroup=" + attendanceGroup + "]";
 	}
 
 }

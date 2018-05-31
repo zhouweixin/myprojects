@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.xplusplus.security.domain.AttendanceGroup;
 import com.xplusplus.security.domain.Department;
 import com.xplusplus.security.domain.JobNature;
 import com.xplusplus.security.domain.User;
@@ -127,4 +128,14 @@ public interface UserRepository extends JpaRepository<User, String> {
 	 * @return
 	 */
 	public List<User> findByJobNatureAndNameLike(JobNature jobNature, String string);
+	
+	/**
+	 * 通过id更新考勤组
+	 * 
+	 * @param attendenceGroup
+	 * @param id
+	 */
+	@Modifying
+	@Query(value = "update User u set u.attendenceGroup=?1 where u.id=?2")
+	public void updateAttendanceGroupById(AttendanceGroup attendenceGroup, String id);
 }

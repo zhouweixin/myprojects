@@ -1,7 +1,6 @@
 package com.xplusplus.security.domain;
 
 import java.time.Period;
-import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -62,10 +61,8 @@ public class Contract {
 	@Column(columnDefinition = "MediumBlob")
 	private String content;
 
-	// 扫描件
-	@Lob
-	@Column(columnDefinition = "MediumBlob")
-	private byte[] scanningCopy;
+	// 扫描件地址
+	private String scanningCopy;
 
 	public Long getId() {
 		return id;
@@ -131,19 +128,18 @@ public class Contract {
 		this.content = content;
 	}
 
-	public byte[] getScanningCopy() {
+	public String getScanningCopy() {
 		return scanningCopy;
 	}
 
-	public void setScanningCopy(byte[] scanningCopy) {
+	public void setScanningCopy(String scanningCopy) {
 		this.scanningCopy = scanningCopy;
 	}
 
 	@Override
 	public String toString() {
-		return "UserContract [id=" + id + ", user=" + user + ", contractType=" + contractType + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", period=" + period + ", contractStatus=" + contractStatus
-				+ ", content=" + content + ", scanningCopy=" + Arrays.toString(scanningCopy) + "]";
+		return "Contract [id=" + id + ", user=" + user + ", contractType=" + contractType + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", period=" + period + ", contractStatus=" + contractStatus + ", content="
+				+ content + ", scanningCopy=" + scanningCopy + "]";
 	}
-
 }

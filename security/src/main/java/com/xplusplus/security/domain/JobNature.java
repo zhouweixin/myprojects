@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 /**
  * @Author: zhouweixin
- * @Description:
+ * @Description: 工作性质
  * @Date: Created in 下午7:33:44 2018年5月23日
  */
 @Entity

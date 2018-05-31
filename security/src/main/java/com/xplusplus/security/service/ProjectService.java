@@ -44,6 +44,9 @@ public class ProjectService {
 		if (project == null || (project.getId() != null && projectRepository.findOne(project.getId()) != null)) {
 			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);
 		}
+		
+		System.out.println(project);
+		System.out.println(project.getLeader());
 
 		// 检验项目负责人
 		if (project.getLeader() == null || userRepository.getOne(project.getLeader().getId()) == null) {

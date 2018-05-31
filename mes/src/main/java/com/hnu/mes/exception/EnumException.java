@@ -85,6 +85,14 @@ public enum EnumException {
 	NEXT_AUDITOR_NOT_EXIST(74, "审核失败, 下一个审核人不存在"),
 	FIND_ERROE_PICKING_NOT_EXIST(75, "查询失败, 申请单不存在"),
 	PROCESS_TYPE_NOT_EXIST(76, "查询失败, 申请单的流程不存在"),
+	NOT_ALL_STOCK(77, "结束失败, 尚未结束盘库"),
+    NOT_STOCK(78, "结束失败, 尚未开始盘库"),
+    STOCKING(79, "开始失败, 正在盘库中"),
+    SUBMIT_FAILED_STOCKING_NOT_EXIST(80, "提交失败, 盘库记录不存在"),
+    SUBMIT_FAILED_STOCKING(81, "提交失败, 已经盘库"),
+    SUBMIT_FAILED_NOT_START_STOCKING(81, "提交失败, 未开始盘库"),
+    AUDITOR_FAILED_NOT_EXIST(82, "审核失败, 不存在"),
+    AUDITOR_FAILED__NOT_NEED(83, "审核失败, 不需要审核"),
 
 
     ;

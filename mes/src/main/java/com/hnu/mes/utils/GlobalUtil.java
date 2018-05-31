@@ -119,6 +119,34 @@ public class GlobalUtil {
         public static final int OUT = 1;
     }
 
+    /**
+     * 盘库状态
+     */
+    public class StockStatus{
+        // 正常
+        public static final int NORMAL = 0;
+        // 开始盘库
+        public static final int START_SOTCK = 1;
+        // 待审核
+        public static final int PRE_AUDIT = 2;
+        // 已审核
+        public static final int AUDITED = 3;
+    }
+
+    /**
+     * 报损单审核状态
+     */
+    public class LossEntryAuditStatus{
+        // 不需要审核
+        public static final int NOT_NEED = 0;
+        // 1待审核
+        public static final int PRE_AUDIT = 1;
+        // 2已通过
+        public static final int APPROVAL = 2;
+        // 3未通过
+        public static final int NOT_APPROVAL = 3;
+    }
+
     public enum AppPageType{
 
         PICKING_AUDIT(1, "领料申请审核"),

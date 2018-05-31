@@ -39,7 +39,7 @@ public class ProductSend {
     /**
      * 表头
      */
-    @ManyToOne(targetEntity = ProductSendHeader.class)
+    @ManyToOne(targetEntity = ProductSendHeader.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "product_send_header_code", referencedColumnName = "code")
     private ProductSendHeader productSendHeader;
 

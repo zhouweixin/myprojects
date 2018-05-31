@@ -36,7 +36,7 @@ public interface ProductSendHeaderRepository extends JpaRepository<ProductSendHe
      * @param pageable
      * @return
      */
-    public Page findByAuditStatus(Integer auditStatus, Pageable pageable);
+    public Page<ProductSendHeader> findByAuditStatus(Integer auditStatus, Pageable pageable);
 
     /**
      * 通过开单日期查询-分页
@@ -45,7 +45,7 @@ public interface ProductSendHeaderRepository extends JpaRepository<ProductSendHe
      * @param pageable
      * @return
      */
-    public Page findByCreateDate(Date createDate, Pageable pageable);
+    public Page<ProductSendHeader> findByCreateDate(Date createDate, Pageable pageable);
 
     /**
      * 通过产品型号查询-分页
@@ -54,7 +54,7 @@ public interface ProductSendHeaderRepository extends JpaRepository<ProductSendHe
      * @param pageable
      * @return
      */
-    public Page findByRawType(RawType rawType, Pageable pageable);
+    public Page<ProductSendHeader> findByRawType(RawType rawType, Pageable pageable);
 
     /**
      * 通过审核状态和创建日期查询-分页
@@ -64,7 +64,7 @@ public interface ProductSendHeaderRepository extends JpaRepository<ProductSendHe
      * @param pageable
      * @return
      */
-    public Page findByAuditStatusAndCreateDate(Integer auditStatus, Date createDate, Pageable pageable);
+    public Page<ProductSendHeader> findByAuditStatusAndCreateDate(Integer auditStatus, Date createDate, Pageable pageable);
 
     /**
      * 通过审核状态和产品类型查询-分页
@@ -74,7 +74,7 @@ public interface ProductSendHeaderRepository extends JpaRepository<ProductSendHe
      * @param pageable
      * @return
      */
-    public Page findByAuditStatusAndRawType(Integer auditStatus, RawType rawType, Pageable pageable);
+    public Page<ProductSendHeader> findByAuditStatusAndRawType(Integer auditStatus, RawType rawType, Pageable pageable);
 
     /**
      * 通过创建日期和原料类型查询-分页
@@ -83,7 +83,7 @@ public interface ProductSendHeaderRepository extends JpaRepository<ProductSendHe
      * @param rawType
      * @return
      */
-    public Page findByCreateDateAndRawType(Date createDate, RawType rawType, Pageable pageable);
+    public Page<ProductSendHeader> findByCreateDateAndRawType(Date createDate, RawType rawType, Pageable pageable);
 
     /**
      * 通过审核状态， 原料类型和创建日期分布查询
@@ -93,7 +93,7 @@ public interface ProductSendHeaderRepository extends JpaRepository<ProductSendHe
      * @param createDate
      * @return
      */
-    public Page findByAuditStatusAndRawTypeAndCreateDate(Integer auditStatus, RawType rawType, Date createDate, Pageable pageable);
+    public Page<ProductSendHeader> findByAuditStatusAndRawTypeAndCreateDate(Integer auditStatus, RawType rawType, Date createDate, Pageable pageable);
 
     /**
      * 通过审核状态和编号查询

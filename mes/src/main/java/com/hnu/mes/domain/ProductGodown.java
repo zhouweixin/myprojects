@@ -37,7 +37,7 @@ public class ProductGodown {
     /**
      * 表头
      */
-    @ManyToOne(targetEntity = ProductGodownHeader.class)
+    @ManyToOne(targetEntity = ProductGodownHeader.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "product_godown_header_code", referencedColumnName = "code")
     private ProductGodownHeader productGodownHeader;
 

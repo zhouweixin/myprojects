@@ -1,6 +1,7 @@
 package com.hnu.mes.repository;
 
 import com.hnu.mes.domain.MaterialsEntry;
+import com.hnu.mes.domain.RawType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,11 @@ public interface MaterialsEntryRepository extends JpaRepository<MaterialsEntry, 
     @Modifying
     @Query(value = "update MaterialsEntry m set m.weight=m.weight-?1 where m.batchNumber=?2")
     public void updateWeightByBatchNumber(Double weight, String batchNumber);
+
+    /**
+     * 删除重量为0的记录
+     *
+     * @param weight
+     */
+    public void deleteByRawTypeAndWeightLessThan(RawType rawType, Double weight);
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+<button id="submitBtn">请求</button>
+<button id="stopBtn">停止</button>
+<div>
+
+    <span class="badge badge-info absolute" style="position: absolute;left: 100px;top:450px;">&nbsp;450&nbsp;</span>
+
+    <img src="back.png" style="float: left; display: inline-block"/>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="application/javascript">
+    $(function () {
+
+        const data = []
+        data.push({
+            header: {
+                code: 1,
+                supplyTime: '2018-04-18',
+                total: 51,
+                contact: '18888888888',
+                customer: {
+                    name: '兰亚戈',
+                }
+            },
+            batchNumber: 12115,
+            name: '嘻嘻哈哈',
+            specifications: 'yes',
+            number: 5
+        })
+        data.push({
+            header: {
+                code: 1,
+                supplyTime: '2018-04-18',
+                total: 51,
+                contact: '18888888888',
+                customer: {
+                    name: '兰亚戈',
+                }
+            },
+            batchNumber: 12115,
+            name: '嘻嘻哈哈',
+            specifications: 'yes',
+            number: 5
+        })
+        $.ajax({
+            url: 'http://localhost:8082/mes/supplyInfo/saveInBatch',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            type: 'post',
+            success: function (result) {
+                console.log(result)
+            }
+        })
+    });
+</script>
+</body>
+</html>

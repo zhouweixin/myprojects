@@ -1,7 +1,7 @@
 package com.xplusplus.security.exception;
 
 /**
- * SecurityException mes异常
+ * SecurityException
  * 
  * @author zhouweixin
  *

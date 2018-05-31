@@ -28,7 +28,7 @@ public interface AppCheckRepository extends JpaRepository<AppCheck, Long> {
      */
     @Modifying
     @Query("UPDATE AppCheck p SET p.examPerson=?1,p.examState=?2,p.examDate=?3 where p.code=?4")
-    public Integer updateExamPersonByCode(String examPerson,String examState,String examDate, Long code);
+    public Integer updateExamPersonByCode(String examPerson, String examState, String examDate, Long code);
 
     /**
      * 查询审核state

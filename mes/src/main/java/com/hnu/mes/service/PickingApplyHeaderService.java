@@ -354,9 +354,6 @@ public class PickingApplyHeaderService {
 				}
 			}
 
-			// TODO 应该写触发器总重量
-			materialsTotalRepository.updateWeightByCode(weightSum, pickingApplyHeader.getCode());
-
 			// 【添加消息】给库管
 			messageQueue = new MessageQueue();
 			messageQueue.setContent(pickingApplyHeader.getDepartment().getName());

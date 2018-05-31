@@ -17,7 +17,7 @@ public interface CustomerDao extends JpaRepository<Customer, String>, JpaSpecifi
 
     @Modifying
     @Query(value = "update Customer c set c.password = :password where c.code in :ones")
-    void updateInBatch(@Param(value = "password") String password,@Param(value = "ones") List ones);
+    void updateInBatch(@Param(value = "password") String password, @Param(value = "ones") List ones);
 
     @Modifying
     @Query(value = "update Customer c set c.password = ?1")

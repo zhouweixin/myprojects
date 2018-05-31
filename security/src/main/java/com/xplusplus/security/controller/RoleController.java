@@ -52,7 +52,7 @@ public class RoleController {
     }
 
     /**
-     * 删除健康
+     * 删除角色
      */
     @RequestMapping(value = "/deleteById")
     public Result<Object> deleteById(Integer id){

@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.xplusplus.security.domain.AttendanceGroup;
 import com.xplusplus.security.domain.Department;
 import com.xplusplus.security.domain.JobNature;
 import com.xplusplus.security.domain.User;
@@ -127,4 +128,23 @@ public interface UserRepository extends JpaRepository<User, String> {
 	 * @return
 	 */
 	public List<User> findByJobNatureAndNameLike(JobNature jobNature, String string);
+	
+	/**
+	 * 把用户从指定考勤组里清除
+	 * 
+	 * @param attendenceGroup
+	 */
+	@Modifying
+	@Query(value = "update User u set u.attendenceGroup=null where u.attendenceGroup=?1")
+	public void nullAttendanceGroupByAttendanceGroup(AttendanceGroup attendenceGroup);
+	
+	/**
+	 * 给用户分配考勤组
+	 * 
+	 * @param attendenceGroup
+	 * @param id
+	 */
+	@Modifying
+	@Query(value = "update User u set u.attendenceGroup=?1 where u.id=?2")
+	public void updateAttendanceGroupById(AttendanceGroup attendenceGroup, String id);
 }

@@ -3,12 +3,11 @@ package com.xplusplus.security.domain;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Arrays;
 import java.util.Date;
 
 /**
  * @Author: zhouweixin
- * @Description:
+ * @Description: 档案
  * @Date: Created in 19:23 2018/5/7
  * @Modified By:
  */
@@ -122,11 +121,9 @@ public class Archive {
 	private String identityNumber;
 
 	/**
-	 * 身份证扫描件
+	 * 身份证扫描件地址
 	 */
-	@Lob
-	@Column(columnDefinition = "MediumBlob")
-	private byte[] identityCard;
+	private String identityCard;
 
 	public Long getId() {
 		return id;
@@ -272,11 +269,11 @@ public class Archive {
 		this.identityNumber = identityNumber;
 	}
 
-	public byte[] getIdentityCard() {
+	public String getIdentityCard() {
 		return identityCard;
 	}
 
-	public void setIdentityCard(byte[] identityCard) {
+	public void setIdentityCard(String identityCard) {
 		this.identityCard = identityCard;
 	}
 
@@ -288,7 +285,6 @@ public class Archive {
 				+ ", weight=" + weight + ", healthStatus=" + healthStatus + ", domicilePlace=" + domicilePlace
 				+ ", livePlace=" + livePlace + ", insurance=" + insurance + ", familyMemberName=" + familyMemberName
 				+ ", familyMemberContact=" + familyMemberContact + ", identityNumber=" + identityNumber
-				+ ", identityCard=" + Arrays.toString(identityCard) + "]";
+				+ ", identityCard=" + identityCard + "]";
 	}
-
 }

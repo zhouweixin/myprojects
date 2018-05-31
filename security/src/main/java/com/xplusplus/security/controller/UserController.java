@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xplusplus.security.domain.Department;
 import com.xplusplus.security.domain.JobNature;
+import com.xplusplus.security.domain.Project;
+import com.xplusplus.security.domain.ProjectUser;
 import com.xplusplus.security.domain.Result;
 import com.xplusplus.security.domain.User;
+import com.xplusplus.security.service.ProjectUserService;
 import com.xplusplus.security.service.UserService;
 import com.xplusplus.security.utils.ResultUtil;
 
@@ -31,6 +34,9 @@ import com.xplusplus.security.utils.ResultUtil;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ProjectUserService projectUserService;
 
 	/**
 	 * 新增
@@ -167,6 +173,17 @@ public class UserController {
 	@RequestMapping(value = "/getByDepartment")
 	public Result<List<User>> getByDepartment(Department department){
 		return ResultUtil.success(userService.findByDepartment(department));
+	}
+	
+	/**
+	 * 通过项目查询
+	 * 
+	 * @param project
+	 * @return
+	 */
+	@RequestMapping(value = "/getByProject")
+	public Result<List<ProjectUser>> getByProject(Project project){
+		return ResultUtil.success(projectUserService.findByProject(project));
 	}
 
 	/**

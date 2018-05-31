@@ -60,6 +60,9 @@ public class Project {
 	// 客户单位
 	private String customerUnit;
 
+	// 扫描件地址
+	private String scanningCopy;
+
 	// 项目状态：0进行中；1已结束；
 	@ManyToOne(targetEntity = ProjectStatus.class)
 	@JoinColumn(name = "project_status_id", referencedColumnName = "id")
@@ -166,12 +169,20 @@ public class Project {
 		this.receiptPrice = receiptPrice;
 	}
 
+	public String getScanningCopy() {
+		return scanningCopy;
+	}
+
+	public void setScanningCopy(String scanningCopy) {
+		this.scanningCopy = scanningCopy;
+	}
+
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", name=" + name + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", period=" + period + ", price=" + price + ", receiptPrice=" + receiptPrice
 				+ ", customerOfficePhone=" + customerOfficePhone + ", customerFinancePhone=" + customerFinancePhone
-				+ ", customerUnit=" + customerUnit + ", projectStatus=" + projectStatus + ", leader=" + leader + "]";
+				+ ", customerUnit=" + customerUnit + ", scanningCopy=" + scanningCopy + ", projectStatus="
+				+ projectStatus + ", leader=" + leader + "]";
 	}
-
 }

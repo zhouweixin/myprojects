@@ -37,7 +37,7 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add")
-	public Result<Project> add(@Valid Project project, BindingResult bindingResult) {
+	public Result<Project> add(@Valid @RequestBody Project project, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());
@@ -53,7 +53,7 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping(value = "/update")
-	public Result<Project> update(@Valid Project project, BindingResult bindingResult) {
+	public Result<Project> update(@Valid @RequestBody Project project, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage().toString());

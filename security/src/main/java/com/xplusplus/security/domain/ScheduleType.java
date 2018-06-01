@@ -1,5 +1,6 @@
 package com.xplusplus.security.domain;
 
+import java.time.Duration;
 import java.time.Period;
 import java.util.Date;
 
@@ -61,10 +62,10 @@ public class ScheduleType {
 	private Schedule schedule;
 
 	// 休息时间
-	private Period breakPeriod;
+	private Duration breakPeriod;
 
 	// 工作时间
-	private Period workPeriod;
+	private Duration workPeriod;
 
 	public Integer getId() {
 		return id;
@@ -138,19 +139,19 @@ public class ScheduleType {
 		this.endBreakTime = endBreakTime;
 	}
 
-	public Period getBreakPeriod() {
+	public Duration getBreakPeriod() {
 		return breakPeriod;
 	}
 
-	public void setBreakPeriod(Period breakPeriod) {
+	public void setBreakPeriod(Duration breakPeriod) {
 		this.breakPeriod = breakPeriod;
 	}
 
-	public Period getWorkPeriod() {
+	public Duration getWorkPeriod() {
 		return workPeriod;
 	}
 
-	public void setWorkPeriod(Period workPeriod) {
+	public void setWorkPeriod(Duration workPeriod) {
 		this.workPeriod = workPeriod;
 	}
 

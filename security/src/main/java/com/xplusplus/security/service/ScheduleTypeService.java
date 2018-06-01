@@ -41,11 +41,11 @@ public class ScheduleTypeService {
         }
 
         //计算工作时长
-        scheduleType.setBreakPeriod(GlobalUtil.computeWorkPeriod(scheduleType.getStartTime(),scheduleType.getEndTime(),
+        scheduleType.setWorkPeriod(GlobalUtil.computeWorkPeriod(scheduleType.getStartTime(),scheduleType.getEndTime(),
                 scheduleType.getStartBreakTime(),scheduleType.getEndBreakTime()));
 
         //计算休息时长
-        scheduleType.setWorkPeriod(GlobalUtil.computeBreakPeriod(scheduleType.getStartTime(),scheduleType.getEndTime()));
+        scheduleType.setBreakPeriod(GlobalUtil.computeBreakPeriod(scheduleType.getStartBreakTime(),scheduleType.getEndBreakTime()));
 
         return scheduleTypeRepository.save(scheduleType);
     }

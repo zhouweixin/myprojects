@@ -1,6 +1,7 @@
 package com.xplusplus.security.utils;
 
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
@@ -44,8 +45,8 @@ public class GlobalUtil {
      * @param endBreakTime
      * @return
      */
-    public static Duration computeWorkPeriod(Date startTime, Date endTime,
-                                             Date startBreakTime, Date endBreakTime) {
+    public static long computeWorkPeriod(Date startTime, Date endTime,
+                                               Date startBreakTime, Date endBreakTime) {
         // 计算休息时长-基于时间（时、分、秒等）
         if (startTime != null && endTime != null
                 && startBreakTime != null && endBreakTime != null) {
@@ -55,10 +56,9 @@ public class GlobalUtil {
             Instant ins4 = endBreakTime.toInstant();
 
             // 计算时间差
-            return Duration.ofSeconds(Duration.between(ins1, ins2).getSeconds()-Duration.between(ins3, ins4).getSeconds());
+            return ChronoUnit.MINUTES.between(ins1,ins2)-ChronoUnit.MINUTES.between(ins3,ins4);
         }
-
-        return null;
+        return 0;
     }
 
     /**
@@ -67,17 +67,16 @@ public class GlobalUtil {
      * @param endTime
      * @return
      */
-	public static Duration computeBreakPeriod(Date startTime, Date endTime) {
+	public static long computeBreakPeriod(Date startTime, Date endTime) {
 		// 计算工作时长-基于时间（时、分、秒等）
 		if (startTime != null && endTime != null) {
 			Instant startInstant = startTime.toInstant();
 			Instant endInstant = endTime.toInstant();
 
 			// 计算时间差
-			return Duration.between(startInstant, endInstant);
+			return ChronoUnit.MINUTES.between(startInstant,endInstant);
 		}
-
-		return null;
-	}
+        return 0;
+    }
 
 }

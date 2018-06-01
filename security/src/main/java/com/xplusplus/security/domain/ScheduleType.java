@@ -32,22 +32,22 @@ public class ScheduleType {
 
 	// 开始时间
 	@Temporal(value = TemporalType.TIME)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date startTime;
 
 	// 休息开始时间
 	@Temporal(value = TemporalType.TIME)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date startBreakTime;
 
 	// 休息结束时间
 	@Temporal(value = TemporalType.TIME)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date endBreakTime;
 
 	// 结束时间
 	@Temporal(value = TemporalType.TIME)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date endTime;
 
 	// 多少分钟前开始打卡
@@ -61,11 +61,11 @@ public class ScheduleType {
 	@JoinColumn(name = "schedule_id", referencedColumnName = "id")
 	private Schedule schedule;
 
-	// 休息时间
-	private Duration breakPeriod;
+	// 休息时间，单位：分钟
+	private long breakPeriod;
 
-	// 工作时间
-	private Duration workPeriod;
+	// 工作时间，单位：分钟
+	private long workPeriod;
 
 	public Integer getId() {
 		return id;
@@ -139,19 +139,19 @@ public class ScheduleType {
 		this.endBreakTime = endBreakTime;
 	}
 
-	public Duration getBreakPeriod() {
+	public long getBreakPeriod() {
 		return breakPeriod;
 	}
 
-	public void setBreakPeriod(Duration breakPeriod) {
+	public void setBreakPeriod(long breakPeriod) {
 		this.breakPeriod = breakPeriod;
 	}
 
-	public Duration getWorkPeriod() {
+	public long getWorkPeriod() {
 		return workPeriod;
 	}
 
-	public void setWorkPeriod(Duration workPeriod) {
+	public void setWorkPeriod(long workPeriod) {
 		this.workPeriod = workPeriod;
 	}
 

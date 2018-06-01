@@ -146,4 +146,12 @@ public interface UserRepository extends JpaRepository<User, String> {
 	@Modifying
 	@Query(value = "update User u set u.attendanceGroup=?1 where u.id=?2")
 	public void updateAttendanceGroupById(AttendanceGroup attendenceGroup, String id);
+
+    /**
+     * 通过考勤组查询
+     *
+     * @param attendanceGroup
+     * @return
+     */
+	public List<User> findByAttendanceGroup(AttendanceGroup attendanceGroup);
 }

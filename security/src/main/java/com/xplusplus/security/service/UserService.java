@@ -259,7 +259,7 @@ public class UserService {
     /**
      * 通过工作性质查询-分页
      *
-     * @param jobNature
+     * @param department
      * @param page
      * @param size
      * @param sortFieldName
@@ -295,7 +295,7 @@ public class UserService {
     /**
      * 通过id更新工作性质
      *
-     * @param jobNature
+     * @param jobNatureId
      * @param id
      */
     @Transactional
@@ -418,8 +418,8 @@ public class UserService {
         // 分别分配每个用户
         for (String userId : userIds) {
             if (userRepository.findOne(userId) == null) {
-                EnumExceptions.ASSIGN_FAILED_ATTENDANCE_GROUP_NOT_EXIST.setMessage("分配失败, 员工" + userId + "不存在");
-                throw new SecurityExceptions(EnumExceptions.ASSIGN_FAILED_ATTENDANCE_GROUP_NOT_EXIST);
+                EnumExceptions.ASSIGN_FAILED_USER_NOT_EXIST.setMessage("分配失败, 员工" + userId + "不存在");
+                throw new SecurityExceptions(EnumExceptions.ASSIGN_FAILED_USER_NOT_EXIST);
             }
 
             userRepository.updateAttendanceGroupById(attendanceGroup, userId);

@@ -38,29 +38,29 @@ public class WorkLogging {
 
 	// 开始时间
 	@Temporal(value = TemporalType.TIME)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date startTime;
 
 	// 结束时间
 	@Temporal(value = TemporalType.TIME)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date endTime;
 
 	// 开始休息时间
 	@Temporal(value = TemporalType.TIME)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date startBreakTime;
 
 	// 结束休息时间
 	@Temporal(value = TemporalType.TIME)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date endBreakTime;
 
 	// 休息时长
-	private Period breakPeriod;
+	private Integer breakMinute;
 
 	// 工作时长
-	private Period workPeriod;
+	private Integer workMinute;
 
 	// 迟到类型
 	@ManyToOne(targetEntity = LateType.class)
@@ -88,6 +88,16 @@ public class WorkLogging {
 	@JoinColumn(name = "status_id", referencedColumnName = "id")
 	private WorkLoggingStatus status;
 
+	// 修改人
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "modify_user_id", referencedColumnName = "id")
+	private User modifyUser;
+
+    // 修改时间
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date modifyDate;
+
 	// 备注
 	private String note;
 
@@ -105,6 +115,14 @@ public class WorkLogging {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public Date getStartTime() {
@@ -139,20 +157,20 @@ public class WorkLogging {
 		this.endBreakTime = endBreakTime;
 	}
 
-	public Period getBreakPeriod() {
-		return breakPeriod;
+	public Integer getBreakMinute() {
+		return breakMinute;
 	}
 
-	public void setBreakPeriod(Period breakPeriod) {
-		this.breakPeriod = breakPeriod;
+	public void setBreakMinute(Integer breakMinute) {
+		this.breakMinute = breakMinute;
 	}
 
-	public Period getWorkPeriod() {
-		return workPeriod;
+	public Integer getWorkMinute() {
+		return workMinute;
 	}
 
-	public void setWorkPeriod(Period workPeriod) {
-		this.workPeriod = workPeriod;
+	public void setWorkMinute(Integer workMinute) {
+		this.workMinute = workMinute;
 	}
 
 	public LateType getLateType() {
@@ -211,13 +229,43 @@ public class WorkLogging {
 		this.note = note;
 	}
 
-	@Override
-	public String toString() {
-		return "WorkLogging [id=" + id + ", user=" + user + ", startTime=" + startTime + ", endTime=" + endTime
-				+ ", startBreakTime=" + startBreakTime + ", endBreakTime=" + endBreakTime + ", breakPeriod="
-				+ breakPeriod + ", workPeriod=" + workPeriod + ", lateType=" + lateType + ", project=" + project
-				+ ", leaveEarly=" + leaveEarly + ", attendanceAddress=" + attendanceAddress + ", noCard=" + noCard
-				+ ", status=" + status + ", note=" + note + "]";
-	}
+    public User getModifyUser() {
+        return modifyUser;
+    }
 
+    public void setModifyUser(User modifyUser) {
+        this.modifyUser = modifyUser;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
+    @Override
+    public String toString() {
+        return "WorkLogging{" +
+                "id=" + id +
+                ", user=" + user +
+                ", date=" + date +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", startBreakTime=" + startBreakTime +
+                ", endBreakTime=" + endBreakTime +
+                ", breakMinute=" + breakMinute +
+                ", workMinute=" + workMinute +
+                ", lateType=" + lateType +
+                ", project=" + project +
+                ", leaveEarly=" + leaveEarly +
+                ", attendanceAddress=" + attendanceAddress +
+                ", noCard=" + noCard +
+                ", status=" + status +
+                ", modifyUser=" + modifyUser +
+                ", modifyDate=" + modifyDate +
+                ", note='" + note + '\'' +
+                '}';
+    }
 }

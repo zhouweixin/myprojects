@@ -15,7 +15,7 @@ public enum EnumExceptions {
 	REQUEST_METHOD(4, "请求方法不匹配"),
 	ARGU_MISMATCH_EXCEPTION(5, "参数类型不匹配错误, 请检查"),
 	ADD_FAILED_DEPARTMENT_NOT_EXIST(6, "新增失败, 部门不存在"),
-	ADD_FAILED_ID_ERROR(7, "新增失败, 工号编码错误"),
+    ASSIGN_FAILED_ATTENDANCE_GROUP_NOT_EXIST(7, "分配失败, 考勤组不存在"),
 	ADD_FAILED_SHORT_NAME_NOT_LAWER(8, "新增失败, 部门简称只能是唯一的2位字母"),
 	ADD_FAILED_PHONE_NOT_LAWER(9, "新增失败, 手机号码只能是11位数字"),
 	UPDATE_FAILED_JOB_NATURE_NOT_EXIST(10, "更新失败, 工作性质不存在"),
@@ -28,7 +28,7 @@ public enum EnumExceptions {
 	ADD_FAILED_OPERATOR_NOT_EXIST(17, "新增失败, 经办人不存在"),
 	UPDATE_FAILED_PASSWORD_NULL(18, "更新失败, 密码不可为空"),
 	UPDATE_FAILED_PASSWORD_NOT_EQUALS(19, "更新失败, 旧密码不相同"),
-	FIND_FAILED_DEPARTMENT_NOT_EXIST(20, "查询失败, 部门不存在"),
+    ASSIGN_FAILED_USER_NOT_EXIST(20, "分配失败, 员工不存在"),
 	DELETE_FAILED_USED(21, "删除失败, 对象被使用"),
 	ADD_FAILED_SCHEDULE_NOT_EXIST(22, "新增失败, 班次不存在"),
 	ADD_FAILED_NULL_EXIST(23, "新增失败, 全不可为空"),
@@ -36,8 +36,6 @@ public enum EnumExceptions {
 	ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST(25, "新增失败,考勤组不存在"),
     ADD_FAILED_LATETYPE_NOT_EXIST(26, "新增失败, 迟到类型不存在"),
     ADD_FAILED_TIME_NOT_CORRECT(27,"新增失败，时间先后不正确"),
-	ASSIGN_FAILED_ATTENDANCE_GROUP_NOT_EXIST(28, "分配失败, 考勤组不存在"),
-	ASSIGN_FAILED_USER_NOT_EXIST(29, "分配失败, 员工不存在")
 
 	;
 

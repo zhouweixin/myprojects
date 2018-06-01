@@ -59,6 +59,7 @@ public class ProjectUserService {
 			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_PROJECT_NOT_EXIST);
 		}
 
+		// 避免重复添加
 		if (projectUserRepository.findFirstByProjectAndUser(project, user) != null) {
 			throw new SecurityExceptions(EnumExceptions.ADD_FAILED_EXIST);
 		}

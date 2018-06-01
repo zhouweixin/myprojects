@@ -55,7 +55,8 @@ public class WorkLoggingController {
     }
 
     /**
-     * 
+     * 通过用户查询-分页
+     *
      * @param user
      * @param page
      * @param size
@@ -64,11 +65,46 @@ public class WorkLoggingController {
      * @return
      */
     @RequestMapping(value = "/getByUserByPage")
-    public Result<Page<WorkLogging>> getByUserByPage(User user, @RequestParam(value = "page", defaultValue = "0") Integer page,
+    public Result<Page<WorkLogging>> findByStatusByPage(User user, @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                   @RequestParam(value = "size", defaultValue = "10") Integer size,
                                                   @RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
                                                   @RequestParam(value = "asc", defaultValue = "1") Integer asc) {
 
         return ResultUtil.success(workLoggingService.findByUserByPage(user, page, size, sortFieldName, asc));
+    }
+
+
+    /**
+     * 通过状态查询-分页
+     *
+     * @param status
+     * @param page
+     * @param size
+     * @param sortFieldName
+     * @param asc
+     * @return
+     */
+    @RequestMapping(value = "/getByStatusByPage")
+    public Result<Page<WorkLogging>> getByStatusByPage(WorkLoggingStatus status, @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                                     @RequestParam(value = "size", defaultValue = "10") Integer size,
+                                                     @RequestParam(value = "sortFieldName", defaultValue = "id") String sortFieldName,
+                                                     @RequestParam(value = "asc", defaultValue = "1") Integer asc) {
+
+        return ResultUtil.success(workLoggingService.findByStatusByPage(status, page, size, sortFieldName, asc));
+    }
+
+    /**
+     * 修改状态
+     *
+     * @param statusId
+     * @param note
+     * @param modifyUserId
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/updateStatus")
+    public Result<Object> updateStatusAndNoteAndModifyUserAndModifyDateById(Integer statusId, String note, String modifyUserId, Long id){
+        workLoggingService.updateStatusAndNoteAndModifyUserAndModifyDateById(statusId, note, modifyUserId, id);
+        return ResultUtil.success();
     }
 }

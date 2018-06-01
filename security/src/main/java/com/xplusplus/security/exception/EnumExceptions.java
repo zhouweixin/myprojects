@@ -35,9 +35,8 @@ public enum EnumExceptions {
 	ADD_FAILED_EXIST(24, "新增失败, 已存在"),
 	ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST(25, "新增失败,考勤组不存在"),
     ADD_FAILED_LATETYPE_NOT_EXIST(26, "新增失败, 迟到类型不存在"),
-    ADD_FAILED_TIME_NOT_CORRECT(27,"新增失败，时间先后不正确")
-
-	;
+    ADD_FAILED_TIME_NOT_CORRECT(27,"新增失败，时间先后不正确"),
+	ADD_FAILED_ATTENDANCEGROUPLEADER_NOT_EXIST(28,"新增失败,考勤组负责人不存在");
 
 	/** 编码 */
 	private Integer code;

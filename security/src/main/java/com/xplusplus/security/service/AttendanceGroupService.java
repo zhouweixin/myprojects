@@ -44,22 +44,25 @@ public class AttendanceGroupService {
                 attendanceGroupRepository.findOne(attendanceGroup.getId()) != null)) {
             throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);
         }
+
         //验证是否存在班次
         if (attendanceGroup.getSchedule() == null ||
-                scheduleRepository.findOne(attendanceGroup.getSchedule().getId())==null) {
+                scheduleRepository.findOne(attendanceGroup.getSchedule().getId())==null
+                ) {
             throw new SecurityExceptions(EnumExceptions.ADD_FAILED_SCHEDULE_NOT_EXIST);
         }
+        //先行保存
+        AttendanceGroup save = attendanceGroupRepository.save(attendanceGroup);
         //验证是否设定了外勤打卡
         /**
         if(attendanceGroup.getEnableOut()==null)
         { throw new SecurityExceptions(EnumExceptions.ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST);}
         **/
 
-        //先行保存
-        AttendanceGroup save = attendanceGroupRepository.save(attendanceGroup);
+
         //调用AttendanceGroupLeaderService新增负责人
-        attendanceGroupLeaderService.addLeadersToAttendanceGroup(attendanceGroup.getId(),leaderIds);
-        //调用UserService新增考勤员工
+       attendanceGroupLeaderService.addLeadersToAttendanceGroup(attendanceGroup.getId(),leaderIds);
+//        调用UserService新增考勤员工
         userService.assignUsersToAttendanceGroup(attendanceGroup.getId(),ids);
 
 

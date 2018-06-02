@@ -72,7 +72,7 @@ public class ScheduleService {
         if(attendanceGroupRepository.findFirstBySchedule(schedule)!=null){
             throw new SecurityExceptions(EnumExceptions.DELETE_FAILED_USED);
         }
-        /*验证是否被班次迟到类型使用  迟到类型还没有
+        /*验证是否被班次迟到类型使用
         ScheduleLateType scheduleLateType = new ScheduleLateType();
         scheduleLateType.setId(id);
         if(scheduleLateTypeRepository.findFirstByScheduleLateType(schedule)!=null){

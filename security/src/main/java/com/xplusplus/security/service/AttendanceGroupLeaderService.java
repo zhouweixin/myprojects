@@ -41,12 +41,12 @@ public class AttendanceGroupLeaderService {
     @Transactional
     public void addLeadersToAttendanceGroup(Integer attendanceGroupId, Set<String> leaderIds){
         // 判断考勤组是否存在
-        AttendanceGroup attendanceGroup = attendanceGroupRepository.findOne(attendanceGroupId);
-        if (attendanceGroup == null) {
+      AttendanceGroup attendanceGroup = attendanceGroupRepository.findOne(attendanceGroupId);
+       if (attendanceGroup == null) {
             throw new SecurityExceptions(EnumExceptions.ASSIGN_FAILED_ATTENDANCE_GROUP_NOT_EXIST);
         }
 
-        //删除已有的负责人关系
+       //删除已有的负责人关系
         attendanceGroupLeaderRepository.deleteByAttendanceGroup(attendanceGroup);
 
         List<AttendanceGroupLeader> attendanceGroupLeaders = new ArrayList<AttendanceGroupLeader>();

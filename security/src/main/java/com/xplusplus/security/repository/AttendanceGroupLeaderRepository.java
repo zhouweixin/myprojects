@@ -17,7 +17,7 @@ public interface AttendanceGroupLeaderRepository extends JpaRepository<Attendanc
     /**
      * 通过考勤组删除
      */
-    AttendanceGroupLeader deleteByAttendanceGroup(AttendanceGroup attendanceGroup);
+     void deleteByAttendanceGroup(AttendanceGroup attendanceGroup);
     /**
      * 通过考勤组查找
      */

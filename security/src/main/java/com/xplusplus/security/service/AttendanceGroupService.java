@@ -14,7 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author：XudongHu
@@ -29,10 +31,15 @@ public class AttendanceGroupService {
     private ScheduleRepository scheduleRepository;
     @Autowired
     private AttendanceGroupLeaderRepository attendanceGroupLeaderRepository;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private AttendanceGroupLeaderService attendanceGroupLeaderService;
     /**
      * 新增考勤组
      */
-    public AttendanceGroup save(AttendanceGroup attendanceGroup){
+    @Transactional
+    public AttendanceGroup save(AttendanceGroup attendanceGroup, Set<String> ids,Set<String> leaderIds ){
         if (attendanceGroup == null || (attendanceGroup.getId() != null &&
                 attendanceGroupRepository.findOne(attendanceGroup.getId()) != null)) {
             throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);
@@ -43,17 +50,26 @@ public class AttendanceGroupService {
             throw new SecurityExceptions(EnumExceptions.ADD_FAILED_SCHEDULE_NOT_EXIST);
         }
         //验证是否设定了外勤打卡
-        //if(attendanceGroup.getEnableOut()==null)
-        //{ throw new SecurityExceptions(EnumExceptions.ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST);}
+        /**
+        if(attendanceGroup.getEnableOut()==null)
+        { throw new SecurityExceptions(EnumExceptions.ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST);}
+        **/
+
+        //先行保存
+        AttendanceGroup save = attendanceGroupRepository.save(attendanceGroup);
+        //调用AttendanceGroupLeaderService新增负责人
+        attendanceGroupLeaderService.addLeadersToAttendanceGroup(attendanceGroup.getId(),leaderIds);
+        //调用UserService新增考勤员工
+        userService.assignUsersToAttendanceGroup(attendanceGroup.getId(),ids);
 
 
-
-        return attendanceGroupRepository.save(attendanceGroup);
+        return save;
     }
     /**
      * 更新考勤组
      */
-    public AttendanceGroup update(AttendanceGroup attendanceGroup) {
+    @Transactional
+    public AttendanceGroup update(AttendanceGroup attendanceGroup,Set<String> ids,Set<String> leaderIds) {
 
         // 验证是否存在
         if (attendanceGroup == null || attendanceGroup.getId() == null ||
@@ -65,11 +81,19 @@ public class AttendanceGroupService {
                 scheduleRepository.findOne(attendanceGroup.getSchedule().getId())==null) {
             throw new SecurityExceptions(EnumExceptions.ADD_FAILED_SCHEDULE_NOT_EXIST);
         }
-        //验证是否设定了外勤打卡
-      //  if(attendanceGroup.getEnableOut()==null)
-       // { throw new SecurityExceptions(EnumExceptions.ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST);}
+        /**验证是否设定了外勤打卡
+        if(attendanceGroup.getEnableOut()==null)
+        { throw new SecurityExceptions(EnumExceptions.ADD_FAILED_ATTENDANCEGROUP_NOT_EXIST);}
+         **/
+        //先行保存
+        AttendanceGroup save = attendanceGroupRepository.save(attendanceGroup);
+        //调用AttendanceGroupleaderService新增负责人
+        attendanceGroupLeaderService.addLeadersToAttendanceGroup(attendanceGroup.getId(),leaderIds);
+        //调用UserService新增考勤员工
+        userService.assignUsersToAttendanceGroup(attendanceGroup.getId(),ids);
 
-        return attendanceGroupRepository.save(attendanceGroup);
+
+        return save;
     }
     /**
      * 删除考勤组
@@ -79,8 +103,9 @@ public class AttendanceGroupService {
         if(attendanceGroupRepository.findOne(id) == null){
             throw new SecurityExceptions(EnumExceptions.DELETE_FAILED_NOT_EXIST);
         }
-        //先删除 考勤关系负责人
+        //先删除 考勤负责人
         attendanceGroupLeaderRepository.deleteByAttendanceGroup(attendanceGroupRepository.getOne(id));
+        //再删除考勤组
         attendanceGroupRepository.delete(id);
     }
     /**
@@ -88,6 +113,19 @@ public class AttendanceGroupService {
      */
     public AttendanceGroup findOne(Integer id) {
         return attendanceGroupRepository.findOne(id);
+    }
+    /**
+     * 通过考勤组ID查询该考勤组员工
+     */
+    public List<User> findUser(Integer id){
+        User user = new User();
+        return userService.findByAttendanceGroup(attendanceGroupRepository.findOne(id));
+    }
+    /**
+     * 通过考勤组ID 查询该考勤组负责人
+     */
+    public List<AttendanceGroupLeader> findLeaders(Integer id){
+        return attendanceGroupLeaderService.findByAttendanceGroup(attendanceGroupRepository.findOne(id));
     }
 
     /**

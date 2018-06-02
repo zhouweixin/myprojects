@@ -2,7 +2,6 @@ package com.xplusplus.security.repository;
 
 import com.xplusplus.security.domain.AttendanceGroup;
 import com.xplusplus.security.domain.Schedule;
-import com.xplusplus.security.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,8 +24,5 @@ public interface AttendanceGroupRepository  extends JpaRepository<AttendanceGrou
      * 通过名称分页模糊查询
      */
     Page<AttendanceGroup> findByNameLike(String name, Pageable pageable);
-    /**
-     * 通过员工模糊分页查询
-     */
 
 }

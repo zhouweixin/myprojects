@@ -5,6 +5,8 @@ import com.xplusplus.security.domain.AttendanceGroupLeader;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author：XudongHu
  * @description: 不解释
@@ -13,7 +15,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AttendanceGroupLeaderRepository extends JpaRepository<AttendanceGroupLeader,Integer > {
     /**
-     * 通过外键考勤组删除
+     * 通过考勤组删除
      */
     AttendanceGroupLeader deleteByAttendanceGroup(AttendanceGroup attendanceGroup);
+    /**
+     * 通过考勤组查找
+     */
+    List<AttendanceGroupLeader> findByAttendanceGroup(AttendanceGroup attendanceGroup);
 }

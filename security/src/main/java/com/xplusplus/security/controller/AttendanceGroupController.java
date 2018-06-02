@@ -1,7 +1,10 @@
 package com.xplusplus.security.controller;
 
+import com.xplusplus.security.domain.AttendanceGroupLeader;
 import com.xplusplus.security.domain.Result;
 import com.xplusplus.security.domain.AttendanceGroup;
+import com.xplusplus.security.domain.User;
+import com.xplusplus.security.service.AttendanceGroupLeaderService;
 import com.xplusplus.security.service.AttendanceGroupService;
 import com.xplusplus.security.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author：XudongHu
@@ -25,25 +29,27 @@ public class AttendanceGroupController {
     @Autowired
     private AttendanceGroupService attendanceGroupService;
     /**
-     * 新增班次
+     * 新增考勤组
      */
     @RequestMapping(value = "/add")
-    public Result<AttendanceGroup> add(@Valid AttendanceGroup attendanceGroup, BindingResult bindingResult){
+    public Result<AttendanceGroup> add(@Valid AttendanceGroup attendanceGroup, BindingResult bindingResult,
+                                       Set<String> ids,Set<String> leaderIds){
 
         if(bindingResult.hasErrors()){
             return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage());
         }
-        return ResultUtil.success(attendanceGroupService.save(attendanceGroup));
+        return ResultUtil.success(attendanceGroupService.save(attendanceGroup,ids,leaderIds));
     }
     /**
      * 更新
      */
     @RequestMapping(value = "/update")
-    public Result<AttendanceGroup> update(@Valid AttendanceGroup attendanceGroup, BindingResult bindingResult){
+    public Result<AttendanceGroup> update(@Valid AttendanceGroup attendanceGroup, BindingResult bindingResult,
+                                          Set<String> ids,Set<String> leaderIds){
         if(bindingResult.hasErrors()){
             return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage());
         }
-        return ResultUtil.success(attendanceGroupService.update(attendanceGroup));
+        return ResultUtil.success(attendanceGroupService.update(attendanceGroup,ids,leaderIds));
     }
 
     /**
@@ -62,6 +68,22 @@ public class AttendanceGroupController {
     @RequestMapping(value = "/getById")
     public Result<AttendanceGroup> getById(Integer id) {
         return ResultUtil.success(attendanceGroupService.findOne(id));
+    }
+
+    /**
+     * 查询考勤组员工
+     */
+    @RequestMapping(value="/getUsers")
+    public Result<List<User>> findUser(Integer id){
+        return ResultUtil.success(attendanceGroupService.findUser(id));
+    }
+
+    /**
+     * 查询考勤组负责人
+     */
+    @RequestMapping(value="/getLeaders")
+    public Result<List<AttendanceGroupLeader>> findLeader(Integer id){
+        return ResultUtil.success(attendanceGroupService.findLeaders(id));
     }
 
     /**
@@ -96,4 +118,5 @@ public class AttendanceGroupController {
 
         return ResultUtil.success(attendanceGroupService.findByNameLikeByPage(name, page, size, sortFieldName, asc));
     }
+
 }

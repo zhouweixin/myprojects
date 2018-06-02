@@ -10,13 +10,13 @@ import com.xplusplus.security.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author：XudongHu
@@ -33,23 +33,23 @@ public class AttendanceGroupController {
      */
     @RequestMapping(value = "/add")
     public Result<AttendanceGroup> add(@Valid AttendanceGroup attendanceGroup, BindingResult bindingResult,
-                                       Set<String> ids,Set<String> leaderIds){
+                                       String[] ids, String[] leaderIds){
 
         if(bindingResult.hasErrors()){
             return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage());
         }
-        return ResultUtil.success(attendanceGroupService.save(attendanceGroup,ids,leaderIds));
+        return ResultUtil.success(attendanceGroupService.save(attendanceGroup, new HashSet<String>(Arrays.asList(ids)), new HashSet<String>(Arrays.asList(leaderIds))));
     }
     /**
      * 更新
      */
     @RequestMapping(value = "/update")
     public Result<AttendanceGroup> update(@Valid AttendanceGroup attendanceGroup, BindingResult bindingResult,
-                                          Set<String> ids,Set<String> leaderIds){
+                                        String[] ids, String[] leaderIds ){
         if(bindingResult.hasErrors()){
             return ResultUtil.error(bindingResult.getFieldError().getDefaultMessage());
         }
-        return ResultUtil.success(attendanceGroupService.update(attendanceGroup,ids,leaderIds));
+        return ResultUtil.success(attendanceGroupService.update(attendanceGroup,new HashSet<String>(Arrays.asList(ids)), new HashSet<String>(Arrays.asList(leaderIds))));
     }
 
     /**

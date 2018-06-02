@@ -39,7 +39,7 @@ public class AttendanceGroupService {
      * 新增考勤组
      */
     @Transactional
-    public AttendanceGroup save(AttendanceGroup attendanceGroup, Set<String> ids,Set<String> leaderIds ){
+    public AttendanceGroup save(AttendanceGroup attendanceGroup, Set<String> ids, Set<String> leaderIds){
         if (attendanceGroup == null || (attendanceGroup.getId() != null &&
                 attendanceGroupRepository.findOne(attendanceGroup.getId()) != null)) {
             throw new SecurityExceptions(EnumExceptions.ADD_FAILED_DUPLICATE);
@@ -69,7 +69,7 @@ public class AttendanceGroupService {
      * 更新考勤组
      */
     @Transactional
-    public AttendanceGroup update(AttendanceGroup attendanceGroup,Set<String> ids,Set<String> leaderIds) {
+    public AttendanceGroup update(AttendanceGroup attendanceGroup,Set<String> ids, Set<String> leaderIds) {
 
         // 验证是否存在
         if (attendanceGroup == null || attendanceGroup.getId() == null ||
@@ -118,7 +118,6 @@ public class AttendanceGroupService {
      * 通过考勤组ID查询该考勤组员工
      */
     public List<User> findUser(Integer id){
-        User user = new User();
         return userService.findByAttendanceGroup(attendanceGroupRepository.findOne(id));
     }
     /**

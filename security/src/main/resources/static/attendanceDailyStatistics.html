@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/attendanceClassManager.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/attendanceClassManager.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    $(":checkbox").change(function(){
+        var index = $(this).attr('data-column')-1;
+        $('tr').find('td:eq('+index+')').toggle();
+    });
+        });
+    </script>
+    <script>
+        var idTmr;
+        function  getExplorer() {
+            var explorer = window.navigator.userAgent ;
+            //ie
+            if (explorer.indexOf("MSIE") >= 0) {
+                return 'ie';
+            }
+            //firefox
+            else if (explorer.indexOf("Firefox") >= 0) {
+                return 'Firefox';
+            }
+            //Chrome
+            else if(explorer.indexOf("Chrome") >= 0){
+                return 'Chrome';
+            }
+            //Opera
+            else if(explorer.indexOf("Opera") >= 0){
+                return 'Opera';
+            }
+            //Safari
+            else if(explorer.indexOf("Safari") >= 0){
+                return 'Safari';
+            }
+        }
+        function method5(tableid) {
+            if(getExplorer()=='ie')
+            {
+                var curTbl = document.getElementById(tableid);
+                var oXL = new ActiveXObject("Excel.Application");
+                var oWB = oXL.Workbooks.Add();
+                var xlsheet = oWB.Worksheets(1);
+                var sel = document.body.createTextRange();
+                sel.moveToElementText(curTbl);
+                sel.select();
+                sel.execCommand("Copy");
+                xlsheet.Paste();
+                oXL.Visible = true;
+
+                try {
+                    var fname = oXL.Application.GetSaveAsFilename("Excel", "Excel Spreadsheets (*.xls), *.xls");
+                } catch (e) {
+                    print("Nested catch caught " + e);
+                } finally {
+                    oWB.SaveAs(fname);
+                    oWB.Close(savechanges = false);
+                    oXL.Quit();
+                    oXL = null;
+                    idTmr = window.setInterval("Cleanup();", 1);
+                }
+
+            }
+            else
+            {
+                tableToExcel(tableid)
+            }
+        }
+        function Cleanup() {
+            window.clearInterval(idTmr);
+            CollectGarbage();
+        }
+        var tableToExcel = (function() {
+            var uri = 'data:application/vnd.ms-excel;base64,',
+                    template = '<html><head><meta charset="UTF-8"></head><body><table>{table}</table></body></html>',
+                    base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
+                    format = function(s, c) {
+                        return s.replace(/{(\w+)}/g,
+                                function(m, p) { return c[p]; }) }
+            return function(table, name) {
+                if (!table.nodeType) table = document.getElementById(table)
+                var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+                window.location.href = uri + base64(format(template, ctx))
+            }
+        })()
+    </script>
+    
+    <style type="text/css" rel="style">
+    .leftside{
+        width:30%;
+        float:left;
+    }
+    .rightside{
+        width:25%;
+        float:right;
+    }
+    .showcolum{
+    margin-top: 6px;
+    }
+    .mytable{
+    margin-top: 20px;
+
+    }
+    .mytable table th{
+    text-align: center;
+    color: #666;
+    }
+    .mytable table tr{
+    text-align: center;
+    }
+    .tip1{
+    padding:5px;
+    width:6%;
+    height:60px;
+    float:left;
+    }
+    .cb_content1{
+    padding:5px;
+    width:94%;
+    height:60px;
+
+     float:right;
+    }
+    .tip2{
+    padding:5px;
+    width:6%;
+    height:35px;
+    float:left;
+    }
+    .cb_content2{
+    padding:5px;
+    width:34%;
+    height:35px;
+    }
+    .cb_content3{
+    padding:5px;
+    width:60%;
+    height:35px;
+    
+     float:right;
+    }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="personnelList.html">人事</a></li>
+                <li class="active"><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="" class="container-fluid  main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a href="attendanceHomePage.html" class="menu-link">
+                    <img src="imgs/task.png">
+                    <div>考勤首页</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush_fill.png">
+                    <div>考勤设置    <span class="glyphicon glyphicon-triangle-bottom"></span></div>
+                </a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-li">
+                        <a href="attendanceGroupManager.html" class="sub-menu-link">
+                            考勤组管理
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceClassManager.html" class="sub-menu-link">
+                            班次管理
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceJiaBan.html" class="sub-menu-link">
+                            加班规则
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush.png">
+                    <div>考勤统计    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="attendanceMonthSummary.html" class="sub-menu-link">
+                            月度汇总
+                        </a>
+                    </li>
+                    <li class="sub-menu-li  sub-li-active">
+                        <a class="sub-menu-link">
+                            每日统计
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendancePunchTime.html" class="sub-menu-link">
+                            打卡时间
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceOriginalRecord.html" class="sub-menu-link">
+                            原始记录
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-panel">
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>每日统计</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-body-content">
+            <div class="top-body" style="margin-top: 10px">
+                <div class="showcolum" >
+                    <div>
+                    <div class="tip1">
+                        展示列：
+                    </div>
+                    <div class="cb_content1">
+                    <form> 
+                    <label>
+                    <input data-column="1" type="checkbox"  checked="checked"> 汇总每日考勤记&nbsp;&nbsp;</label>
+                    <a href="https://csmobile.alipay.com/detailSolution.htm?questionId=201602131602&knowledgeType=3"><img src="imgs/help.png" width="20px"></a>
+                    <label>
+                    <input data-column="2" type="checkbox"  checked="checked"> 出勤班次&nbsp;&nbsp;</label>
+                    </form>
+
+                   </div>
+               </div>
+               <div>
+                    <div class="tip2">
+                        时间：
+                    </div>
+                    <div class="cb_content2">
+                    <input type="date" value="2018-06-1"/>&nbsp;至<input type="date" value="2018-06-2"/>
+                   </div>
+                   <div class="cb_content3">
+                    部门/人员：
+                    <button class="btn btn-default" data-toggle="modal" data-target="#mymodal" type="button">全公司&nbsp;<img src="imgs/list.png" width="18px" height="18px"></button>
+                    <label>
+                    <input type="checkbox">&nbsp;离职员工（保留员工）</label>
+                    </div>
+               </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+            <hr/>
+            </div>
+
+            <div>
+                <div class="leftside">
+                        <div class="col-xs-4">
+                      <button class="btn btn-default" type="button" onclick="method5('tableExcel')" >
+                           导出报表
+                        </button> 
+                        </div>
+                    </div>
+                    <div class="rightside">
+                        <span><a>查看教学视频</a></span><span>|<a>下载说明手册</a></span>
+                    </div>
+            </div>
+
+            <div class="mytable">
+                <table id="tableExcel" class="table table-bordered">
+                    <tr class="table-tr">
+                        <td rowspan=2>姓名</td>
+                        <td rowspan=2>部门</td>
+                        <td rowspan=2>工号</td>
+                        <td rowspan=2>职位</td>
+                        <td rowspan=2>日期</td>
+                        <td rowspan=2>班次</td>
+                        <td colspan=2>上班1</td>
+                        <td colspan=2>下班1</td>
+                        <td colspan=2>上班2</td>
+                        <td colspan=2>下班2</td>
+                        <td rowspan=2>关联的审批单</td>
+                        <td rowspan=2>出勤天数</td>
+                        <td rowspan=2>出勤班次</td>
+                        <td rowspan=2>出勤班次</td>
+                        <td rowspan=2>休息天数</td>
+                        <td rowspan=2>工作时长（分钟）</td>
+                        <td rowspan=2>迟到次数</td>
+                        <td rowspan=2>迟到时长（分钟）</td>
+                        <td rowspan=2>严重迟到次数</td>
+                        <td rowspan=2>严重迟到时长（分钟）</td>
+                        <td rowspan=2>旷工迟到次数</td>
+                        <td rowspan=2>早退次数</td>
+                        <td rowspan=2>早退时长（分钟）</td>
+                        <td rowspan=2>上班缺卡次数</td>
+                        <td rowspan=2>下班缺卡次数</td>
+                        <td rowspan=2>旷工天数</td>
+                        <td rowspan=2>工作日加班（小时）</td>
+                        <td rowspan=2>休息日加班（小时）</td>
+                        <td rowspan=2>节假日加班（小时）</td>
+                    </tr>
+                    <tr>
+                        <td>打卡时间</td>
+                        <td>打卡结果</td>
+                        <td>打卡时间</td>
+                        <td>打卡结果</td>
+                        <td>打卡时间</td>
+                        <td>打卡结果</td>
+                        <td>打卡时间</td>
+                        <td>打卡结果</td>
+                    </tr>
+                    <tr >
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td>32</td>
+                        <td>33</td>
+                    </tr>
+                    <tr >
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td>32</td>
+                        <td>33</td>
+                    </tr>
+                    <tr >
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td>32</td>
+                        <td>33</td>
+                    </tr>
+                </table>
+
+            </div>  
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">选择部门与人员</h4>
+            </div>
+
+            <div class="modal-body" style="padding: 15px 20px;font-size: 12px">
+                <form class="form-horizontal">  
+                    <div class="form-group">
+                       <table width='500' border='1' cellpadding='0' cellspacing='0'>
+                        <tr>
+                        <td width='45%' align="center"><select id='source' multiple="multiple" style="width:40%; height:100%" ondblclick="MoveTo(this.selectedIndex)">
+                        <option value='1'>Item1</option>
+                        <option value='2'>Item2</option>
+                        <option value='3'>Item3</option>
+                        <option value='4'>Item4</option>
+                        <option value='5'>Item5</option>
+                        <option value='6'>Item6</option>
+                        </select></td>
+                        <td width='10%' align="center"><input type="button" value=">>" onclick="MoveTo()" /><br /><input type="button" value="<<" onclick="MoveBack()" /></td>
+                        <td width='45%'><select id='distinct' ondblclick="MoveBack(this.selectedIndex)" style="width:40%; height:100%" multiple="multiple" align="center"></select></td>
+                        </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div >
+</body>
+</html>

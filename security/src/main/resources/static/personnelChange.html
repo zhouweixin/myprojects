@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/personnelChange.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/personnelChange.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="personnelManager.html">人事</a></li>
+                <li><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>人事分析</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush_fill.png">
+                    <div>员工管理    <span class="glyphicon glyphicon-triangle-bottom"></span></div>
+                </a>
+                <ul class="sub-menu ">
+                    <li class="sub-menu-li">
+                        <a href="personnelList.html" class="sub-menu-link">
+                            员工列表
+                        </a>
+                    </li>
+                    <li class="sub-menu-li sub-li-active">
+                        <a href="personnelChange.html" class="sub-menu-link">
+                            人事异动
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelEmployeesLeave.html" class="sub-menu-link">
+                            离职员工
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChangeCard.html" class="sub-menu-link">
+                            员工换卡
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/createtask.png">
+                    <div>合同管理    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="personnelContract.html" class="sub-menu-link">
+                            人员合同
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="projectContract.html" class="sub-menu-link">
+                            项目合同
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="" class="right-panel">
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>人事异动</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-body-content">
+            <div class="top-body" style="margin-top: 30px">
+                <div class="search-content" style="height: 34px;">
+                    <div class="search-left">
+                        <div class="dropdown select-department">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                选择部门
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu select-department-ul" aria-labelledby="dropdownMenu1">
+                                <li><a>保安部</a></li>
+                                <li><a>财务部</a></li>
+                                <li><a>后勤部</a></li>
+                                <li><a>人才部</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown select-changeCondition" style="margin-left: 3px">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                异动类型
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu select-changeCondition-ul" aria-labelledby="dropdownMenu2">
+                                <li><a>人事调整</a></li>
+                                <li><a>转正</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown select-changeState" style="margin-left: 3px">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                异动状态
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu select-changeState-ul" aria-labelledby="dropdownMenu3">
+                                <li><a>待执行</a></li>
+                                <li><a>已执行</a></li>
+                                <li><a>已撤销</a></li>
+                            </ul>
+                        </div>
+                        <div style="display: inline-block;float: left;margin-left: 3px" class="input-group">
+                            <input id="getFirstDate" class="select-date" type="date">
+                        </div>
+                        <div style="display: inline-block;float: left;margin-right: 3px"class="input-group">
+                            <label for="getSecondDate" style="font-weight: normal">至</label>
+                            <input id="getSecondDate" class="select-date" type="date">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="按姓名或手机号搜索">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">搜索</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="search-right">
+                        <div class="dropdown add-change">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                添加异动
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu add-change-ul" aria-labelledby="dropdownMenu4" style="min-width: 96px">
+                                <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal-change" style="width: 100%;border: none">人事调整</button></li>
+                                <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal-conversion" style="width: 100%; border: none">转正</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-body">
+                <table class="table table-bordered">
+                    <thead style="background-color: #F9FAFB">
+                    <tr>
+                        <th>姓名</th>
+                        <th>异动类型</th>
+                        <th>调整内容</th>
+                        <th>操作人</th>
+                        <th>生效日期</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-tr">
+                        <td class="staff-name">1</td>
+                        <td class="staff-number">2</td>
+                        <td class="staff-phone">3</td>
+                        <td class="staff-job">4</td>
+                        <td class="staff-date">5</td>
+                        <td class="staff-operating">
+                            <div class="dropdown select-department btn-group">
+                                <button class="btn btn-default dropdown-before">详情</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a href="#">离职</a></li>
+                                    <li><a href="#">删除</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td class="staff-name">1</td>
+                        <td class="staff-number">2</td>
+                        <td class="staff-phone">3</td>
+                        <td class="staff-job">4</td>
+                        <td class="staff-date">5</td>
+                        <td class="staff-operating">
+                            <div class="dropdown select-department btn-group">
+                                <button class="btn btn-default dropdown-before">详情</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a href="#">离职</a></li>
+                                    <li><a href="#">删除</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td class="staff-name">1</td>
+                        <td class="staff-number">2</td>
+                        <td class="staff-phone">3</td>
+                        <td class="staff-job">4</td>
+                        <td class="staff-date">5</td>
+                        <td class="staff-operating">
+                            <div class="dropdown select-department btn-group">
+                                <button class="btn btn-default dropdown-before">详情</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a href="#">离职</a></li>
+                                    <li><a href="#">删除</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td class="staff-name">1</td>
+                        <td class="staff-number">2</td>
+                        <td class="staff-phone">3</td>
+                        <td class="staff-job">4</td>
+                        <td class="staff-date">5</td>
+                        <td class="staff-operating">
+                            <div class="dropdown select-department btn-group">
+                                <button class="btn btn-default dropdown-before">详情</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a href="#">离职</a></li>
+                                    <li><a href="#">删除</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td class="staff-name">1</td>
+                        <td class="staff-number">2</td>
+                        <td class="staff-phone">3</td>
+                        <td class="staff-job">4</td>
+                        <td class="staff-date">5</td>
+                        <td class="staff-operating">
+                            <div class="dropdown select-department btn-group">
+                                <button class="btn btn-default dropdown-before">详情</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a href="#">离职</a></li>
+                                    <li><a href="#">删除</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td class="staff-name">1</td>
+                        <td class="staff-number">2</td>
+                        <td class="staff-phone">3</td>
+                        <td class="staff-job">4</td>
+                        <td class="staff-date">5</td>
+                        <td class="staff-operating">
+                            <div class="dropdown select-department btn-group">
+                                <button class="btn btn-default dropdown-before">详情</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a href="#">离职</a></li>
+                                    <li><a href="#">删除</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="page-body">
+                <ul class="page-ul">
+                    <li class="page-ul-li">
+                        <div class="input-group" style="width: 110px">
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                        </div>
+                    </li>
+                    <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                    <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                    <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-change" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">人事调整</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-staffName" class="col-xs-2 control-label">姓名</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-staffName" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-staffNumber" class="col-xs-2 control-label">编号</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-staffNumber" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-changeDepartment" class="col-xs-2 control-label">调整部门</label>
+                        <div class="col-xs-9">
+                            <div class="dropdown input-group">
+                                <input id="modal-changeDepartment" type="text" class="form-control" placeholder="请选择调整部门">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-changeDepartment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu changeDepartment-menu-ul" aria-labelledby="select-changeDepartment">
+                                        <li><a>保安部</a></li>
+                                        <li><a>人才部</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-changePosition" class="col-xs-2 control-label">调整职位</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-changePosition" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-changeJob" class="col-xs-2 control-label">调整岗位</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-changeJob" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-startDate" class="col-xs-2 control-label">生效时间</label>
+                        <div class="col-xs-9">
+                            <input type="date" class="form-control" id="modal-startDate" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-conversion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel-conversion">转正</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-staffName" class="col-xs-2 control-label">姓名</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-conversionStaffName" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-staffNumber" class="col-xs-2 control-label">编号</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-conversionStaffNumber" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-planConversionDate" class="col-xs-2 control-label">计划转正时间</label>
+                        <div class="col-xs-9">
+                            <input type="date" class="form-control" id="modal-planConversionDate" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-actualConversionDate" class="col-xs-2 control-label">实际转正时间</label>
+                        <div class="col-xs-9">
+                            <input type="date" class="form-control" id="modal-actualConversionDate" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-conversionComments" class="col-xs-2 control-label">转正评述</label>
+                        <div class="col-xs-9">
+                            <textarea class="form-control" id="modal-conversionComments" style="height: 90px"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

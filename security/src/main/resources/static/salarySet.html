@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/salarySet.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="personnelList.html">人事</a></li>
+                <li><a href="attendanceManagement.html">考勤</a></li>
+                <li class="active"><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="" class="container-fluid main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li ">
+                <a class="menu-link"  href="salaryManagement.html">
+                    <img src="imgs/addressbook.png">
+                    <div>薪资方案</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li li-active">
+                <a class="menu-link" href="salarySet.html">
+                    <img src="imgs/addressbook_fill.png">
+                    <div>薪资设置</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link" href="salaryQuery.html">
+                    <img src="imgs/addressbook.png">
+                    <div>工资查看</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link" href="salaryExamine.html">
+                    <img src="imgs/addressbook.png">
+                    <div>当月工资审核</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li ">
+                <a class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>薪资报表</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="right-panel">
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>薪资设置</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-body-content">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#salaryGroup-panel" aria-controls="salaryGroup-panel" role="tab" data-toggle="tab">薪资组</a></li>
+                <li role="presentation"><a href="#staffSalaryScheme-panel" aria-controls="staffSalaryScheme-panel" role="tab" data-toggle="tab">员工薪资方案</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="salaryGroup-panel">
+                    <div class="top-body" style="margin-top: 30px">
+                        <div class="search-content" style="height: 34px;">
+                            <div class="search-left">
+                                <div class="input-group col-xs-5">
+                                    <input type="text" id="salaryGroup-userName" class="form-control" placeholder="按考勤组名称搜索">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" onclick="getInformationByParameters()">搜索</button>
+                                        <button class="btn btn-default" type="button" onclick="getAllContractInformation()">搜索全部</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="search-right">
+                                <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal-addSalaryGroup">
+                                    添加薪资组
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table class="table table-bordered">
+                            <thead style="background-color: #F9FAFB">
+                            <tr>
+                                <th><input id="select-all" class="select-box" type="checkbox">薪资组名称</th>
+                                <th>薪资组人数</th>
+                                <th>操作<a class="deleteDepartmentInBatch-button" onclick="deleteStaffInBatch()">批量删除</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-tr">
+                                <td class="salaryGroup-name tbody-td-id"></td>
+                                <td class="salaryGroup-staffNumber"></td>
+                                <td class="operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-changeSalaryGroup">编辑</a>
+                                    <a >删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-body">
+                        <ul class="page-ul">
+                            <li class="page-ul-li">
+                                <div class="input-group" style="width: 110px">
+                                    <input type="text" class="form-control" placeholder="">
+                                    <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                                </div>
+                            </li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                            <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="staffSalaryScheme-panel">
+                    <div class="top-body" style="margin-top: 30px">
+                        <div class="search-content" style="height: 34px;">
+                            <div class="search-left">
+
+                            </div>
+                            <div class="search-right">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table class="table table-bordered">
+                            <thead style="background-color: #F9FAFB">
+                            <tr>
+                                <th><input id="select-all" class="select-box" type="checkbox">员工编号</th>
+                                <th>员工姓名</th>
+                                <th>员工部门</th>
+                                <th>员工角色</th>
+                                <th>工作性质</th>
+                                <th>薪资方案</th>
+                                <th>操作<a class="deleteDepartmentInBatch-button" onclick="deleteStaffInBatch()">批量删除</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-tr">
+                                <td class="staff-id tbody-td-id"></td>
+                                <td class="staff-name"></td>
+                                <td class="staff-department"></td>
+                                <td class="staff-role"></td>
+                                <td class="staff-jobNature"></td>
+                                <td class="staff-salaryScheme"></td>
+                                <td class="operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-selectSalaryScheme">编辑</a>
+                                    <a >删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-body">
+                        <ul class="page-ul">
+                            <li class="page-ul-li">
+                                <div class="input-group" style="width: 110px">
+                                    <input type="text" class="form-control" placeholder="">
+                                    <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                                </div>
+                            </li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                            <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-selectSalaryScheme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">选择薪资方案</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px;font-size: 14px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-staffID" class="col-xs-3 control-label">员工编号</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-staffID" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-staffName" class="col-xs-3 control-label">员工姓名</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-staffName" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">薪资方案：</label>
+                        <div class="col-xs-7">
+                            <div class="dropdown input-group">
+                                <input id="modal-salaryScheme" type="text" class="form-control" placeholder="请选择">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-salaryScheme" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu salaryScheme-menu-ul" aria-labelledby="select-salaryScheme">
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-addSalaryGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加薪资组</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px;font-size: 14px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-addSalaryGroupName" class="col-xs-3 control-label"><span>*</span>薪资组名称</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-addSalaryGroupName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-addSalaryGroupScheme" class="col-xs-3 control-label"><span>*</span>薪资组方案</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-addSalaryGroupScheme" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-xs-3 control-label"><span>*</span>选择薪资组人员</label>
+                        <div class="col-xs-7">
+                            <button class="btn btn-default" data-toggle="modal" data-target="#myModal-selectStaff" type="button">选择人员</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-changeSalaryGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改薪资组</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px;font-size: 14px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-changeSalaryGroupName" class="col-xs-3 control-label"><span>*</span>薪资组名称</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-changeSalaryGroupID">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-changeSalaryGroupName" class="col-xs-3 control-label"><span>*</span>薪资组名称</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-changeSalaryGroupName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-changeSalaryGroupScheme" class="col-xs-3 control-label"><span>*</span>薪资组方案</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-changeSalaryGroupScheme" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-xs-3 control-label"><span>*</span>选择薪资组人员</label>
+                        <div class="col-xs-7">
+                            <button class="btn btn-default" data-toggle="modal" data-target="#myModal-selectStaff" type="button">选择人员</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-selectStaff" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">选择薪资方案</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px;font-size: 14px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        列表的形式列出部门和下面的人员
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

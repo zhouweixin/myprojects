@@ -1,0 +1,49 @@
+.nav-path{
+    font-size: 16px;
+    padding: 18px 16px 14px 16px;
+    border-bottom: 1px solid #DCDDDE;
+}
+.path-ul{
+    display: inline-block;
+    vertical-align: middle;
+}
+.path-title:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 3px;
+    height: 18px;
+    margin-right: 10px;
+    background-color: #222222;
+}
+*:before{
+    box-sizing: border-box;
+}
+.main-body-content{
+    padding: 16px 12px;
+}
+.search-left{
+    width: 930px;
+    float: left;
+}
+.search-left .dropdown{
+    float:left;
+}
+.select-date{
+    height: 34px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+}
+.search-right{
+    float: right;
+}
+.table-body{
+    margin-top: 20px;
+}
+.table-body table th{
+    text-align: center;
+    color: #666;
+}
+.table-body table tr{
+     text-align: center;
+ }

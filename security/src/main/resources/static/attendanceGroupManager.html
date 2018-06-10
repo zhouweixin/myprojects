@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/attendanceClassManager.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/attendanceClassManager.js"></script>
+    <script type="text/javascript">
+var o;
+function MoveTo(index)
+{
+  if (index!=undefined)
+  {
+    o=source.options[index]; 
+    distinct.options.add(new Option(o.text,o.value));
+    source.remove(index);
+  }
+  else
+  {
+    for(var i=0;i<source.options.length;)//²»ÒªÔÚÕâÀï¿ØÖÆiµÄÔö³¤£¬ÒòÎªÓÐ¿ÉÄÜÉ¾³ýÁËoption
+    {
+      if(source.options[i].selected)
+      {
+         o=source.options[i];
+         distinct.options.add(new Option(o.text,o.value));
+         source.options.remove(i);
+         i=0;
+      }
+      else
+       i++;
+    }
+  }
+}
+function MoveBack(index)
+{
+  if (index!=undefined)
+  {
+    o=distinct.options[index];
+    source.options.add(new Option(o.text,o.value));
+    distinct.remove(index);   
+  }
+  else
+  {
+    for(var i=0;i<distinct.options.length;)
+    {
+      if(distinct.options[i].selected)
+      {
+         o=distinct.options[i];
+         source.options.add(new Option(o.text,o.value));
+         distinct.options.remove(i);
+         i=0;
+      }
+      else
+        i++;
+    }
+  }
+}
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="personnelList.html">人事</a></li>
+                <li class="active"><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="" class="container-fluid  main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a href="attendanceHomePage.html" class="menu-link">
+                    <img src="imgs/task.png">
+                    <div>考勤首页</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush_fill.png">
+                    <div>考勤设置    <span class="glyphicon glyphicon-triangle-bottom"></span></div>
+                </a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-li sub-li-active">
+                        <a class="sub-menu-link">
+                            考勤组管理
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceClassManager.html" class="sub-menu-link">
+                            班次管理
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceJiaBan.html" class="sub-menu-link">
+                            加班规则
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush.png">
+                    <div>考勤统计    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="attendanceMonthSummary.html" class="sub-menu-link">
+                            月度汇总
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceDailyStatistics.html" class="sub-menu-link">
+                            每日统计
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendancePunchTime.html" class="sub-menu-link">
+                            打卡时间
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceOriginalRecord.html" class="sub-menu-link">
+                            原始记录
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-panel">
+
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>考勤组管理</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-body-content">
+
+            <div class="top-body" style="margin-top: 30px">
+                <div class="search-content" style="height: 34px;">
+                    <div class="search-left">
+                        <div class="input-group col-xs-4">
+                            <input type="text" class="form-control" placeholder="请输入考勤组名称">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">搜索</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="search-right">
+                        <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal-addClass">
+                            添加考勤组
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-body">
+                <table class="table table-bordered">
+                    <thead style="background-color: #F9FAFB">
+                    <tr>
+                        <th>考勤组名称</th>
+                        <th>人数</th>
+                        <th>考勤时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-tr">
+                        <td class="staff-name">1</td>
+                        <td class="#">2</td>
+                        <td class="staff-number">3</td>
+                        <td class="staff-operating">
+                            <text>编辑排班 |</text>
+                            <a class="edit-a">修改规则</a>
+                            <a >删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="page-body">
+                <ul class="page-ul">
+                    <li class="page-ul-li">
+                        <div class="input-group" style="width: 110px">
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                        </div>
+                    </li>
+                    <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                    <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                    <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="myModal-addClass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加考勤组</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px;font-size: 12px">
+                <form class="form-horizontal">
+                    
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">考勤组名称</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" id="modal-className" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">参与考勤人员</label>
+                        <div class="col-xs-4">
+                        <button class="btn btn-default" data-toggle="modal" data-target="#modal1" type="button" >请选择</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">无需考勤人员</label>
+                        <div class="col-xs-4">
+                        <button class="btn btn-default" data-toggle="modal" data-target="#modal2" type="button">请选择</button>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">考勤组负责人</label>
+                        <div class="col-xs-4">
+                        <button class="btn btn-default" data-toggle="modal" data-target="#modal2" type="button">请选择</button>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                        <label class="col-xs-3 control-label">工作日设置</label>
+                        <div class="col-xs-9" >
+                            <span>快捷设置班次：休息 <a>更改班次</a></span>
+                        </div>
+                        </div>   
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label"></label>
+                        <div class="col-xs-8" style="border:1px solid #F2F2F2">
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>工作日</th>
+                                    <th>班次时间段</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>周一</td>
+                                    <td>休息</td>
+                                    <td><a>更改班次</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>周二</td>
+                                    <td>休息</td>
+                                    <td><a>更改班次</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>周三</td>
+                                    <td>休息</td>
+                                    <td><a>更改班次</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>周四</td>
+                                    <td>休息</td>
+                                    <td><a>更改班次</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>周五</td>
+                                    <td>休息</td>
+                                    <td><a>更改班次</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>周六</td>
+                                    <td>休息</td>
+                                    <td><a>更改班次</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>周日</td>
+                                    <td>休息</td>
+                                    <td><a>更改班次</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                        <label class="col-xs-3 control-label">考勤方式</label>
+                        <div class="col-xs-9" >
+                            <span>根据办公地点考勤（可添加多个考勤地点）有效范围
+                                <form>
+                                    <select>
+                                        <option>100米</option>
+                                        <option>200米</option>
+                                        <option selected="selected">300米</option>
+                                        <option>400米</option>
+                                        <option>500米</option>
+                                        <option>600米</option>
+                                        <option>700米</option>
+                                        <option>800米</option>
+                                        <option>900米</option>
+                                        <option>1000米</option>
+                                        <option>2000米</option>
+                                        <option>3000米</option>
+                                    </select>
+                                <form>
+                            </span>
+                        </div>
+                        </div>   
+                    </div>
+
+                     <div class="form-group">
+                        <label class="col-xs-3 control-label"></label>
+                        <div class="col-xs-8" style="border:1px solid #F2F2F2">
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>考勤地址</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>    
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label class="col-xs-3 control-label"></label>
+                        <div class="col-xs-9">
+                            <span>
+                                <a href="#">添加考勤地点</a>（查询地点的经纬度请使用高德地图<a href="http://lbs.amap.com/console/show/picker">查看</a>） 
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">加班规则</label>
+                        <div class="col-xs-4">
+                            <span>默认加班规则 <a>更改</a></span>
+                        </div>
+                    </div>
+   
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">选择部门与人员</h4>
+            </div>
+
+            <div class="modal-body" style="padding: 15px 20px;font-size: 12px">
+                <form class="form-horizontal">  
+                    <div class="form-group">
+                       <table width='500' border='1' cellpadding='0' cellspacing='0'>
+                        <tr>
+                        <td width='45%' align="center"><select id='source' multiple="multiple" style="width:40%; height:100%" ondblclick="MoveTo(this.selectedIndex)">
+                        <option value='1'>Item1</option>
+                        <option value='2'>Item2</option>
+                        <option value='3'>Item3</option>
+                        <option value='4'>Item4</option>
+                        <option value='5'>Item5</option>
+                        <option value='6'>Item6</option>
+                        </select></td>
+                        <td width='10%' align="center"><input type="button" value=">>" onclick="MoveTo()" /><br /><input type="button" value="<<" onclick="MoveBack()" /></td>
+                        <td width='45%'><select id='distinct' ondblclick="MoveBack(this.selectedIndex)" style="width:40%; height:100%" multiple="multiple" align="center"></select></td>
+                        </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div >
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">选择人员</h4>
+            </div>
+           <div class="modal-body" style="padding: 15px 20px;font-size: 12px">
+                <form class="form-horizontal">  
+                    <div class="form-group">
+                       <table width='500' border='1' cellpadding='0' cellspacing='0'>
+                        <tr>
+                        <td width='45%' align="center"><select id='source' multiple="multiple" style="width:40%; height:100%" ondblclick="MoveTo(this.selectedIndex)">
+                        <option value='1'>Item1</option>
+                        <option value='2'>Item2</option>
+                        <option value='3'>Item3</option>
+                        <option value='4'>Item4</option>
+                        <option value='5'>Item5</option>
+                        <option value='6'>Item6</option>
+                        </select></td>
+                        <td width='10%' align="center"><input type="button" value=">>" onclick="MoveTo()" /><br /><input type="button" value="<<" onclick="MoveBack()" /></td>
+                        <td width='45%'><select id='distinct' ondblclick="MoveBack(this.selectedIndex)" style="width:40%; height:100%" multiple="multiple" align="center"></select></td>
+                        </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div >
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">选择人员</h4>
+            </div>
+           <div class="modal-body" style="padding: 15px 20px;font-size: 12px">
+                <form class="form-horizontal">  
+                    <div class="form-group">
+                       <table width='500' border='1' cellpadding='0' cellspacing='0'>
+                        <tr>
+                        <td width='45%' align="center"><select id='source' multiple="multiple" style="width:40%; height:100%" ondblclick="MoveTo(this.selectedIndex)">
+                        <option value='1'>Item1</option>
+                        <option value='2'>Item2</option>
+                        <option value='3'>Item3</option>
+                        <option value='4'>Item4</option>
+                        <option value='5'>Item5</option>
+                        <option value='6'>Item6</option>
+                        </select></td>
+                        <td width='10%' align="center"><input type="button" value=">>" onclick="MoveTo()" /><br /><input type="button" value="<<" onclick="MoveBack()" /></td>
+                        <td width='45%'><select id='distinct' ondblclick="MoveBack(this.selectedIndex)" style="width:40%; height:100%" multiple="multiple" align="center"></select></td>
+                        </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div >
+
+
+</body>
+</html>

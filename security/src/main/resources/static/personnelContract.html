@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/personnelContract.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/personnelContract.js"></script>
+    <script src="js/global.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="personnelManager.html">人事</a></li>
+                <li><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>人事分析</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush.png">
+                    <div>员工管理    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="personnelList.html" class="sub-menu-link">
+                            员工列表
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChange.html" class="sub-menu-link">
+                            人事异动
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelEmployeesLeave.html" class="sub-menu-link">
+                            离职员工
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChangeCard.html" class="sub-menu-link">
+                            员工换卡
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/createtask_fill.png">
+                    <div>合同管理    <span class="glyphicon glyphicon-triangle-bottom"></span></div>
+                </a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-li sub-li-active">
+                        <a href="personnelContract.html" class="sub-menu-link">
+                            人员合同
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="projectContract.html" class="sub-menu-link">
+                            项目合同
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="" class="right-panel">
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>人员合同</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-body-content">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#alreadySigned-panel" aria-controls="alreadySigned-panel" role="tab" data-toggle="tab">已签订</a></li>
+                <li role="presentation"><a href="#dueDate-panel" aria-controls="dueDate-panel" role="tab" data-toggle="tab">即将到期</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="alreadySigned-panel">
+                    <div class="top-body">
+                        <div class="search-content" style="height: 34px;">
+                            <div class="search-left">
+                                <div class="dropdown select-department">
+                                    <button class="btn btn-default dropdown-toggle" type="button" value="" id="alreadySigned-department" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        选择部门
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu alreadySigned-department-ul" aria-labelledby="alreadySigned-department">
+                                        <li ><a value="">选择部门</a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown select-jobNature" style="margin-left: 3px">
+                                    <button class="btn btn-default dropdown-toggle" type="button" value="" id="alreadySigned-jobNature" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        员工类型
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu alreadySigned-jobNature-ul" aria-labelledby="alreadySigned-jobNature">
+                                        <li ><a value="">员工类型</a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown select-contractType" style="margin-left: 3px">
+                                    <button class="btn btn-default dropdown-toggle" type="button" value="" id="alreadySigned-contractType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        合同类型
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu alreadySigned-contractType-ul" aria-labelledby="alreadySigned-contractType">
+                                        <li ><a value="">合同类型</a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </div>
+                                <div style="display: inline-block;float: left;margin-left: 3px" class="input-group">
+                                    <input id="alreadySigned-startDate" class="select-date" type="date">
+                                </div>
+                                <div style="display: inline-block;float: left;margin-right: 3px"class="input-group">
+                                    <label for="getSecondDate" style="font-weight: normal">至</label>
+                                    <input id="alreadySigned-endDate" class="select-date" type="date">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" id="alreadySigned-userName" class="form-control" placeholder="按姓名搜索">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" onclick="getInformationByParameters()">搜索</button>
+                                        <button class="btn btn-default" type="button" onclick="getAllContractInformation()">搜索全部</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="search-right">
+                                <button id="alreadySigned-export-button" class="btn btn-info">导入合同</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table class="table table-bordered">
+                            <thead style="background-color: #F9FAFB">
+                            <tr>
+                                <th><input id="select-all" class="select-box" type="checkbox">姓名</th>
+                                <th>工号</th>
+                                <th>部门</th>
+                                <th>合同编号</th>
+                                <th>合同类型</th>
+                                <th>合同起始日</th>
+                                <th>合同终止日</th>
+                                <th>合同状态</th>
+                                <th>操作<a class="deleteDepartmentInBatch-button" onclick="deleteContractInBatch()">批量删除</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="alreadySignedStaff-name tbody-td-id"></td>
+                                <td class="alreadySignedStaff-id"></td>
+                                <td class="alreadySignedStaff-department"></td>
+                                <td class="alreadySignedStaff-contractNumber"></td>
+                                <td class="alreadySignedStaff-contractType"></td>
+                                <td class="alreadySignedStaff-contractStartDate"></td>
+                                <td class="alreadySignedStaff-contractEndDate"></td>
+                                <td class="alreadySignedStaff-contractCondition"></td>
+                                <td class="alreadySignedStaff-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)">删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-body">
+                        <ul class="page-ul">
+                            <li class="page-ul-li">
+                                <div class="input-group" style="width: 110px">
+                                    <input type="text" class="form-control" placeholder="">
+                                    <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                                </div>
+                            </li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                            <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="dueDate-panel">
+                    <div class="top-body">
+                        <div class="search-content" style="height: 34px;">
+                            <div class="search-left" style="width: 730px">
+                            </div>
+                            <div class="search-right">
+                                <button id="export-button" class="btn btn-info">导入合同</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table class="table table-bordered">
+                            <thead style="background-color: #F9FAFB">
+                            <tr>
+                                <th><input onclick="selectAllCheckButton()" class="select-box" type="checkbox">姓名</th>
+                                <th>工号</th>
+                                <th>部门</th>
+                                <th>合同编号</th>
+                                <th>合同类型</th>
+                                <th>合同起始日</th>
+                                <th>合同终止日</th>
+                                <th>合同状态</th>
+                                <th>操作<a class="deleteDepartmentInBatch-button" onclick="deleteContractInBatch()"value="dueDate">批量删除</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="table-trr hidden">
+                                <td class="dueDate-name tbody-td-id"></td>
+                                <td class="dueDate-id"></td>
+                                <td class="dueDate-department"></td>
+                                <td class="dueDate-contractNumber"></td>
+                                <td class="dueDate-contractType"></td>
+                                <td class="dueDate-contractStartDate"></td>
+                                <td class="dueDate-contractEndDate"></td>
+                                <td class="dueDate-contractCondition"></td>
+                                <td class="dueDate-operating">
+                                    <a class="edit-a" data-toggle="modal" data-target="#myModal-updateContract" onclick="setUpdateModalInformation(this)">修改</a>
+                                    <a onclick="deleteContract(this)" value="dueDate">删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-body">
+                        <ul class="page-ul">
+                            <li class="page-ul-li">
+                                <div class="input-group" style="width: 110px">
+                                    <input type="text" class="form-control" placeholder="">
+                                    <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                                </div>
+                            </li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                            <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-updateContract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-signContract">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel-signContract">修改合同</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px">
+                <form class="form-horizontal">
+                    <div class="form-group ">
+                        <label class="col-xs-3 control-label">员工姓名：</label>
+                        <div class="col-xs-7">
+                            <input id="modal-contractStaffName" type="text" class="form-control" placeholder="" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-3 control-label">员工编号：</label>
+                        <div class="col-xs-7">
+                            <input id="modal-contractStaffID" type="text" class="form-control" placeholder="" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-3 control-label">合同编号：</label>
+                        <div class="col-xs-7">
+                            <input id="modal-contractID" type="text" class="form-control" placeholder="" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-3 control-label">合同类型：</label>
+                        <div class="col-xs-7">
+                            <input id="modal-contractType" type="text" class="form-control" placeholder="" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">合同开始日期：</label>
+                        <div class="col-xs-7">
+                            <input id="modal-contractStartDate" type="text" class="form-control" placeholder="请输入，如：2018-05-20">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">合同结束日期：</label>
+                        <div class="col-xs-7">
+                            <input id="modal-contractEndDate" type="text" class="form-control" placeholder="请输入，如：2018-05-20">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-3 control-label">合同周期：</label>
+                        <div class="col-xs-7">
+                            <input id="modal-contractPeriod" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-3 control-label">合同状态：</label>
+                        <div class="col-xs-7">
+                            <div class="dropdown input-group">
+                                <input id="modal-contractStatus" type="text" class="form-control" placeholder="请选择">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-modal-contractStatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu modal-contractStatus-menu-ul" aria-labelledby="select-modal-contractStatus">
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="modal-contractContent" class="col-xs-3 control-label">合同内容</label>
+                        <div class="col-xs-7">
+                            <textarea class="form-control" id="modal-contractContent" style="height: 90px;overflow: auto"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-3 control-label">扫描件：</label>
+                        <div class="col-xs-7">
+                            <input id="modal-contractScanningCopy"type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="updateContractInformation()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

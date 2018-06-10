@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/attendanceClassManager.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/attendanceClassManager.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="personnelList.html">人事</a></li>
+                <li class="active"><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="" class="container-fluid  main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/task.png">
+                    <div>考勤首页</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush_fill.png">
+                    <div>考勤设置    <span class="glyphicon glyphicon-triangle-bottom"></span></div>
+                </a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-li">
+                        <a href="attendanceGroupManager.html" class="sub-menu-link">
+                            考勤组管理
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceClassManager.html" class="sub-menu-link">
+                            班次管理
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceJiaBan.html" class="sub-menu-link">
+                            加班规则
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush.png">
+                    <div>考勤统计    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="attendanceMonthSummary.html" class="sub-menu-link">
+                            月度汇总
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceDailyStatistics.html" class="sub-menu-link">
+                            每日统计
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendancePunchTime.html" class="sub-menu-link">
+                            打卡时间
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceOriginalRecord.html" class="sub-menu-link">
+                            原始记录
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-panel">
+
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>考勤首页</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-body-content">
+            <div onclick="window.location.href='attendanceGroupManager.html'" style="margin:20px;width:966px;height:122px;text-align:right;border:1px solid #EBEBEB;position:relative;cursor:pointer;">
+                <table background="imgs/hp1.png" cellspacing="0" width="100%" height="100%">
+                <tr height="25%">
+                <td width="50%"></td> <td width="30%"></td> <td width="5%"></td> <td width="15%"></td>
+                </tr>
+                <tr height="50%">
+                <td ></td> 
+                <td>
+                <a style="color:rgb(102,102,102);font-size:32px;">快速管理排班</a></br>
+                <a style="color:rgb(102,102,102);font-size:14px;">Excel批量导入排班，线上排班，修改考勤规则</a>
+                </td> 
+                <td><img src="imgs/to.png" width="25px" height="25px"></td> 
+                <td></td>
+                </tr>
+                <tr height="25%">
+                <td ></td> <td></td> <td></td> <td></td>
+                </tr>
+                </table>
+            </div>
+            <div onclick="window.location.href='attendanceMonthSummary.html'" style="margin:20px;width:966px;height:122px;text-align:right;border:1px solid #EBEBEB;position:relative;cursor:pointer;">
+                <table background="imgs/hp2.png" cellspacing="0" width="100%" height="100%">
+                <tr height="25%">
+                <td width="50%"></td> <td width="30%"></td> <td width="5%"></td> <td width="15%"></td>
+                </tr>
+                <tr height="50%">
+                <td ></td> 
+                <td>
+                <a style="color:rgb(102,102,102);font-size:32px;">考勤报表</a></br>
+                <a style="color:rgb(102,102,102);font-size:14px;">请假出勤自动汇总，一键导出报表</a>
+                </td> 
+                <td><img src="imgs/to.png" width="25px" height="25px"></td> 
+                <td></td>
+                </tr>
+                <tr height="25%">
+                <td ></td> <td></td> <td></td> <td></td>
+                </tr>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

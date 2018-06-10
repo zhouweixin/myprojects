@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/pesonnelEmployeesLeave.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/pesonnelEmployeesLeave.js"></script>
+    <script src="js/global.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="personnelManager.html">人事</a></li>
+                <li><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>人事分析</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush_fill.png">
+                    <div>员工管理    <span class="glyphicon glyphicon-triangle-bottom"></span></div>
+                </a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-li">
+                        <a href="personnelList.html" class="sub-menu-link">
+                            员工列表
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChange.html" class="sub-menu-link">
+                            人事异动
+                        </a>
+                    </li>
+                    <li class="sub-menu-li sub-li-active">
+                        <a href="personnelEmployeesLeave.html" class="sub-menu-link">
+                            离职员工
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChangeCard.html" class="sub-menu-link">
+                            员工换卡
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/createtask.png">
+                    <div>合同管理    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="personnelContract.html" class="sub-menu-link">
+                            人员合同
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="projectContract.html" class="sub-menu-link">
+                            项目合同
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="" class="right-panel">
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>离职员工</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-body-content">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#all-panel" aria-controls="all-panel" role="tab" data-toggle="tab">全部</a></li>
+                <li role="presentation"><a href="#employeesLeft-panel" aria-controls="employeesLeft-panel" role="tab" data-toggle="tab">已离职</a></li>
+                <li role="presentation"><a href="#employeesLeaving-panel" aria-controls="employeesLeaving-panel" role="tab" data-toggle="tab">待离职</a></li>
+                <li role="presentation"><a href="#employeesLeftAndBan-panel" aria-controls="employeesLeftAndBan-panel" role="tab" data-toggle="tab">已离职禁用</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="all-panel">
+                    <div class="top-body">
+                        <div class="search-content" style="height: 34px;">
+                            <div class="search-left">
+                                <div class="dropdown select-department" style="margin-right: 10px">
+                                    <button class="btn btn-default dropdown-toggle" type="button" value="" id="allTab-selectDepartment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        选择部门
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu allTab-selectDepartment-ul" aria-labelledby="allTab-selectDepartment">
+                                        <li ><a value="">选择部门</a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </div>
+                                <div class="input-group col-xs-5">
+                                    <input type="text" class="form-control" id="staffName-searchInput-allTab" placeholder="按姓名搜索">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" onclick="allTabSearchByDepartmentAndStaffName()">搜索</button>
+                                        <button class="btn btn-default" type="button" onclick="allTabGetAllStaffInformation()">搜索全部</button>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="search-right">
+                                <button id="export-button" class="btn btn-info">导出离职员工</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table class="table table-bordered">
+                            <thead style="background-color: #F9FAFB">
+                            <tr>
+                                <th>姓名</th>
+                                <th>工号</th>
+                                <th>部门</th>
+                                <th>职位</th>
+                                <th>离职类型</th>
+                                <th>入职日期</th>
+                                <th>离职日期</th>
+                                <th>离职证明</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr hidden">
+                                <td class="allTab-staff-name"></td>
+                                <td class="allTab-staff-number"></td>
+                                <td class="allTab-staff-department"></td>
+                                <td class="allTab-staff-position"></td>
+                                <td class="allTab-staff-jobNature"></td>
+                                <td class="allTab-staff-joinDate"></td>
+                                <td class="allTab-staff-LeaveDate"></td>
+                                <td class="allTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="allTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="allTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu allTab-dropdown1-menu" aria-labelledby="allTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-body">
+                        <ul class="page-ul">
+                            <li class="page-ul-li">
+                                <div class="input-group" style="width: 110px">
+                                    <input type="text" class="form-control" placeholder="">
+                                    <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                                </div>
+                            </li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                            <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="employeesLeft-panel">
+                    <div class="top-body">
+                        <div class="search-content" style="height: 34px;">
+                            <div class="search-left">
+                                <div class="dropdown select-department" style="margin-right: 10px">
+                                    <button class="btn btn-default dropdown-toggle" type="button" value=""id="leftTab-selectDepartment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        选择部门
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu leftTab-selectDepartment-ul" aria-labelledby="leftTab-selectDepartment">
+                                        <li ><a value="">选择部门</a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </div>
+                                <div class="input-group col-xs-5">
+                                    <input type="text" class="form-control" id="staffName-searchInput-leftTab" placeholder="按姓名搜索">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" onclick="leftTabSearchByDepartmentAndStaffName()">搜索</button>
+                                        <button class="btn btn-default" type="button" onclick="leftTabGetAllStaffInformation()">搜索全部</button>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="search-right">
+                                <button id="export-button" class="btn btn-info">导出离职员工</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table class="table table-bordered">
+                            <thead style="background-color: #F9FAFB">
+                            <tr>
+                                <th>姓名</th>
+                                <th>工号</th>
+                                <th>部门</th>
+                                <th>职位</th>
+                                <th>离职类型</th>
+                                <th>入职日期</th>
+                                <th>离职日期</th>
+                                <th>离职证明</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-left hidden">
+                                <td class="leftTab-staff-name"></td>
+                                <td class="leftTab-staff-number"></td>
+                                <td class="leftTab-staff-department"></td>
+                                <td class="leftTab-staff-position"></td>
+                                <td class="leftTab-staff-jobNature"></td>
+                                <td class="leftTab-staff-joinDate"></td>
+                                <td class="leftTab-staff-LeaveDate"></td>
+                                <td class="leftTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leftTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leftTab-dropdown1-menu" aria-labelledby="leftTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-body">
+                        <ul class="page-ul">
+                            <li class="page-ul-li">
+                                <div class="input-group" style="width: 110px">
+                                    <input type="text" class="form-control" placeholder="">
+                                    <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                                </div>
+                            </li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                            <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="employeesLeaving-panel">
+                    <div class="top-body">
+                        <div class="search-content" style="height: 34px;">
+                            <div class="search-left">
+                                <div class="dropdown select-department" style="margin-right: 10px">
+                                    <button class="btn btn-default dropdown-toggle" type="button" value=""id="leavingTab-selectDepartment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        选择部门
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu leavingTab-selectDepartment-ul" aria-labelledby="leavingTab-selectDepartment">
+                                        <li ><a value="">选择部门</a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </div>
+                                <div class="input-group col-xs-5">
+                                    <input type="text" class="form-control" id="staffName-searchInput-leavingTab" placeholder="按姓名搜索">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" onclick="leavingTabSearchByDepartmentAndStaffName()">搜索</button>
+                                        <button class="btn btn-default" type="button" onclick="leavingTabGetAllStaffInformation()">搜索全部</button>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="search-right">
+                                <button id="export-button" class="btn btn-info">导出离职员工</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table class="table table-bordered">
+                            <thead style="background-color: #F9FAFB">
+                            <tr>
+                                <th>姓名</th>
+                                <th>工号</th>
+                                <th>部门</th>
+                                <th>职位</th>
+                                <th>离职类型</th>
+                                <th>入职日期</th>
+                                <th>离职日期</th>
+                                <th>离职证明</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-leaving hidden">
+                                <td class="leavingTab-staff-name"></td>
+                                <td class="leavingTab-staff-number"></td>
+                                <td class="leavingTab-staff-department"></td>
+                                <td class="leavingTab-staff-position"></td>
+                                <td class="leavingTab-staff-jobNature"></td>
+                                <td class="leavingTab-staff-joinDate"></td>
+                                <td class="leavingTab-staff-LeaveDate"></td>
+                                <td class="leavingTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leavingTab-staff-operating">
+                                    <div class="dropdown select-department btn-group">
+                                        <button class="btn btn-default dropdown-before">详情</button>
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="leavingTab-dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu leavingTab-dropdown1-menu" aria-labelledby="leavingTab-dropdownMenu1">
+                                            <li><a onclick="forbiddenLeftButton(this)">禁用</a></li>
+                                            <li><a onclick="recoveryJobButton(this)">离职恢复</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-body">
+                        <ul class="page-ul">
+                            <li class="page-ul-li">
+                                <div class="input-group" style="width: 110px">
+                                    <input type="text" class="form-control" placeholder="">
+                                    <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                                </div>
+                            </li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                            <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="employeesLeftAndBan-panel">
+                    <div class="top-body">
+                        <div class="search-content" style="height: 34px;">
+                            <div class="search-left">
+                                <div class="dropdown select-department" style="margin-right: 10px">
+                                    <button class="btn btn-default dropdown-toggle" type="button" value="" id="leftAndBanTab-selectDepartment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        选择部门
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu leftAndBanTab-selectDepartment-ul" aria-labelledby="leftAndBanTab-selectDepartment">
+                                        <li ><a value="">选择部门</a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                        <li class="hidden"><a></a></li>
+                                    </ul>
+                                </div>
+                                <div class="input-group col-xs-5">
+                                    <input type="text" class="form-control" id="staffName-searchInput-leftAndBanTab" placeholder="按姓名搜索">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" onclick="leftAndBanTabSearchByDepartmentAndStaffName()">搜索</button>
+                                        <button class="btn btn-default" type="button" onclick="leftAndBanTabGetAllStaffInformation()">搜索全部</button>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="search-right">
+                                <button id="export-button" class="btn btn-info">导出离职员工</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table class="table table-bordered">
+                            <thead style="background-color: #F9FAFB">
+                            <tr>
+                                <th>姓名</th>
+                                <th>工号</th>
+                                <th>部门</th>
+                                <th>职位</th>
+                                <th>离职类型</th>
+                                <th>入职日期</th>
+                                <th>离职日期</th>
+                                <th>离职证明</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-tr-leftAndBan hidden">
+                                <td class="leftAndBanTab-staff-name"></td>
+                                <td class="leftAndBanTab-staff-number"></td>
+                                <td class="leftAndBanTab-staff-department"></td>
+                                <td class="leftAndBanTab-staff-position"></td>
+                                <td class="leftAndBanTab-staff-jobNature"></td>
+                                <td class="leftAndBanTab-staff-joinDate"></td>
+                                <td class="leftAndBanTab-staff-LeaveDate"></td>
+                                <td class="leftAndBanTab-staff-LeaveFile"><a data-toggle="modal" data-target="#myModal-leaveFile" onclick=" leftToProveButton(this)">离职证明</a></td>
+                                <td class="leftAndBanTab-staff-operating">
+                                    <div>
+                                        <div>
+                                            <div class="dropdown select-department btn-group">
+                                                <a onclick="recoveryJobButton(this)">离职恢复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-body">
+                        <ul class="page-ul">
+                            <li class="page-ul-li">
+                                <div class="input-group" style="width: 110px">
+                                    <input type="text" class="form-control" placeholder="">
+                                    <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                                </div>
+                            </li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                            <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                            <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-leaveFile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="padding: 15px 20px">
+                <div id="Print">
+                    <h3 style="box-sizing: border-box;font-weight: 500;line-height: 1.1;color: #333333;margin: 30.0px 0.0px 20.0px;font-size: 36.0px;padding: 0.0px;text-align: center;white-space: normal;background-color: #ffffff;">离职证明</h3>
+                    <p style="text-indent: 0.0px;box-sizing: border-box;margin-top: 0.0px;margin-bottom: 0.0px;padding: 0.0px;text-indent: 2.0em;font-size: 16.0px;line-height: 1.8;">
+                        兹证明
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text " class="leave-name-inp text" value="" style="text-align:center;width: 60px; border-bottom: 1px solid #797979">
+                        </span>
+                        自
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="entry-year-inp " value="" style="text-align:center;width:42px; border-bottom: 1px solid #797979;">
+                        </span>
+                        年&nbsp;
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="entry-month-inp " value="" style="text-align:center;width:30px;border-bottom: 1px solid #797979;">
+                        </span>
+                        月&nbsp;
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="entry-day-inp " value="" style="text-align:center;width:30px;border-bottom: 1px solid #797979;">
+                        </span>
+                        日入职我公司担任
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text " class="leave-department-inp text" value=""style="text-align:center;width:100px;border-bottom: 1px solid #797979;">
+                        </span>
+                        部门
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text " class="leave-position-inp text" value="" style="text-align:center;width:80px;border-bottom: 1px solid #797979;">
+                        </span>
+                        职务 ，至
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="leave-year-inp " value="" style="text-align:center;width:42px;border-bottom: 1px solid #797979;">
+                        </span>
+                        年
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="leave-month-inp " value="" style="text-align:center;width:30px;border-bottom: 1px solid #797979;">
+                        </span>
+                        月&nbsp;
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="leave-day-inp " value="" style="text-align:center;width:30px;border-bottom: 1px solid #797979;">
+                        </span>
+                        日因个人原因申请离职。
+                    </p>
+                    <p style="box-sizing: border-box;margin-top: 0.0px;margin-bottom: 0.0px;padding: 0.0px;text-indent: 2.0em;font-size: 16.0px;line-height: 1.8;">
+                        在此间无不良表现，经公司研究决定，同意其离职，已办理离职手续。
+                    </p>
+                    <p style="box-sizing: border-box;margin-top: 0.0px;margin-bottom: 0.0px;padding: 0.0px;text-indent: 6.0em;font-size: 16.0px;line-height: 4.5;">
+                        因未签订相关保密协议，遵从择业自由。
+                    </p>
+                    <p style="box-sizing: border-box;margin-top: 0.0px;margin-bottom: 0.0px;padding: 0.0px;text-indent: 2.0em;font-size: 16.0px;line-height: 1.8;">
+                        特此证明
+                    </p>
+                    <p style="box-sizing: border-box;margin-top: 0.0px;margin-bottom: 42.0px;padding: 0.0px;font-size: 16.0px;text-align: right;">
+                        公司名称：
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text " class="company-name-inp text" value="徐州精诚特卫保安服务有限公司"style="width: 240px; border: none">
+                        </span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+                    <p style="box-sizing: border-box;margin-top: 0.0px;margin-bottom: 42.0px;padding: 0.0px;font-size: 16.0px;text-align: right;">
+                        公司盖章： &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    </p>
+                    <p style="text-indent: 0.0px;box-sizing: border-box;margin-top: 0.0px;margin-bottom: 0.0px;padding: 0.0px;font-size: 16.0px;line-height: 1.8;text-align: right;">
+                        日期：
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="now-year-inp " value="" style="text-align:center;width:42px;border-bottom: 1px solid #797979;">
+                        </span>
+                        年&nbsp;
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="now-month-inp " value="" style="text-align:center;width:30px;border-bottom: 1px solid #797979;">
+                        </span>
+                        月
+                        <span class="prove-var">
+                            <span class="hide"></span>
+                            <input type="text" class="now-day-inp " value="" style="text-align:center;width:30px;border-bottom: 1px solid #797979;">
+                        </span>
+                        日
+                    </p>
+                    <p><br></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">打印</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

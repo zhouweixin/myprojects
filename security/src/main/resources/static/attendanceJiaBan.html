@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/attendanceClassManager.css" rel="stylesheet">
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/attendanceClassManager.js"></script>
+    <style type="text/css" rel="stylesheet">
+    .ant-input-number-input {
+    width: 30px;
+    text-align: left;
+    outline: 0;
+        outline-width: 0px;
+        outline-style: none;
+        outline-color: currentcolor;
+    -moz-appearance: textfield;
+    height: 26px;
+    transition: all .3s linear;
+        transition-property: all;
+        transition-duration: 0.3s;
+        transition-timing-function: linear;
+        transition-delay: 0s;
+    color: rgba(0,0,0,.65);
+    background-color: #fff;
+    border: 0;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-bottom-width: 0px;
+        border-left-width: 0px;
+        border-top-style: none;
+        border-right-style: none;
+        border-bottom-style: none;
+        border-left-style: none;
+        border-top-color: currentcolor;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-left-color: currentcolor;
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+    border-radius: 4px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+    padding: 0 7px;
+        padding-top: 0px;
+        padding-right: 7px;
+        padding-bottom: 0px;
+        padding-left: 7px;
+    display: block;
+}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="personnelList.html">人事</a></li>
+                <li class="active"><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="" class="container-fluid  main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a href="attendanceHomePage.html" class="menu-link">
+                    <img src="imgs/task.png">
+                    <div>考勤首页</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush_fill.png">
+                    <div>考勤设置    <span class="glyphicon glyphicon-triangle-bottom"></span></div>
+                </a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-li">
+                        <a href="attendanceGroupManager.html" class="sub-menu-link">
+                            考勤组管理
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceClassManager.html" class="sub-menu-link">
+                            班次管理
+                        </a>
+                    </li>
+                    <li class="sub-menu-li sub-li-active">
+                        <a class="sub-menu-link">
+                            加班规则
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush.png">
+                    <div>考勤统计    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="attendanceMonthSummary.html" class="sub-menu-link">
+                            月度汇总
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceDailyStatistics.html" class="sub-menu-link">
+                            每日统计
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendancePunchTime.html" class="sub-menu-link">
+                            打卡时间
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="attendanceOriginalRecord.html" class="sub-menu-link">
+                            原始记录
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-panel">
+
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>加班规则</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-body-content">
+
+            <div class="top-body" style="margin-top: 30px">
+                <div class="search-content" style="height: 34px;">
+                    <div class="search-left">
+                <!--       <div class="input-group col-xs-4">
+                            <input type="text" class="form-control" placeholder="请输入班次名称">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">搜索</button>
+                            </span>
+                        </div>
+                    -->
+                    </div>
+                    <div class="search-right">
+                        <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal-addClass">
+                            新增加班规则
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="table-body">
+                <table class="table table-condensed" style="border:1px solid #F2F2F2;font-size: 12px;font-family:"等线 light"">
+                    <thead>
+                        <tr>
+                            <th>加班规则名称</th>
+                            <th>规则内容</th>
+                            <th>应用范围</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>以审批时间计算加班默认</td>
+                            <td>工作日：加班必须审批，加班时长以审批单为准<br>
+休息日和节假日：加班必须审批，加班时长以审批单为准</td>
+                            <td>应用到除其他加班规则以外所有员工 </td>
+                            <td><a>编辑</a>|<a>删除</a></td>
+                            </tr>
+                        <tr>
+                            <td>审批后，以打卡时间计算加班</td>
+                            <td>工作日：加班必须审批，以打卡为准，但不能超过审批单时长<br>
+休息日和节假日：加班必须审批，以打卡为准，但不能超过审批单时长</td>
+                            <td>未使用</td>
+                            <td><a>编辑</a>|<a>删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>以打卡时间计算加班</td>
+                            <td>工作日：加班无须审批，根据打卡时间计算加班时长<br>
+休息日和节假日：加班无须审批，根据打卡时间计算加班时长</td>
+                            <td>未使用</td>
+                            <td><a>编辑</a>|<a>删除</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <div class="row show-grid">
+                        <div class="col-lg-2">加班计算单位</div>
+                        <div class="col-lg-8"><a>修改</a></div>
+                    </div>
+                    <div class="row show-grid">
+                        <div class="col-lg-2">最小加班单位：</div>
+                        <div class="col-lg-8">按小时加班 员工按小时为最小单位选择时间，考勤按小时统计报表</div>
+                    </div>
+                    <div class="row show-grid">
+                        <div class="col-lg-2">计算规则：</div>
+                        <div class="col-lg-8">员工加班时长，以小时为单位计算，不足的不计算 例如：加班1.82小时=1小时</div>
+                    </div>
+                    <div class="row show-grid">
+                        <div class="col-lg-2">日时长折算：</div>
+                        <div class="col-lg-8">小时=1天</div>
+                    </div>
+                    <div>
+                    <div class="row show-grid" style="margin-top:20px;">
+                        <div class="col-lg-3">员工可以通过以下审批单提交加班</div>
+                    </div>
+                    <button type="button"><a>二维码</a></button>
+                    <div class="row show-grid">
+                        <div class="col-lg-3">员工可以通过以下应用记录打卡时间</div>
+                    </div>
+                    <button type="button"><a>二维码</a></button>
+                    </div>
+                </div>
+            </div>
+
+<div class="modal fade" id="myModal-addClass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">新增加班规则</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px;font-size: 12px">
+                <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">加班规则名称：</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" id="modal-className" >
+                        </div>
+                        <div class="col-xs-4">
+                            最多10个字符（中文或英文）
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">应用范围：</label>
+                        <div class="col-xs-4">
+                            <button class="btn btn-default" data-toggle="modal" data-target="#modal4" type="button" >请选择</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-2 control-label">工作日加班</label>
+                        <div class="col-xs-9" ><hr/></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">允许加班：</label>
+                        <div class="col-xs-4">
+                            <div class="switch switch-small">
+                                <input type="checkbox" checked />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">加班方式计算：</label>
+                        <div class="col-xs-9">
+                            <form>
+                            <input type="radio" name="jiaban"  checked/>需审批，以审批单为准<br/>
+                            <input type="radio" name="jiaban"  />需审批，以打卡为准，但不能超过审批单时长<br/>
+                            <input type="radio" name="jiaban" />无需审批，根据打卡时间计算加班时长<br/>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label"></label>
+                        <div class="col-xs-9">
+                        加班起算时间：最后一次下班后<input style="width:30px" step="1" min="1" max="720" autocomplete="off" value="30">分钟，开始计算加班<br/>
+                        最小加班时长：<input style="width:30px" step="1" min="1" max="720" autocomplete="off" value="30">分钟 小于该时长则加班时长记为0
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label"></label>
+                        <div class="col-xs-9">
+                            <a>规则说明</a> 
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">加班补偿：</label>
+                        <div class="col-xs-9">
+                            <input type="checkbox" checked>
+                            转为调休余额（调休余额规则未设置，<a>去设置</a>）<a><img src="imgs/help.png" width="17px"></a>
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">休息日和节假日加班</label>
+                        <div class="col-xs-9" ><hr/></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">允许加班：</label>
+                        <div class="col-xs-9">
+                            <div class="switch switch-small">
+                                <input type="checkbox" checked />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">加班方式计算：</label>
+                        <div class="col-xs-9">
+                            <form>
+                            <input type="radio" name="jiaban"  checked/>需审批，以审批单为准<br/>
+                            <input type="radio" name="jiaban"  />需审批，以打卡为准，但不能超过审批单时长<br/>
+                            <input type="radio" name="jiaban" />无需审批，根据打卡时间计算加班时长<br/>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label"></label>
+                        <div class="col-xs-9">
+                        最小加班时长：<input style="width:30px" step="1" min="1" max="720" autocomplete="off" value="30">分钟 小于该时长则加班时长记为0
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label"></label>
+                        <div class="col-xs-9">
+                            <a>规则说明</a> 
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-className" class="col-xs-3 control-label">加班补偿：</label>
+                        <div class="col-xs-9">
+                            <input type="checkbox" checked>
+                            转为调休余额（调休余额规则未设置，<a>去设置</a>）<a><img src="imgs/help.png" width="17px"></a>
+                        </div>
+                    </div>   
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">选择人员</h4>
+            </div>
+           <div class="modal-body" style="padding: 15px 20px;font-size: 12px">
+                <form class="form-horizontal">  
+                    <div class="form-group">
+                       <table width='500' border='1' cellpadding='0' cellspacing='0'>
+                        <tr>
+                        <td width='45%' align="center"><select id='source' multiple="multiple" style="width:40%; height:100%" ondblclick="MoveTo(this.selectedIndex)">
+                        <option value='1'>Item1</option>
+                        <option value='2'>Item2</option>
+                        <option value='3'>Item3</option>
+                        <option value='4'>Item4</option>
+                        <option value='5'>Item5</option>
+                        <option value='6'>Item6</option>
+                        </select></td>
+                        <td width='10%' align="center"><input type="button" value=">>" onclick="MoveTo()" /><br /><input type="button" value="<<" onclick="MoveBack()" /></td>
+                        <td width='45%'><select id='distinct' ondblclick="MoveBack(this.selectedIndex)" style="width:40%; height:100%" multiple="multiple" align="center"></select></td>
+                        </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div >
+
+</body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/personnelManager.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/personnelManager.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="personnelManager.html">人事</a></li>
+                <li><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>人事分析</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush.png">
+                    <div>员工管理    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a class="sub-menu-link">
+                            员工列表
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a class="sub-menu-link">
+                            人事异动
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a class="sub-menu-link">
+                            离职员工
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a class="sub-menu-link">
+                            员工换卡
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/createtask.png">
+                    <div>合同管理    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a class="sub-menu-link">
+                            人员合同
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a class="sub-menu-link">
+                            项目合同
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="page-empolyee-list" class="right-panel">
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>员工列表</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-body-content">
+            <div class="top-body">
+                <div class="operating-content">
+                    <div class="button-group">
+                        <a class="btn btn-default button-mgr">员工导入</a>
+                        <a class="btn btn-default button-mgr">员工导出</a>
+                        <a id="add-staff-button" href="#page-add-staff" class="btn btn-default button-mgr">添加员工</a>
+                    </div>
+                </div>
+                <div class="summary-content">
+                    <div class="details-branch active">
+                        <div style="width: 124.74px" class="details-text">所有员工
+                            <div class="details-numb all">2550</div>
+                        </div>
+                    </div>
+                    <div class="details-branch">
+                        <div style="width: 99px" class="details-text">全职
+                            <div class="details-numb full">2548</div>
+                        </div>
+                    </div>
+                    <div class="details-branch">
+                        <div style="width: 99px" class="details-text">兼职
+                            <div class="details-numb part">0</div>
+                        </div>
+                    </div>
+                    <div class="details-branch">
+                        <div style="width: 99px" class="details-text">实习
+                            <div class="details-numb intern">0</div>
+                        </div>
+                    </div>
+                    <div class="details-branch">
+                        <div style="width: 99px" class="details-text">待离职
+                            <div class="details-numb leaving">0</div>
+                        </div>
+                    </div>
+                    <div class="details-branch">
+                        <div style="width: 99px" class="details-text">待入职
+                            <div class="details-numb joining">0</div>
+                        </div>
+                    </div>
+                    <div class="details-branch">
+                        <div style="width: 99px" class="details-text">离职
+                            <div class="details-numb left">0</div>
+                        </div>
+                    </div>
+                    <div class="details-branch">
+                        <div style="width: 99px" class="details-text">试用
+                            <div class="details-numb probationary">0</div>
+                        </div>
+                    </div>
+                    <div class="details-branch">
+                        <div style="width: 99px" class="details-text">正式
+                            <div class="details-numb regular">2548</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-content">
+                    <div class="search-left">
+                        <div class="dropdown col-xs-3 select-department">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                选择部门
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu select-department-ul" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">保安部</a></li>
+                                <li><a href="#">财务部</a></li>
+                                <li><a href="#">后勤部</a></li>
+                                <li><a href="#">人才部</a></li>
+                            </ul>
+                        </div>
+                        <div class="input-group col-xs-9">
+                            <input type="text" class="form-control" placeholder="按姓名或手机号搜索">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">搜索</button>
+                             </span>
+                        </div>
+                    </div>
+                    <div class="search-right">
+                        <a>批量删除</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th><input id="select-all" class="select-box" type="checkbox">员工</th>
+                            <th>工号</th>
+                            <th>手机</th>
+                            <th>工作性质</th>
+                            <th>入职日期</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu3">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu4">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu5">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu6">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu7">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu8">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu9">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu10">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td class="staff-name"><input class="select-box select-sub-box" type="checkbox">1</td>
+                            <td><a class="staff-number" href="#">2</a></td>
+                            <td class="staff-phone">3</td>
+                            <td class="staff-job">4</td>
+                            <td class="staff-date">5</td>
+                            <td class="staff-operating">
+                                <div class="dropdown select-department btn-group">
+                                    <button class="btn btn-default dropdown-before">详情</button>
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu table-dropdown-menu" aria-labelledby="dropdownMenu11">
+                                        <li><a href="#">离职</a></li>
+                                        <li><a href="#">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="page-body">
+                <ul class="page-ul">
+                    <li class="page-ul-li">
+                        <div class="input-group" style="width: 110px">
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                        </div>
+                    </li>
+                    <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                    <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                    <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="page-add-staff" class="right-panel hidden">
+        <div class="nav-path">
+            <div class="path-title-addStaff">
+                <a href="#page-empolyee-list" class="btn btn-default path-arrow-left">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                </a>
+                <ul class="path-ul">
+                    <li>添加员工</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-body-content">
+            <div class="input-body">
+                <form class="form-horizontal" style="height: 100%; overflow: hidden">
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label"><span>*</span>员工编号：</label>
+                        <div class="col-xs-7">
+                            <input id="domain-input" type="text" class="form-control" placeholder="如：x9237">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label">试用周期：</label>
+                        <div class="col-xs-7">
+                            <div class="dropdown input-group">
+                                <input id="probation-input" type="text" class="form-control" placeholder="请选择">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-probation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu probation-menu-ul" aria-labelledby="select-probation">
+                                        <li><a>无试用期</a></li>
+                                        <li><a>1个月</a></li>
+                                        <li><a>2个月</a></li>
+                                        <li><a>3个月</a></li>
+                                        <li><a>4个月</a></li>
+                                        <li><a>5个月</a></li>
+                                        <li><a>6个月</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label"><span>*</span>姓名：</label>
+                        <div class="col-xs-7">
+                            <input id="retryTimes-input" type="text" class="form-control" placeholder="请输入姓名">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label"><span>*</span>工号：</label>
+                        <div class="col-xs-7">
+                            <input id="cycleRetryTimes-input" type="text" class="form-control" placeholder="请输入工号">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label"><span>*</span>性别：</label>
+                        <div class="col-xs-7">
+                            <div class="dropdown input-group">
+                                <input id="sex-input" type="text" class="form-control" placeholder="请选择">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-sex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu sex-menu-ul" aria-labelledby="select-sex">
+                                        <li><a>男</a></li>
+                                        <li><a>女</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label"><span>*</span>部门编号：</label>
+                        <div class="col-xs-7">
+                            <div class="dropdown input-group">
+                                <input id="department-input" type="text" class="form-control" placeholder="请选择">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-department" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu department-menu-ul" aria-labelledby="select-department">
+                                        <li><a>保安部</a></li>
+                                        <li><a>人才部</a></li>
+                                        <li><a>后勤部</a></li>
+                                        <li><a>资源部</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label">入职日期：</label>
+                        <div class="col-xs-7">
+                            <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label">IC卡号：</label>
+                        <div class="col-xs-7">
+                            <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label">微信号：</label>
+                        <div class="col-xs-7">
+                            <input id="sleepTime-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label"><span>*</span>手机号：</label>
+                        <div class="col-xs-7">
+                            <input id="timeOut-input" type="text" class="form-control" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label">职位：</label>
+                        <div class="col-xs-7">
+                            <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label">工作性质：</label>
+                        <div class="col-xs-7">
+                            <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label"><span>*</span>档案编号：</label>
+                        <div class="col-xs-7">
+                            <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="请输入档案编号">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="button-body">
+                <a id="store-staff" class="btn btn-info">保存</a>
+                <a id="cancle-store" class="btn btn-default">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

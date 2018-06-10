@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/staffDetailsInformation.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/staffDetailsInformation.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="personnelList.html">人事</a></li>
+                <li><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>人事分析</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush_fill.png">
+                    <div>员工管理    <span class="glyphicon glyphicon-triangle-bottom"></span></div>
+                </a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-li sub-li-active">
+                        <a href="personnelList.html" class="sub-menu-link">
+                            员工列表
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChange.html" class="sub-menu-link">
+                            人事异动
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelEmployeesLeave.html" class="sub-menu-link">
+                            离职员工
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChangeCard.html" class="sub-menu-link">
+                            员工换卡
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/createtask.png">
+                    <div>合同管理    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="personnelContract.html" class="sub-menu-link">
+                            人员合同
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="projectContract.html" class="sub-menu-link">
+                            项目合同
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="page-add-staff" class="right-panel">
+        <div class="nav-path">
+            <div class="path-title-addStaff">
+                <a href="personnelList.html" class="btn btn-default path-arrow-left">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                </a>
+                <ul class="path-ul">
+                    <li>详细信息</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-body-content">
+            <div class="panel panel-default input-body staffInformation" style="border: 1px solid #DCDDDE;">
+                <div class="panel-heading">
+                    <h5 class="panel-title">人员信息</h5>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" style="height: 100%; overflow: hidden">
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">姓名：</label>
+                            <div class="col-xs-7">
+                                <input id="retryTimes-input" type="text" class="form-control" placeholder="请输入姓名">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">员工编号：</label>
+                            <div class="col-xs-7">
+                                <input id="retryTimes-input" type="text" class="form-control" placeholder="请输入姓名">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">性别：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="sex-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-sex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu sex-menu-ul" aria-labelledby="select-sex">
+                                        <li><a>男</a></li>
+                                        <li><a>女</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">实习周期：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="probation-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-probation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu probation-menu-ul" aria-labelledby="select-probation">
+                                        <li><a>无试用期</a></li>
+                                        <li><a>1个月</a></li>
+                                        <li><a>2个月</a></li>
+                                        <li><a>3个月</a></li>
+                                        <li><a>4个月</a></li>
+                                        <li><a>5个月</a></li>
+                                        <li><a>6个月</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label"><span>*</span>部门：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="department-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-department" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu department-menu-ul" aria-labelledby="select-department">
+                                        <li><a>保安部</a></li>
+                                        <li><a>人才部</a></li>
+                                        <li><a>后勤部</a></li>
+                                        <li><a>资源部</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">职位：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="department-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-department" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu department-menu-ul" aria-labelledby="select-department">
+                                        <li><a>保安部</a></li>
+                                        <li><a>人才部</a></li>
+                                        <li><a>后勤部</a></li>
+                                        <li><a>资源部</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">入职日期：</label>
+                            <div class="col-xs-7">
+                                <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">IC卡号：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">微信号：</label>
+                            <div class="col-xs-7">
+                                <input id="sleepTime-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label"><span>*</span>联系方式：</label>
+                            <div class="col-xs-7">
+                                <input id="timeOut-input" type="text" class="form-control" placeholder="请输入手机号">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">工作性质：</label>
+                            <div class="col-xs-7">
+                                <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">档案号：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="button-body">
+                        <a id="cancle-store" class="btn btn-default">编辑</a>
+                        <a id="store-staff" class="btn btn-info">保存</a>
+                        <a id="cancle-store" class="btn btn-default">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default input-body archiveInformation" style="border: 1px solid #DCDDDE;margin-top: 10px">
+                <div class="panel-heading">
+                    <h5 class="panel-title">档案信息</h5>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" style="height: 100%; overflow: hidden">
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">民族：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="sex-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-sex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu sex-menu-ul" aria-labelledby="select-sex">
+                                        <li><a>汉族</a></li>
+                                        <li><a>满族</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">婚姻状况：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="sex-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-sex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu sex-menu-ul" aria-labelledby="select-sex">
+                                        <li><a>已婚</a></li>
+                                        <li><a>未婚</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">兵役情况：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="sex-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-sex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu sex-menu-ul" aria-labelledby="select-sex">
+                                        <li><a>服兵役</a></li>
+                                        <li><a>未服兵役</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">政治面貌：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="sex-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-sex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu sex-menu-ul" aria-labelledby="select-sex">
+                                        <li><a>党员</a></li>
+                                        <li><a>预备党员</a></li>
+                                        <li><a>共青团员</a></li>
+                                        <li><a>普通群众</a></li>
+                                        <li><a>其他</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">学历：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="sex-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-sex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu sex-menu-ul" aria-labelledby="select-sex">
+                                        <li><a>本科及以上</a></li>
+                                        <li><a>高中</a></li>
+                                        <li><a>初中</a></li>
+                                        <li><a>小学</a></li>
+                                        <li><a>其他</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">专业：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">参加工作日期：</label>
+                            <div class="col-xs-7">
+                                <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">身高(cm)：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">体重(kg)：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">健康状况：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="probation-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-probation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu probation-menu-ul" aria-labelledby="select-probation">
+                                        <li><a>健康</a></li>
+                                        <li><a>其他</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">户籍所在地：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">住址：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">保险状况：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="probation-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-probation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu probation-menu-ul" aria-labelledby="select-probation">
+                                        <li><a>有</a></li>
+                                        <li><a>无</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">家庭成员姓名：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">家庭成员联系方式：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="button-body">
+                        <a id="cancle-store" class="btn btn-default">编辑</a>
+                        <a id="store-staff" class="btn btn-info">保存</a>
+                        <a id="cancle-store" class="btn btn-default">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default input-body archiveInformation" style="border: 1px solid #DCDDDE;margin-top: 10px">
+                <div class="panel-heading">
+                    <h5 class="panel-title">合同信息</h5>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" style="height: 100%; overflow: hidden">
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">合同编号：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">合同类型：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="probation-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-probation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu probation-menu-ul" aria-labelledby="select-probation">
+                                        <li><a>劳务合同</a></li>
+                                        <li><a>劳动合同</a></li>
+                                        <li><a>实习协议</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">合同开始日期：</label>
+                            <div class="col-xs-7">
+                                <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">合同结束日期：</label>
+                            <div class="col-xs-7">
+                                <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">合同周期：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="probation-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-probation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu probation-menu-ul" aria-labelledby="select-probation">
+                                        <li><a>三个月</a></li>
+                                        <li><a>六个月</a></li>
+                                        <li><a>一年</a></li>
+                                        <li><a>两年</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">合同状态：</label>
+                            <div class="col-xs-7">
+                                <div class="dropdown input-group">
+                                    <input id="probation-input" type="text" class="form-control" placeholder="请选择">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-probation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu probation-menu-ul" aria-labelledby="select-probation">
+                                        <li><a>待执行</a></li>
+                                        <li><a>执行中</a></li>
+                                        <li><a>解除</a></li>
+                                        <li><a>正常结束</a></li>
+                                    </ul>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="modal-conversionComments" class="col-xs-3 control-label">合同内容</label>
+                            <div class="col-xs-7">
+                                <textarea class="form-control" id="modal-conversionComments" style="height: 90px"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="col-xs-3 control-label">扫描件：</label>
+                            <div class="col-xs-7">
+                                <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="button-body">
+                        <a id="cancle-store" class="btn btn-default">编辑</a>
+                        <a id="store-staff" class="btn btn-info">保存</a>
+                        <a id="cancle-store" class="btn btn-default">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-addStaff" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-addStaff">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel-addStaff">添加员工</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-addStaffName" class="col-xs-2 control-label"><span>*</span>姓名：</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-addStaffName" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label"><span>*</span>性别：</label>
+                        <div class="col-xs-9">
+                            <div class="dropdown input-group">
+                                <input id="addStaffSex-input" type="text" class="form-control" placeholder="请选择">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-addStaffSex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu addStaffSex-menu-ul" aria-labelledby="select-addStaffSex">
+                                        <li><a>男</a></li>
+                                        <li><a>女</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-department" class="col-xs-2 control-label">IC卡号：</label>
+                        <div class="col-xs-9">
+                            <input id="threadNum-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-xs-2 control-label"><span>*</span>部门：</label>
+                        <div class="col-xs-9">
+                            <div class="dropdown input-group">
+                                <input id="department-input" type="text" class="form-control" placeholder="请选择">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-department" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu department-menu-ul" aria-labelledby="select-department">
+                                        <li><a>保安部</a></li>
+                                        <li><a>人才部</a></li>
+                                        <li><a>后勤部</a></li>
+                                        <li><a>资源部</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">微信号：</label>
+                        <div class="col-xs-9">
+                            <input id="sleepTime-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label"><span>*</span>联系方式：</label>
+                        <div class="col-xs-9">
+                            <input id="timeOut-input" type="text" class="form-control" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">职位：</label>
+                        <div class="col-xs-9">
+                            <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">工作性质：</label>
+                        <div class="col-xs-9">
+                            <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">入职日期：</label>
+                        <div class="col-xs-9">
+                            <input id="chromeDriverPath-input" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">实习周期：</label>
+                        <div class="col-xs-9">
+                            <div class="dropdown input-group">
+                                <input id="probation-input" type="text" class="form-control" placeholder="请选择">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-probation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu probation-menu-ul" aria-labelledby="select-probation">
+                                        <li><a>无试用期</a></li>
+                                        <li><a>1个月</a></li>
+                                        <li><a>2个月</a></li>
+                                        <li><a>3个月</a></li>
+                                        <li><a>4个月</a></li>
+                                        <li><a>5个月</a></li>
+                                        <li><a>6个月</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-staffName" class="col-xs-2 control-label">姓名</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-staffName" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-department" class="col-xs-2 control-label">部门</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="modal-department" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-leaveDate" class="col-xs-2 control-label">离职日期</label>
+                        <div class="col-xs-9">
+                            <input type="date" class="form-control" id="modal-leaveDate" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-leaveType" class="col-xs-2 control-label">离职类型</label>
+                        <div class="col-xs-9">
+                            <div class="dropdown input-group">
+                                <input id="modal-leaveType" type="text" class="form-control" placeholder="请选择离职类型">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="select-leaveType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu leaveType-menu-ul" aria-labelledby="select-leaveType">
+                                        <li><a>自请离职</a></li>
+                                        <li><a>解雇离职</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

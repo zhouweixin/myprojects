@@ -3,9 +3,9 @@ spring:
     active: hu
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/securitydb
-    username: root
-    password: 123456
+    url: jdbc:mysql://39.108.89.212:3306/securitydb
+    username: security
+    password: Xplusplus-root-1
   jpa:
     hibernate:
       ddl-auto: update

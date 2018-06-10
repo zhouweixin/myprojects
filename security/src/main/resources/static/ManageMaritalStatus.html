@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>**公司</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/ManageMaritalStatus.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/ManageMaritalStatus.js"></script>
+    <script src="js/global.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="personnelList.html">人事</a></li>
+                <li><a href="attendanceManagement.html">考勤</a></li>
+                <li><a href="salaryManagement.html">薪酬</a></li>
+                <li><a href="processManagement.html">流程</a></li>
+                <li><a href="assetsManagement.html">资产</a></li>
+                <li class="active"><a href="ManageDepartment.html">管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid main-body">
+    <div id="left-nav" class="">
+        <div class="left-nav-userInfo">
+            <div class="userHead">
+                <img class="userImg" src="imgs/user.png">
+            </div>
+            <div class="userTitle">
+                <p>超级管理员</p>
+            </div>
+        </div>
+        <ul class="left-nav-menu">
+            <li class="left-nav-menu-li ">
+                <a href="ManageDepartment.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>部门管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a href="ManageJobNature.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>工作性质管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a href="ManageMaritalStatus.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>民族管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a href="ManageEducation.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>学历管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a href="ManageHealthStatus.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>健康状况管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li li-active">
+                <a href="ManageMaritalStatus.html" class="menu-link">
+                    <img src="imgs/addressbook_fill.png">
+                    <div>婚姻状况管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a href="ManageMilitaryStatus.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>兵役状况管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a href="ManagePoliticalStatus.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>政治面貌管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a href="ManagePersonalContractType.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>合同类型管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a href="ManageContractStatus.html" class="menu-link">
+                    <img src="imgs/addressbook.png">
+                    <div>合同状态管理</div>
+                </a>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/brush.png">
+                    <div>员工管理    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="personnelList.html" class="sub-menu-link">
+                            员工列表
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChange.html" class="sub-menu-link">
+                            人事异动
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelEmployeesLeave.html" class="sub-menu-link">
+                            离职员工
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="personnelChangeCard.html" class="sub-menu-link">
+                            员工换卡
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="left-nav-menu-li">
+                <a class="menu-link">
+                    <img src="imgs/createtask.png">
+                    <div>合同管理    <span class="glyphicon glyphicon-triangle-right"></span></div>
+                </a>
+                <ul class="sub-menu none">
+                    <li class="sub-menu-li">
+                        <a href="personnelContract.html" class="sub-menu-link">
+                            人员合同
+                        </a>
+                    </li>
+                    <li class="sub-menu-li">
+                        <a href="projectContract.html" class="sub-menu-link">
+                            项目合同
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="right-panel">
+        <div class="nav-path">
+            <div class="path-title">
+                <ul class="path-ul">
+                    <li>婚姻状况管理</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-body-content">
+            <div class="top-body" style="margin-top: 30px">
+                <div class="search-content" style="height: 34px;">
+                    <div class="search-left">
+                        <div class="input-group col-xs-8">
+                            <div class="input-group col-xs-10">
+                                <input type="text" class="form-control" id="search-MaritalStatusName" placeholder="请输入婚姻状况名称">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" onclick="searchMaritalStatusByName()">搜索</button>
+                                <button class="btn btn-default" type="button" onclick="getAllMaritalStatusInformation()">搜索全部</button>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-right">
+                        <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal-addMaritalStatus">
+                            添加婚姻状况
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-body">
+                <table class="table table-bordered">
+                    <thead style="background-color: #F9FAFB">
+                    <tr>
+                        <th><input id="select-all" class="select-box" type="checkbox">婚姻状况ID</th>
+                        <th>婚姻状况名称</th>
+                        <th>操作<a class="deleteDepartmentInBatch-button" onclick="deleteMaritalStatusInBatch()">批量删除</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="table-tr hidden">
+                        <td class="MaritalStatus-id tbody-td-id"><input class="select-box select-sub-box" type="checkbox"></td>
+                        <td class="MaritalStatus-name"></td>
+                        <td class="MaritalStatus-operating">
+                            <a class="edit-a" data-toggle="modal" data-target="#myModal-modifyMaritalStatus" onclick="setModifyModalInformation(this)">修改</a>
+                            <a onclick="deleteMaritalStatus(this)">删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="page-body">
+                <ul class="page-ul">
+                    <li class="page-ul-li">
+                        <div class="input-group" style="width: 110px">
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="input-group-btn">
+                                <button id="jump-button" class="btn btn-default" type="button">跳转</button>
+                             </span>
+                        </div>
+                    </li>
+                    <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-left"></span></a></li>
+                    <li class="page-ul-li" style="margin-top: 8px"><span>1/255</span></li>
+                    <li class="page-ul-li"><a class="btn btn-default page-button"><span class="caret caret-right"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-addMaritalStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-addMaritalStatus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel-addMaritalStatus">添加婚姻状况</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-MaritalStatusName" class="col-xs-3 control-label"><span>*</span>婚姻状况名称：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-MaritalStatusName" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="addMaritalStatus()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-modifyMaritalStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-modifyMaritalStatus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel-modifyMaritalStatus">修改婚姻状况信息</h4>
+            </div>
+            <div class="modal-body" style="padding: 15px 20px">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="modal-modifyMaritalStatusID" class="col-xs-3 control-label">婚姻状况ID：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-modifyMaritalStatusID" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-modifyMaritalStatusName" class="col-xs-3 control-label"><span>*</span>婚姻状况名称：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="modal-modifyMaritalStatusName" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="modifyMaritalStatus()" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
